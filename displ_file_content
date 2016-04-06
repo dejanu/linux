@@ -1,0 +1,6 @@
+#!\bin\bash
+echo "Display a txt file"
+car='cat file_name.txt'
+echo $var
+cale=$pwd
+echo "the script is located in $cale"
