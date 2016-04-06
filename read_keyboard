@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Please give a number: "
+read inf
+if [ $inf -eq 1 ]
+then 
+	echo "ONE"
+else
+	echo "ANOTHER NO"
+fi
