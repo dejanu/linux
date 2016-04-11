@@ -1,14 +1,26 @@
 #remove directory
 rmdir -rf ./path
 
+#run script
+./scripta_name.sh
+
 #create hardlink ln and symbolic-link s: target LINK_NAME
 ln target.* my_name
 ls target.* my_name
 
-#search
+#search with  GREP
+#OPTIONS -n (line number) -i (case insensitive) -v (searches every line does not containt the desired word) -c(count lines) 
+# '^and' = start wiht the word "and" 
+# 'and$' = finishes wiht the word "and"
+
+
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 
 grep -ni 'word' ./path  //searches inside files
+
+#grouping 
+grep -E "(word1|word2)" ./path_of_the _search 
+
 
 #view content of files
 cat FILE_NAME
