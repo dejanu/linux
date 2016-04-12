@@ -4,3 +4,9 @@ var='cat file_name.txt'
 echo $var
 cale=$pwd
 echo "the script is located in $cale"
+
+----------------------------------
+#!/bin/bash
+FILE="/tmp/input.txt"
+echo "*** File - $FILE contents ***"
+cat $FILE
