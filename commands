@@ -16,7 +16,7 @@ ls target.* my_name
 
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 
-grep -ni 'word' ./path  //searches inside files
+grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 
 #grouping 
 grep -E "(word1|word2)" ./path_of_the _search 
