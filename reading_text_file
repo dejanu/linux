@@ -1,0 +1,16 @@
+#!/bin/bash
+FILE="/home/external/alex/test/test.txt"
+echo "**** File - $FILE contents ***"
+cat $FILE
+#x='cat test.txt | wc -l'
+x=$(cat test.txt | wc -l)
+echo $x
+#echo "Please give the number: "
+#echo "........"
+#read number
+#result=$(grep -in "$number" "$FILE")
+#echo $result
+result=$(grep -on "[0-9]\+" "$FILE")
+echo $result
+cuvinte=$(grep -o "[0-9]\+" "$FILE" | wc -w)
+echo "*** You have $cuvinte numbers in your file ****"
