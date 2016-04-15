@@ -1,0 +1,17 @@
+FILE=$(pwd)
+echo "--------------TARGET-----INFORMATION------------------"
+echo $FILE
+data=$(date)>infos.txt
+echo $data
+echo "-----------------------------------"
+inf=$(uname -a | dbus-daemon --version)
+echo "       $inf      "
+vars=$(grep -i 'product_img_filetypes' /etc/*.conf)>>infos.txt
+echo "Supported images type $vars"
+echo "-----------------------------------"
+vars1=$(grep -i 'product_audio_filetypes' /etc/*.conf)>>infos.txt
+echo "Supported audio types $vars1"
+echo "-----------------------------------"
+vars2=$(grep -i 'product_video_filetypes' /etc/*.conf)>>infos.txt
+echo "Supported video types $vars2"
+echo "-----------------------------------"
