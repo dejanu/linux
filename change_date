@@ -1,0 +1,8 @@
+view=$(cat date.txt)
+echo $view
+#FILE="/etc/date.txt"
+#result=$(grep -on "[0-9]\+" "$FILE")
+data=$(date)
+echo $data
+date --s $view
+#echo "abc-1234a :" | egrep -o '^[^:]+' take all chars until :
