@@ -22,6 +22,11 @@ grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 #grouping -----------------------------------------------------------------------------
 grep -E "(word1|word2)" ./path_of_the _search 
 
+#search and return characters from a file------------------------------------------------
+cut -c2 file.txt //return the chars from each line o  second column 
+cut -c2-3 file.txt //range 2-3th collumns 
+cut -c2- file.txt //returns all the charactesrs from the second column to the EOL
+
 
 #view content of files------------------------------------------------------
 cat FILE_NAME
