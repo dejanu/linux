@@ -1,29 +1,30 @@
-#remove directory
+#remove directory--------------------------------------------------------------------------------------
 rmdir -rf ./path
 
-#run script
+#run script----------------------------------------------------------------------
 ./scripta_name.sh
 
 #create hardlink ln and symbolic-link s: target LINK_NAME
 ln target.* my_name
 ls target.* my_name
 
-#search with  GREP
+#search with  GREP-------------------------------------------------------------------
 #OPTIONS -n (line number) -i (case insensitive) -v (searches every line does not containt the desired word) -c(count lines) 
 # '^and' = start wiht the word "and" 
 # 'and$' = finishes wiht the word "and"
 
+egrep -o '^[^.]+' // grep until a desired character , in this example is the .
 
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 
 grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 
-#grouping 
+#grouping -----------------------------------------------------------------------------
 grep -E "(word1|word2)" ./path_of_the _search 
 
 
-#view content of files
+#view content of files------------------------------------------------------
 cat FILE_NAME
 
-#change color
+#change color------------------------------------------------------------
 echo -e "\e[1;32m text color change \e[0m"
