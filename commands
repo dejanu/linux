@@ -28,10 +28,10 @@ cut -c2-3 file.txt //range 2-3th collumns
 cut -c2- file.txt //returns all the charactesrs from the second column to the EOL
 
 
-#view content of files------------------------------------------------------
+#view content of files----------------------------------------------------------------------
 cat FILE_NAME
 
-#change color------------------------------------------------------------
+#change color-------------------------------------------------------------------------------
 echo -e "\e[1;32m text color change \e[0m"
 
 
@@ -41,3 +41,10 @@ aplay -l     //view sound cards
 pactl set-sin-mute 0 1  //mute sink
 pactl -- set-sink-volume 0 100%  //change volume sink
 pactl stat  /view sinc status
+arecord -d 10 /tmp/sound_test.wav   //record for 10sec sound to tmp directory
+aplay 
+
+#USB-------------------------------------------------------------------------------------------
+mount | grep "^/dev/sda"  //view file system
+ls /dev/sd*  //view inserted USBs
+cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
