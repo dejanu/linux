@@ -4,7 +4,7 @@ rmdir -rf ./path
 #run script----------------------------------------------------------------------
 ./scripta_name.sh
 
-#create hardlink ln and symbolic-link s: target LINK_NAME
+#create hardlink ln and symbolic-link s: target LINK_NAME--------------------------------------------------
 ln target.* my_name
 ls target.* my_name
 
@@ -33,3 +33,11 @@ cat FILE_NAME
 
 #change color------------------------------------------------------------
 echo -e "\e[1;32m text color change \e[0m"
+
+
+#sound------------------------------------------------------------------------------------
+cat /proc/asound/cards  //view sound cards
+aplay -l     //view sound cards
+pactl set-sin-mute 0 1  //mute sink
+pactl -- set-sink-volume 0 100%  //change volume sink
+pactl stat  /view sinc status
