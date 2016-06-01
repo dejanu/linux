@@ -25,6 +25,9 @@ grep -E "(word1|word2)" ./path_of_the _search
 #search and return characters from a file------------------------------------------------
 cut -c2 file.txt //return the chars from each line o  second column 
 cut -c2-3 file.txt //range 2-3th collumns 
+
+#view differences between two files------------------------------------------------------------------
+diff file1 file2
 cut -c2- file.txt //returns all the charactesrs from the second column to the EOL
 
 
@@ -48,3 +51,5 @@ aplay
 mount | grep "^/dev/sda"  //view file system
 ls /dev/sd*  //view inserted USBs
 cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
+
+set +x %hsitory actiovation
