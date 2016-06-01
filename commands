@@ -14,6 +14,7 @@ ls target.* my_name
 # 'and$' = finishes wiht the word "and"
 
 egrep -o '^[^.]+' // grep until a desired character , in this example is the .
+grep -o -E '[0-9]+'  //grep only from a numbercat
 
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 
