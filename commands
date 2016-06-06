@@ -7,21 +7,29 @@ rmdir -rf ./path
 #create hardlink ln and symbolic-link s: target LINK_NAME--------------------------------------------------
 ln target.* my_name
 ls target.* my_name
-
+%%%_________________________________________FILE-101________________________________________________________________________________
 #search with  GREP-------------------------------------------------------------------
 #OPTIONS -n (line number) -i (case insensitive) -v (searches every line does not containt the desired word) -c(count lines) 
 # '^and' = start wiht the word "and" 
 # 'and$' = finishes wiht the word "and"
 
-egrep -o '^[^.]+' // grep until a desired character , in this example is the .
-grep -o -E '[0-9]+'  //grep only from a numbercat
+egrep -o '^[^.]+' %%%%% grep until a desired character , in this example is the .
+grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
 
 ls -l | grep YOOO //returns all desired files which have YOO in their name
-
 grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 
-#grouping -----------------------------------------------------------------------------
-grep -E "(word1|word2)" ./path_of_the _search 
+grep -E "(word1|word2)" ./path_of_the _search %%%%%%grouping two words
+
+sed -i 's/word1/word2/g' ./path_of_file  %%%%%% replaces word1 with word2
+tr 'E' 'e'   %%%replaces E with e
+tr -d 'e'    %%%%%delete e character
+cut -d "delimiter" -f1   %%%%%%print until first delimiter
+
+
+
+
+
 
 #search and return characters from a file------------------------------------------------
 cut -c2 file.txt //return the chars from each line o  second column 
@@ -53,4 +61,4 @@ mount | grep "^/dev/sda"  //view file system
 ls /dev/sd*  //view inserted USBs
 cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
 
-set +x %hsitory actiovation
+set +x %history actiovation
