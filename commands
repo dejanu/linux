@@ -21,13 +21,24 @@ grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 
 grep -E "(word1|word2)" ./path_of_the _search %%%%%%grouping two words
 
+
+
 sed -i 's/word1/word2/g' ./path_of_file  %%%%%% replaces word1 with word2
-tr 'E' 'e'   %%%replaces E with e
-tr -d 'e'    %%%%%delete e character
+sed '1~2d'   ./filepath  %%%print without the first two lines
+sed -n /root/p             %%%prints the line with the patter in this case is 'root'
+sed '/^$/d'               %%% eliminates blank lines 
+
+
+
+tr 'E' 'e'         %%%%%%%    replaces E with e
+tr -d 'e'           %%%%%    delete "e" character
+tr -d [:digit:]     %%%%  delete all digits
+tr -cd [:digit:]    %%%%% delete all chars except digits
+tr -cd [:print:]     %%%% remove all non printable characters
+tr -s '\n' ' ' < file.txt %%%%  translate all newlines into spaces and make the result as a single line.
+
+
 cut -d "delimiter" -f1   %%%%%%print until first delimiter
-
-
-
 
 
 
