@@ -39,6 +39,7 @@ tr -s '\n' ' ' < file.txt %%%%  translate all newlines into spaces and make the 
 
 
 cut -d "delimiter" -f1   %%%%%%print until first delimiter
+cut -c2- file.txt       %%%%%returns all the charactesrs from the second column to the EOL
 
 
 
@@ -48,7 +49,8 @@ cut -c2-3 file.txt //range 2-3th collumns
 
 #view differences between two files------------------------------------------------------------------
 diff file1 file2
-cut -c2- file.txt //returns all the charactesrs from the second column to the EOL
+diff -s file1.txt file2.txt %%%outputs files are identical if they are
+
 
 
 #view content of files----------------------------------------------------------------------
