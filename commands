@@ -3,6 +3,10 @@ rmdir -rf ./path
 export PATH=$PATH:/usr/local/bin
 echo "$PATH"
 
+--------------------view all the mount point-------------------------------------------------------------------
+
+mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint: "  $3}'
+
 
 
 # search file-----------------------------------------------------------------------------------------------------------
