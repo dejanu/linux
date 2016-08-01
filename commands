@@ -9,14 +9,14 @@ mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint
 
 
 
-# search file-----------------------------------------------------------------------------------------------------------
+# search file-------------------------------------------------------------------------------------------------------------
 
 find ./* name %%%%Search everywhere
 
-#run script----------------------------------------------------------------------
+#run script----------------------------------------------------------------------------------------------------------------
 ./scripta_name.sh
 
-#create hardlink ln and symbolic-link s: target LINK_NAME--------------------------------------------------
+#create hardlink ln and symbolic-link s: target LINK_NAME-------------------------------------------------------------------
 ln target.* my_name
 ls target.* my_name
 %%%_________________________________________FILE-101________________________________________________________________________________
@@ -38,7 +38,12 @@ grep -E "(word1|word2)" ./path_of_the _search %%%%%%grouping two words
 sed -i 's/word1/word2/g' ./path_of_file  %%%%%% replaces word1 with word2
 sed '1~2d'   ./filepath  %%%print without the first two lines
 sed -n /root/p             %%%prints the line with the patter in this case is 'root'
-sed '/^$/d'               %%% eliminates blank lines 
+sed '/^$/d'               %%% eliminates blank lines
+
+read inf
+echo "$inf"
+cat test.txt
+sed -i "s/hello/$inf/g" /home/cg/root/test.txt    %%%%%% give sed a variable as a parameter
 
 
 
