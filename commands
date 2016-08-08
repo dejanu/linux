@@ -30,6 +30,7 @@ grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
 
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 grep -ni 'word' ./path_of_file/file.txt  //searches inside files
+grep -A10 -B10    %%%%%%grep after and before 10 lines
 
 grep -E "(word1|word2)" ./path_of_the _search %%%%%%grouping two words
 
