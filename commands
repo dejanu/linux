@@ -15,6 +15,11 @@ find ./* name %%%%Search everywhere
 
 #run script----------------------------------------------------------------------------------------------------------------
 ./scripta_name.sh
+#------------------------View files open by a process---------------------------------------------------------------------------------------------------------
+pidof proccess
+ls -l /proc/`pidof proccess`/fd 
+
+
 
 #create hardlink ln and symbolic-link s: target LINK_NAME-------------------------------------------------------------------
 ln target.* my_name
