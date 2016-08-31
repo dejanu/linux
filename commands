@@ -2,6 +2,7 @@
 rmdir -rf ./path
 export PATH=$PATH:/usr/local/bin
 echo "$PATH"
+systemctl --full | grep conn 
 
 --------------------view all the mount point-------------------------------------------------------------------
 
@@ -12,6 +13,8 @@ mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint
 # search file-------------------------------------------------------------------------------------------------------------
 
 find ./* name %%%%Search everywhere
+grep -irl "string" /etc/*
+find "path" -iname "CeCaut"  
 
 #run script----------------------------------------------------------------------------------------------------------------
 ./scripta_name.sh
