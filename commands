@@ -2,7 +2,8 @@
 rmdir -rf ./path
 export PATH=$PATH:/usr/local/bin
 echo "$PATH"
-systemctl --full | grep conn 
+systemctl --full #list running services 
+systemctl list-units #list running services
 
 --------------------view all the mount point-------------------------------------------------------------------
 
