@@ -1,7 +1,8 @@
-#remove directory----------------------------------make the local shell variable called PATH ----------------------------------------------------
+#remove directory----------------------------------PATH environment variable ----------------------------------------------------
 rmdir -rf ./path
-export PATH=$PATH:/usr/local/bin
-echo "$PATH"
+echo $PATH  ###list of directories that your shell searches through when you enter a commanand
+PATH=$PATH\:/path_name ; export PATH   
+
 systemctl --full #list running services 
 systemctl list-units #list running services
 
