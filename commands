@@ -1,3 +1,13 @@
+#---------------------------------Internet---------------------------------------------------
+iwconfig #configure a wireless network interface , used to display wifi statistics from/proc/net/wireless
+ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
+ifconfig eth0 up   ## bring up or down an interface
+iwlist scannin | grep -i ESSID ##view AP
+echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 
+
+
+
+
 #remove directory----------------------------------PATH environment variable ----------------------------------------------------
 rmdir -rf ./path
 echo $PATH  ###list of directories that your shell searches through when you enter a commanand
