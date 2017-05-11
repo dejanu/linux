@@ -19,19 +19,21 @@ systemctl list-units #list running services
 --------------------view all the mount point-------------------------------------------------------------------
 
 mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint: "  $3}'
-
+findmnt
 
 
 # search file-------------------------------------------------------------------------------------------------------------
 
 find ./* name %%%%Search everywhere
 grep -irl "string" /etc/*
-find "path" -iname "CeCaut"  
+find /home/alex -iname "*.ini"  
+find /home/alex -type d -iname "dir_name"
 
-#run script----------------------------------------------------------------------------------------------------------------
-./scripta_name.sh
+#file size----------------------------------------------------------------------------------------------------------------
+du -sh direcotory
+
 #------------------------View files open by a process---------------------------------------------------------------------------------------------------------
-pidof proccess
+ps -aux | grep 'run_test'
 ls -l /proc/`pidof proccess`/fd 
 
 
