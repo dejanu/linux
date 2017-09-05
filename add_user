@@ -1,4 +1,0 @@
-sudo useradd -m USERNAME			
-sudo passwd USERNAME			
-sudo usermod -a -G sudo USERNAME			
-sudo usermod -s /bin/bash USERNAME
