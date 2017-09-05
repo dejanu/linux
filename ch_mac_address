@@ -1,6 +1,0 @@
-#!/bin/bash
-ifconfig eth0 down
-#show mac address
-macchanger -s eth0
-#change mac address -a (another) or -r(random) -p (set to original)
-ifconfig eth0 up
