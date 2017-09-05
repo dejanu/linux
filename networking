@@ -1,0 +1,16 @@
+WINDOWS /? = Use the help switch
+----------------------
+route print = view interface list, route table, persistent routes
+netstat -r = view route table
+netstat -a = view TCP connections abd UDP ports
+netstat -f = view Fully Qualified Domain Name (FQDN) 
+tracert address
+netsh wlan show profiles = show all preavious connection of wireless AP
+netsh wlan show profile PROFILE_NAME key=clear
+
+
+UNIX --help
+-----------------------
+route -n = view routing table
+nestat -r = view route table
+traceroute address
