@@ -7,6 +7,7 @@ netstat -f = view Fully Qualified Domain Name (FQDN)
 tracert address
 netsh wlan show profiles = show all preavious connection of wireless AP
 netsh wlan show profile PROFILE_NAME key=clear
+nslookup www.google.com = query the Domain Name System table 
 
 
 UNIX --help
