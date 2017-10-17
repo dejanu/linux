@@ -12,3 +12,8 @@ GET = retrieves resources from the server, it can be used to send parameters to 
 POST = used to perform actions (resource creation request) , the request parameters can be sent in both in URL and in the body of the message. (Resend or Leave Page - browsers do not reissue POST request)(WriteMethod) . Cannot be repeated safely so it is not idempotent  
 
 PUT = it is idempotent(can be reapeated) (update resource request)
+
+4. ARP Spoofing?
+Address Resolution Protocol (layer 2 protocol) used to map ip addr with MAC addr. ARP does not provide a method to authenthificate ARP Replys, so the spoofer 
+
+
