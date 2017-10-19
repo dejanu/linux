@@ -1,33 +1,10 @@
+Syntax: Operator_name:keyword
+e.g: 
 
-FILE=$(pwd)
-echo -e "\e[1;36m --------------TARGET-----INFORMATION------------------ \e[0m"
-echo $FILE
-data=$(date)>infos.txt
-echo $data
-echo "------------------------------------------------"
-inf=$(uname -a | dbus-daemon --version)
-echo "$inf"
-echo "------------------------------------------------"
-infs=$(printOIPBuildInfo.sh | grep -i 'OIPBI: DK BL Version:')
-echo -e "\e[1;32m SW VERSION \e[0m"
-echo "$infs"
-echo "------------------------------------------------"
-hwv=$(printOIPBuildInfo.sh | grep -i 'OIPBI: Hardware Variant:')
-echo -e "\e[1;32m HW VARIANT \e[0m"
-echo "$hwv"
-echo "------------------------------------------------"
-vars=$(grep -i 'product_img_filetypes' /etc/*.conf)>>infos.txt
-echo -e "\e[1;32m Supported images type \e[0m"
-echo "$vars"
-echo "------------------------------------------------"
-vars1=$(grep -i 'product_audio_filetypes' /etc/*.conf)>>infos.txt
-echo -e "\e[1;32m Supported audio types  \e[0m"
-echo "$vars1"
-echo "-----------------------------------------------"
-vars2=$(grep -i 'product_video_filetypes' /etc/*.conf)>>infos.txt
-echo -e "\e[1;32m Supported video types   \e[0m"
-echo "$vars2"
-echo "-----------------------------------------------"
-vars3=$(grep -i 'product_playlist_filetypes' /etc/*.conf)>>infos.txt
-echo -e "\e[1;32m Supported playlist file types   \e[0m"
-echo "$vars3"
+intitle:index of pdf
+intext:@yahoo.com filetype:xls 
+filetype: xls inurl: "password.xls" (looking for username and password in ms excel format). This command can change with admin.xls)
+
+https://www.facebook.com/LifeInTheComputer/posts/373630599496881
+http://resources.infosecinstitute.com/google-hacking-for-fun-and-profit-i/#gref
+https://null-byte.wonderhowto.com/how-to/use-google-hack-googledorks-0163566/
