@@ -4,6 +4,15 @@ e.g:
 intitle:index of pdf
 intext:@yahoo.com filetype:xls 
 filetype: xls inurl: "password.xls" (looking for username and password in ms excel format). This command can change with admin.xls)
+site:targe_site inurl:.php?id=  (sql injection)
+
+
+By using switches to dig deeper into a Web site: For example, if you
+want to find a certain word or file on your Web site, simply enter a line
+like one of the following into Google:
+
+site:www.your_domain.com keyword
+site:www.your_domain.com filename
 
 https://www.facebook.com/LifeInTheComputer/posts/373630599496881
 http://resources.infosecinstitute.com/google-hacking-for-fun-and-profit-i/#gref
