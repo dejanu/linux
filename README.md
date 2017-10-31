@@ -3,6 +3,7 @@
 The web app creates a session for each user in order to process the series of request that originate from each unique user.  
 The session = set of data structures held on the server in order to track the state of the users interaction with the web app  
 The token = unique string that  identifies a session  
+Session state could be passed in "set-cookie" header in the HTTP response, and the browser will return the same information in the "cookie" header
 
 2. Identification Authentification Authorization ? 
 
