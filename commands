@@ -1,5 +1,5 @@
 #---------------------------------Internet---------------------------------------------------
-iwconfig #configure a wireless network interface , used to display wifi statistics from/proc/net/wireless
+iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
 ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
 iwlist scannin | grep -i ESSID ##view AP
@@ -8,44 +8,47 @@ echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: 
 
 
 
-#remove directory----------------------------------PATH environment variable ----------------------------------------------------
-rmdir -rf ./path
-echo $PATH  ###list of directories that your shell searches through when you enter a commanand
-PATH=$PATH\:/path_name ; export PATH   
+#--------------------Mount-points-------------------------------------------------------------------
 
-systemctl --full #list running services 
-systemctl list-units #list running services
+>> mount -v 
+>> findmnt
 
---------------------view all the mount point-------------------------------------------------------------------
-
-mount -v | grep "^/" | awk '{print "\nPartition identifier: " $1  "\n Mountpoint: "  $3}'
-findmnt
+>> mount /dev/sdaX /media/usb_created_dir
+>> umount /dev/sdaX /media/usr_created_dir
 
 
-# search file-------------------------------------------------------------------------------------------------------------
+# --------------------Search--------------------------------------------------------------------------------
 
 find ./* name %%%%Search everywhere
 grep -irl "string" /etc/*
 find /home/alex -iname "*.ini"  
 find /home/alex -type d -iname "dir_name"
 
-#file size----------------------------------------------------------------------------------------------------------------
-du -sh direcotory
+#-----------------------FileSize----------------------------------------------------------------------------
 
-#------------------------View files open by a process---------------------------------------------------------------------------------------------------------
+>> du -sh  /dir_path/file_name
+
+#------------------------View files opened by a process----------------------------------------------------------
 ps -aux | grep 'run_test'
 ls -l /proc/`pidof proccess`/fd 
 
 
 
-#create hardlink ln and symbolic-link s: target LINK_NAME-------------------------------------------------------------------
+#create hardlink ln and symbolic-link ss: target LINK_NAME-------------------------------------------------------------------
 ln target.* my_name
 ls target.* my_name
-%%%_________________________________________FILE-101________________________________________________________________________________
-#search with  GREP-------------------------------------------------------------------
-#OPTIONS -n (line number) -i (case insensitive) -v (searches every line does not containt the desired word) -c(count lines) 
-# '^and' = start wiht the word "and" 
-# 'and$' = finishes wiht the word "and"
+
+-----------------------FIlE-101-----------------------
+# Count lines,chars:
+>> wc -n
+>> wv -l
+
+# View first 5 lines from a file , or paginate the result in terminal
+>> head -n5 file_name
+>> cat file_name | more
+
+# Search in file content
+>> grep -i -E "first|second|third" file.txt #search in fie.txt using grouping for "first" or "second" or "third" words
 
 egrep -o '^[^.]+' %%%%% grep until a desired character , in this example is the .
 grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
@@ -54,7 +57,6 @@ ls -l | grep YOOO //returns all desired files which have YOO in their name
 grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 grep -A10 -B10    %%%%%%grep after and before 10 lines
 
-grep -E "(word1|word2)" ./path_of_the _search %%%%%%grouping two words
 
 
 
@@ -78,12 +80,10 @@ tr -cd [:print:]     %%%% remove all non printable characters
 tr -s '\n' ' ' < file.txt %%%%  translate all newlines into spaces and make the result as a single line.
 
 
-cut -d "delimiter" -f1   %%%%%%print until first delimiter
-cut -c2- file.txt       %%%%%returns all the charactesrs from the second column to the EOL
 
 
-
-#search and return characters from a file------------------------------------------------
+# Select only the entries in a particular column, search util a desired delimiter " " and returning only the 9th field
+>> cat sql.log | cut -d" " -f9 | sort | uniq  
 cut -c2 file.txt //return the chars from each line o  second column 
 cut -c2-3 file.txt //range 2-3th collumns 
 
@@ -92,9 +92,6 @@ diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
 
 
-
-#view content of files----------------------------------------------------------------------
-cat FILE_NAME
 
 #change color-------------------------------------------------------------------------------
 echo -e "\e[1;32m text color change \e[0m"
