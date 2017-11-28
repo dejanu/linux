@@ -12,6 +12,10 @@ nslookup www.google.com = query the Domain Name System table
 
 UNIX --help
 -----------------------
-route -n = view routing table
-nestat -r = view route table
-traceroute address
+route -n = view routing table,get default getway ip
+ip route show = get deafault getway ip and get the metric also
+nestat = network statistics: -r (view routing table)  -s (statistics) -a (list all ports UPD and TCP)
+nslookup domain_name.com = returns the ip associated with a domain (dig +short domain_name.com or host domain_name.com)
+nmap -sS -O gateway.ip/24 = get all hosts from LAN (loopback and gateway will appear)
+nmap -sP gateway.ip/24 =  get all hosts from LAN (loopback and gateway will appear) ( https://security.stackexchange.com/questions/36198/how-to-find-live-hosts-on-my-network )
+
