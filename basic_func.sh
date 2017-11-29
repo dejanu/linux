@@ -34,3 +34,10 @@ do
 done
 echo lista este $@
 #########################################
+echo Primul Parametru pozitional este $1
+echo Al doilea paramentru pozitional este $2
+echo Numele scriptului este $0
+
+echo "Scriptul a rulat cu $# paramentrii"
+echo Acestia sint $@
+
