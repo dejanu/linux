@@ -1,7 +1,7 @@
 WINDOWS /? = Use the help switch
 ----------------------
 route print = view interface list, route table, persistent routes
-netstat -r = view route table
+netstat -r = display host routing  table alias route print (returns Interface list, IPV4 and IPV6 route table)
 netstat -a = view TCP connections abd UDP ports
 netstat -f = view Fully Qualified Domain Name (FQDN) 
 tracert address
