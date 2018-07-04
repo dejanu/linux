@@ -20,10 +20,5 @@ POST = used to perform actions (resource creation request) , the request paramet
 PUT = it is idempotent(can be reapeated) (update resource request)
 
 
-5. IP classes clasification?
-
-Class A: 1-127 (first octet), 255.0.0.0 (mask), 1677216 hosts -2 reserved addr (network id and broadcast)
-Class B: 128-191 (first octet), 255.255.0.0 (mask), 65536 hosts -2
-Class C: 192-223 (first octet) 255.255.255.0, 254 host per network
 
 
