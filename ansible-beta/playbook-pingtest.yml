@@ -1,0 +1,6 @@
+-
+  name: Connectivity to servers
+  hosts: target1
+  tasks:
+    - name: Ping test
+      ping:
