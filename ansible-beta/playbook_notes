@@ -1,0 +1,5 @@
+Playbook = Single YAML file
+Play = set of taks to be run on hosts
+Task = action to be performed on host (execute a command, run a script, install a package, restart the server)
+
+#list modules ansible-doc -l

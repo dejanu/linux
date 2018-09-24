@@ -1,0 +1,30 @@
+#On the ansible_controller, should be the Inventory, by default is the etc/ansible/hosts , in which we define the HOSTS or the GROUP OF HOSTS upon which commands,modules or tasks operate
+#e.g:
+
+# Web Servers define alias and connection type
+web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+web2 ansible_host=server2.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+web3 ansible_host=server3.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+
+# Database Servers define alias and connection type
+db1 ansible_host=server4.company.com ansible_connection=winrm ansible_user=administrator ansible_password=Password123!
+
+
+#group of linux webservers
+[web_servers]
+web1
+web2
+web3
+
+#group of windows db server
+[db_servers]
+db1
+
+#group of groups
+[all_servers:children]
+web_server
+db_server
+
+#cmd usage: ansible <hosts> -a command  -i <location_inventoryfile>
+#ansible web1 -m ping -i another_location/inventory.txt
+#ansible web1 -a "cat /etc/hostname"
