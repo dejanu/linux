@@ -1,0 +1,15 @@
+-
+  name: Get the host name
+  hosts: localhost
+  tasks:
+    - name: Getting the host name
+      command: cat /etc/hosts
+-
+  name: Test connectivity play
+  hosts: localhost
+  tasks:
+    - name: Test connectivity
+      #ansible built-in module
+      ping:
+
+

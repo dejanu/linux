@@ -3,4 +3,5 @@
   hosts: target1
   tasks:
     - name: Ping test
+      # this is a module
       ping:
