@@ -19,14 +19,15 @@ echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: 
 
 # --------------------Search--------------------------------------------------------------------------------
 
-find ./* name %%%%Search everywhere
+find / -type f file_name %%%%Search everywhere
 grep -irl "string" /etc/*
 find /home/alex -iname "*.ini"  
 find /home/alex -type d -iname "dir_name"
+find . -type f -name file_name
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
->> du -sh  /dir_path/file_name
+ du -sh  /dir_path/file_name
 
 #------------------------View files opened by a process----------------------------------------------------------
 ps -aux | grep 'run_test'
@@ -38,10 +39,13 @@ ls -l /proc/`pidof proccess`/fd
 ln target.* my_name
 ls target.* my_name
 
------------------------FIlE-101-----------------------
+-----------------------FIlE-101----------------------
 # Count lines,chars:
 >> wc -n
 >> wv -l
+
+#STDIN to file
+>> cat > file
 
 # View first 5 lines from a file , or paginate the result in terminal
 >> head -n5 file_name
