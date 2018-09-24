@@ -29,9 +29,15 @@ find . -type f -name file_name
 
  du -sh  /dir_path/file_name
 
-#------------------------View files opened by a process----------------------------------------------------------
+#------------------------Service and procs----------------------------------------------------------
 ps -aux | grep 'run_test'
-ls -l /proc/`pidof proccess`/fd 
+ls -l /proc/`pidof proccess`/fd   %%%View files opened by a process
+
+# 1. Stop the web services on web server nodes - service httpd stop
+# 2. Shutdown the database services on db server nodes - service mysql stop
+# 3. Restart all servers (web and db) at once - /sbin/shutdown -r
+# 4. Start the database services on db server nodes - service mysql start
+# 5. Start the web services on web server nodes - service httpd start
 
 
 
