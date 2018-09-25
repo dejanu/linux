@@ -24,5 +24,15 @@ Creating processes :
   
   
   The fundamental way of controlling processes in Linux is by sending signals to them, to list all signals:
-  
+ 
   kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
+
+------------------------------------------------------
+Library modules "a way" for programs to share code.
+
+>> man hier % view the file system hierachy 
+
+.so = dynamically linked shared objects libraries (aka .dll from windows)
+.a = static libraries
+
+>> ldd /bin/ls  %view the dependencies modules for the particular command
