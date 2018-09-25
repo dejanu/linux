@@ -13,6 +13,7 @@ vim /etc/hosts
 
 #bypass DNS resolution(could not resolve DNS ) - A match found in the /etc/hosts file will be used before any DNS entry
 vim /etc/hosts and add ip and domain name
+vim /etc/resolv.cong
 
 Well, the order of name resolution is actually defined in /etc/nsswitch.conf, which usually has this entry:
 
