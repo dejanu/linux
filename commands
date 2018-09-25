@@ -3,10 +3,11 @@ iwconfig #configure a wireless network interface , used to display wifi statisti
 ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
 iwlist scannin | grep -i ESSID ##view AP
+
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 
 
 
-
+./script.sh |& tee output_file  %print to STDOUT and redirect to file in the same time
 
 #--------------------Mount-points-------------------------------------------------------------------
 
@@ -32,6 +33,7 @@ find . -type f -name file_name
 #------------------------Service and procs----------------------------------------------------------
 ps -aux | grep 'run_test'
 ls -l /proc/`pidof proccess`/fd   %%%View files opened by a process
+lsof 
 
 # 1. Stop the web services on web server nodes - service httpd stop
 # 2. Shutdown the database services on db server nodes - service mysql stop
