@@ -1,4 +1,5 @@
-#---------------------------------Internet---------------------------------------------------
+#---------------------------------Networking---------------------------------------------------
+
 iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
 ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
@@ -6,8 +7,17 @@ iwlist scannin | grep -i ESSID ##view AP
 
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 
 
+#change hostname
+vim /etc/hostname 
+vim /etc/hosts
 
-./script.sh |& tee output_file  %print to STDOUT and redirect to file in the same time
+#bypass DNS resolution(could not resolve DNS ) - A match found in the /etc/hosts file will be used before any DNS entry
+vim /etc/hosts and add ip and domain name
+
+Well, the order of name resolution is actually defined in /etc/nsswitch.conf, which usually has this entry:
+
+hosts:          files dns
+which means "try files (/etc/hosts); and if it fails, try DNS."
 
 #--------------------Mount-points-------------------------------------------------------------------
 
@@ -28,7 +38,9 @@ find . -type f -name file_name
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
- du -sh  /dir_path/file_name
+
+ du -sh  /dir_path/file_name  %%% estimate file disk usage
+ df -h   %%disk free, available and used space
 
 #------------------------Service and procs----------------------------------------------------------
 ps -aux | grep 'run_test'
@@ -48,6 +60,9 @@ ln target.* my_name
 ls target.* my_name
 
 -----------------------FIlE-101----------------------
+
+./script.sh |& tee output_file  %print to STDOUT and redirect to file in the same time
+
 # Count lines,chars:
 >> wc -n
 >> wv -l
