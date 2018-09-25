@@ -20,6 +20,9 @@ Well, the order of name resolution is actually defined in /etc/nsswitch.conf, wh
 hosts:          files dns
 which means "try files (/etc/hosts); and if it fails, try DNS."
 
+https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-etcresolv-conf-in-linux/
+
+
 #--------------------Mount-points-------------------------------------------------------------------
 
 >> mount -v 
