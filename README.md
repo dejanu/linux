@@ -7,7 +7,15 @@
 
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
 **init** - has PID of 1 it's the parent of all prcesses on the system (when linux boots up) and it is started by the kernel itself.
+**Systemd** -  is an init system and system manager ithas become the default init system for many Linux distributions
 
+The central management tool for controling the init system (manage service, check statuses, change system states)
+
+```bash
+systemctl 
+```
+ https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+ 
 FYI:
 
 & - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell.
@@ -27,7 +35,7 @@ Creating processes :
  
   kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
 
-------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
 Library modules "a way" for programs to share code.
 
 >> man hier % view the file system hierachy 
