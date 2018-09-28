@@ -22,7 +22,7 @@ which means "try files (/etc/hosts); and if it fails, try DNS."
 
 https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-etcresolv-conf-in-linux/
 
-#DNS resolution II
+#DNS resolution II - netconfig, NetworkManager, resolvconf, rdnssd, and systemd-resolved try to control the Linux system DNS resolution configuration file
 vim /etc/resolf.conf
 
 
