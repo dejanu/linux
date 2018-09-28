@@ -22,6 +22,9 @@ which means "try files (/etc/hosts); and if it fails, try DNS."
 
 https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-etcresolv-conf-in-linux/
 
+#DNS resolution II
+vim /etc/resolf.conf
+
 
 #--------------------Mount-points-------------------------------------------------------------------
 
