@@ -1,4 +1,7 @@
-#!/usr/bin/bash
+#!/bin/bash
+
+echo $(ps -u $(whoami))
+
 function userinfo
 {
         echo $(whoami)
