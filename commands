@@ -1,3 +1,6 @@
+
+https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
+
 #---------------------------------Networking---------------------------------------------------
 
 iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
@@ -34,11 +37,15 @@ vim /etc/resolf.conf
 >> mount /dev/sdaX /media/usb_created_dir
 >> umount /dev/sdaX /media/usr_created_dir
 
+mount | grep "^/dev/sda"  // attach the filesystem found on some device
+ls /dev/sd*  //view attached filessytems
+cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
+
 
 # --------------------Search--------------------------------------------------------------------------------
 
 find / -type f file_name %%%%Search everywhere
-grep -irl "string" /etc/*
+grep -irl "string" /etc/*  %%%search in files
 find /home/alex -iname "*.ini"  
 find /home/alex -type d -iname "dir_name"
 find . -type f -name file_name
@@ -140,9 +147,7 @@ pactl stat  /view sinc status
 arecord -d 10 /tmp/sound_test.wav   //record for 10sec sound to tmp directory
 aplay 
 
-#USB-------------------------------------------------------------------------------------------
-mount | grep "^/dev/sda"  //view file system
-ls /dev/sd*  //view inserted USBs
-cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
+
+
 
 set +x %history actiovation
