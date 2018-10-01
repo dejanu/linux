@@ -3,6 +3,9 @@
 "Processes can talk to other processes using Inter process communication methods (dbus) and can share data using techniques like shared memory"
 
 * Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
+				     - to bring a process to foreground just run  ```bash fg &1```
+
+	
 * Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input
 
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
@@ -19,6 +22,8 @@ systemctl
 FYI:
 
 & - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell.
+  - to create a job just append the control operator
+
 Ctrl + Z - sends SIGSTOP signal to the process and suspends it.
 
 
