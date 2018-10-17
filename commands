@@ -1,7 +1,26 @@
-
+#---------------------------------Profiles--------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
-#---------------------------------Networking---------------------------------------------------
+1)Verify which shell your're running
+echo $SHELL
+
+2)Verify env var PATH, which describes the location of different progs
+echo $PATH
+
+PATH is set by the shell every time it launches
+
+3)Add a new program to path (efemere)
+
+export PATH=$PATH:/place/with/the/file
+
+4)Add export PATH=$PATH:/place/with/the/file line in the ~/.bash_profile, ~/.bashrc, or ~/.profile
+
+
+
+
+
+
+#---------------------------------Networking--------------------------------------------------
 
 iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
 ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
