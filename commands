@@ -1,8 +1,11 @@
 #---------------------------------Profiles & Shell--------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
-0)Display all the shell variables, run:
+0)Display all the SHELL VARIABLES, run:
 set
+
+00)Display all the ENVIRONMENT VARIABLES, run:
+env
 
 1)Verify which shell your're running:
 echo $SHELL
