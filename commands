@@ -1,7 +1,16 @@
-#---------------------------------Profiles--------------------------------------------------
+#---------------------------------Profiles & Shell--------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
-1)Verify which shell your're running
+0)Display all the shell variables, run:
+set
+
+!The shell vars come from 3 sources:
+
+ - Inherited from the environment when the shell was first invoked;
+ - From startup files /etc/profile/, ~/.bash_profile, ~/.bashrc;
+ - Set manually by the user from the shell prompt
+
+1)Verify which shell your're running:
 echo $SHELL
 
 2)Verify env var PATH, which describes the location of different progs
