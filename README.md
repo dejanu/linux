@@ -6,7 +6,16 @@
 				     - to bring a process to foreground just run  ```bash fg &1```
 
 	
-* Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input
+* Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input, to list the background proccess run :`$ jobs`  
+
+```shell
+$ jobs
+[1] Running sleep 500 & (wd: ~)
+[2]- Running sleep 600 & (wd: ~)
+[3]+ Running ./Fritzing &
+```
+To bring a process to foreground run `$ fg %2`  
+
 
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
 **init** - has PID of 1 it's the parent of all prcesses on the system (when linux boots up) and it is started by the kernel itself.
