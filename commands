@@ -23,9 +23,6 @@ export PATH=$PATH:/place/with/the/file
 
 
 
-
-
-
 #---------------------------------Networking--------------------------------------------------
 
 iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
@@ -173,6 +170,20 @@ arecord -d 10 /tmp/sound_test.wav   //record for 10sec sound to tmp directory
 aplay 
 
 
+#---------------------------------Tricks--------------------------------------------------
 
+%History activation
+set +x 
 
-set +x %history actiovation
+%Redirect STDIN to file
+cat > inputfile.txt
+
+%Change hostname name
+vim /etc/hostname
+vim /etc/hosts
+
+%Change back to last dir
+cd -
+
+%Execute last command (with sudo)
+sudo !!
