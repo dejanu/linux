@@ -26,7 +26,8 @@ The central management tool for controling the init system (manage service, chec
 ```bash
 systemctl 
 ```
- https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units
+ https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units  
+ lsof = https://javarevisited.blogspot.com/2015/11/how-to-find-pid-of-process-listening-on-a-port-unix-netstat-lsof-command-examples.html?fbclid=IwAR20ib7x1f_j4OsamcuBgIM-Y06PdUgOLtDYjMFJttqm0ZOlnNHPtr-fAOc
  
 FYI:
 
