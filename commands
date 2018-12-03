@@ -28,7 +28,7 @@ export PATH=$PATH:/place/with/the/file
 iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
 ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
-iwlist scannin | grep -i ESSID ##view AP
+ip address show
 
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 
 
@@ -75,8 +75,8 @@ find . -type f -name file_name
 #-----------------------FileSize----------------------------------------------------------------------------
 
 
- du -sh  /dir_path/file_name  %%% estimate file disk usage
- df -h   %%disk free, available and used space
+ du -sh  /dir_path/file_name  %%% disk usage for a certain file
+ df -ah   %% disk free, available and used space
 
 #------------------------Service and procs----------------------------------------------------------
 ps -aux | grep 'run_test'
