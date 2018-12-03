@@ -30,7 +30,9 @@ ifconfig  ##interface config of the network interfaces on the system eth0 is for
 ifconfig eth0 up   ## bring up or down an interface
 ip address show
 
-echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 
+echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse   
+
+netstat -tulpn %%% list all ports for TCP and UDP connections
 
 #change hostname
 vim /etc/hostname 
@@ -52,11 +54,12 @@ vim /etc/resolf.conf
 
 
 #--------------------Mount-points-------------------------------------------------------------------
+In order to mount file at boot modify /etc/fstab. In general you should mount to /mnt directory
 
->> mount -v 
+>> mount -v %% view mount points
 >> findmnt
 
->> mount /dev/sdaX /media/usb_created_dir
+>> mount /dev/sdaX /media/usb_created_dir %% mount volume or  mount /dev/sdaX /mnt/usb_created_dir
 >> umount /dev/sdaX /media/usr_created_dir
 
 mount | grep "^/dev/sda"  // attach the filesystem found on some device
@@ -75,10 +78,13 @@ find . -type f -name file_name
 #-----------------------FileSize----------------------------------------------------------------------------
 
 
- du -sh  /dir_path/file_name  %%% disk usage for a certain file
+ du -sh  /dir_path/file_name  %%% disk usage for a certain file or directory
  df -ah   %% disk free, available and used space
 
 #------------------------Service and procs----------------------------------------------------------
+systemctl status docker %%% verify service status on older distro is service docker status
+
+
 ps -aux | grep 'run_test'
 ls -l /proc/`pidof proccess`/fd   %%%View files opened by a process
 lsof 
