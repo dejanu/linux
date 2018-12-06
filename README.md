@@ -1,4 +1,5 @@
-#Processes 
+#Processes  
+
 "In a basic form Linux processes can be vizualized as a running instance of a program"  
 "Processes can talk to other processes using Inter process communication methods (dbus) and can share data using techniques like shared memory"
 
@@ -18,14 +19,17 @@ To bring a process to foreground run `$ fg %2`
 
 
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
-**init** - has PID of 1 it's the parent of all prcesses on the system (when linux boots up) and it is started by the kernel itself.
-**Systemd** -  is an init system and system manager ithas become the default init system for many Linux distributions
+**init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
+If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.
+**Systemd** -  is an init system and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
 
-The central management tool for controling the init system (manage service, check statuses, change system states)
+ **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
 
 ```bash
-systemctl 
-```
+sudo systemctl enable service_name #start at boot time
+systemctl status/start/stop/restat docker/httpd/mysql
+systemctl list-units --type service --all
+```   
  https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units  
  lsof = https://javarevisited.blogspot.com/2015/11/how-to-find-pid-of-process-listening-on-a-port-unix-netstat-lsof-command-examples.html?fbclid=IwAR20ib7x1f_j4OsamcuBgIM-Y06PdUgOLtDYjMFJttqm0ZOlnNHPtr-fAOc
  
