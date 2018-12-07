@@ -54,7 +54,7 @@ vim /etc/resolf.conf
 
 
 #--------------------Mount-points-------------------------------------------------------------------
-In order to mount file at boot modify /etc/fstab. In general you should mount to /mnt directory
+In order to automatically mount file at boot modify /etc/fstab. In general you should mount to /mnt directory
 
 >> mount -v %% view mount points
 >> findmnt
