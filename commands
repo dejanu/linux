@@ -183,6 +183,7 @@ set +x
 
 %Redirect STDIN to file
 cat > inputfile.txt
+echo 'write_to_file1 >> inputfile.txt
 
 %Change hostname name
 vim /etc/hostname
