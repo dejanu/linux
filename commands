@@ -54,7 +54,8 @@ vim /etc/resolf.conf
 
 
 #--------------------Mount-points-------------------------------------------------------------------
-In order to automatically mount file at boot modify /etc/fstab. In general you should mount to /mnt directory
+In order to automatically mount file at boot modify /etc/fstab. 
+In general you should mount to /mnt directory
 
 >> mount -v %% view mount points
 >> findmnt
@@ -86,9 +87,9 @@ systemctl status docker %%% verify service status on older distro is service doc
 
 
 ps -aux | grep 'run_test'
-ls -l /proc/`pidof proccess`/fd   %%%View files opened by a process
-lsof 
-
+lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd)
+ 
+   
 # 1. Stop the web services on web server nodes - service httpd stop
 # 2. Shutdown the database services on db server nodes - service mysql stop
 # 3. Restart all servers (web and db) at once - /sbin/shutdown -r
