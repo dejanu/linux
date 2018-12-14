@@ -87,7 +87,7 @@ systemctl status docker %%% verify service status on older distro is service doc
 
 
 ps -aux | grep 'run_test'
-lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd)
+lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd) fd = file descriptor
  
    
 # 1. Stop the web services on web server nodes - service httpd stop
@@ -98,9 +98,10 @@ lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd)
 
 
 
-#create hardlink ln and symbolic-link ss: target LINK_NAME-------------------------------------------------------------------
-ln target.* my_name
-ls target.* my_name
+#---------Hard-link vs Soft-link------------------------------------------------------------------
+
+ln file hardlink_file  
+ln -s file softlink_file
 
 -----------------------FIlE-101----------------------
 
