@@ -53,8 +53,10 @@ https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-
 vim /etc/resolf.conf
 
 
-#--------------------Mount-points-------------------------------------------------------------------
-In order to automatically mount file at boot modify /etc/fstab. 
+#--------------------Filesystem-------------------------------------------------------------------
+
+In order to automatically mount file at boot modify the os filesystem table  /etc/fstab. 
+
 In general you should mount to /mnt directory
 
 >> mount -v %% view mount points
