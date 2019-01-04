@@ -88,7 +88,7 @@ find . -type f -name file_name
 systemctl status docker %%% verify service status on older distro is service docker status
 
 
-ps -aux | grep 'run_test'
+ps aux | grep -i apt   %%%  lock /var/lib/dpkg/lock
 lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd) fd = file descriptor
  
    
