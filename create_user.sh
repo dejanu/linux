@@ -18,20 +18,21 @@ $sudo pkill -9 -u cs10fh
 $ useradd us81jt
 
 # you can change the shell and also want to copy /etc/skel/.bashrc to the user's home directory.
-sudo -u $USERNAME chsh -s /bin/bash
+$ sudo -u $USERNAME chsh -s /bin/bash
 
-# instead you can use
-#  will default to using /bin/bash as the shell and seed the new user's home directory with the files from /etc/skel/
-adduser
 
 # change passwd
 $ passwd  us81jt (us81jt)
-
-# add user to groups
-
-$ usermod -aG sudo, docker .. us81jt
 
 # make ~ for user
 $mkdir /home/us81jt
 $mkhomedir_helper us81jt
 $sudo chown us81jt:us81jt /home/us81jt
+
+
+# OR OR instead you can use
+#  will default to using /bin/bash as the shell and seed the new user's home directory with the files from /etc/skel/
+$ adduser
+
+# add user to groups
+$ usermod -aG sudo,docker,vboxsf .. us81jt
