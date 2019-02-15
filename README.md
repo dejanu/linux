@@ -29,6 +29,7 @@ If somehow init daemon could not start, no process will be started and the syste
 sudo systemctl enable service_name #start at boot time
 systemctl status/start/stop/restat docker/httpd/mysql
 systemctl list-units --type service --all
+systemctl daemon-reload  #reload systemd manager configuration
 ```   
  https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units  
  lsof = https://javarevisited.blogspot.com/2015/11/how-to-find-pid-of-process-listening-on-a-port-unix-netstat-lsof-command-examples.html?fbclid=IwAR20ib7x1f_j4OsamcuBgIM-Y06PdUgOLtDYjMFJttqm0ZOlnNHPtr-fAOc
