@@ -20,7 +20,8 @@ To bring a process to foreground run `$ fg %2`
 
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
-If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.
+If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.  
+
 **Systemd** -  is an init system and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
 
  **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
@@ -54,6 +55,23 @@ Creating processes :
   The fundamental way of controlling processes in Linux is by sending signals to them, to list all signals:
  
   kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
+ 
+-----------------------------------------------------------------------------------------------------------------------------
+Usefull binary /usr/bin/lsof ‘LiSt Open Files’ is used to find out which files are open by which process:
+
+
+#list processes that are using a certain file
+`$ lsof file_name`
+
+#list all files open by a process
+`# lsof -p PID`
+
+#list procs of a certain user
+`$ lsof -u $(whoami)`
+
+#list procs of specific port
+`# lsof -i TCP:22`
+
 
 -----------------------------------------------------------------------------------------------------------------------------
 Library modules "a way" for programs to share code.
