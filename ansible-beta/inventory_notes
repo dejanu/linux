@@ -1,5 +1,8 @@
-#On the ansible_controller, should be the Inventory, by default is the etc/ansible/hosts , in which we define the HOSTS or the GROUP OF HOSTS upon which commands,modules or tasks operate
-#e.g:
+# On the ansible_controller, should be the Inventory, by default is the etc/ansible/hosts , in which we define the HOSTS or the GROUP OF HOSTS upon which commands,modules or tasks operate
+# we can enter hostnames or ip addresses
+
+
+## e.g:
 
 # Web Servers define alias and connection type
 web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
