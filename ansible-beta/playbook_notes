@@ -1,6 +1,6 @@
-Playbook = Single YAML file
+Playbook = Single YAML file that describe the work-flow
 Play = set of taks to be run on hosts
-Task = action to be performed on host (execute a command, run a script, install a package, restart the server)
+Task = action to be performed on host (execute a command,a module, run a script, install a package, restart the server)
 
 #list modules ansible-doc -l
 
@@ -19,4 +19,4 @@ tasks:
 	  command: cat resolv.conf chdir=/etc
 
 
-#### Ansible Idempotency= repeat the operation have the same result, Module are Idempotent 
+#### Ansible Idempotency= repeat the operation have the same result, tasks are Idempotent 
