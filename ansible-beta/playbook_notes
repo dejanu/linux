@@ -1,6 +1,9 @@
+
+#### Ansible Idempotency= repeat the operation have the same result, tasks are Idempotent  ####
+
 Playbook = Single YAML file that describe the work-flow
 Play = set of taks to be run on hosts
-Task = action to be performed on host (execute a command,a module, run a script, install a package, restart the server)
+Task = action to be performed on host (execute a command,a module, run a script, install a package, restart the server) aka Modue
 
 #list modules ansible-doc -l
 
@@ -13,10 +16,34 @@ Database (Mongodb, Mysql, Postgresql)
 Cloud (Amazon, Azure, Docker, Openstack, Google)
 Windows (Win_command, Win_copy)
 
-tasks:
-	- name: this is a first task with command module 
-	  #command: free_form parameter
-	  command: cat resolv.conf chdir=/etc
+################################ PLAYBOOK ###############################################
+-
+  name: PlayOne
+  hosts: webservers
+  tasks:
+    - name: CHANGE DIR AND VIEW DNS SERVERS CONFIGURATION
+      #command: free_form parameter
+      command: cat resolv.conf chdir=/etc
+    
+    - name: RUN A SCRIPT ON A REMOTE SERVER
+      script: /some/local/script.py -arg1 -arg2
+    
+    - name: START SERVICES IN ORDER
+      #service: name=postgresql state=started (VERIFY IF SERVICE IS STARTED IF NOT START IT)
+      service:
+        name: postgresql
+        state: started
+	
+    - name: START SECOND SERVICE
+      service:
+        name: httpd
+	state: started
+	
+     - name: CREATE NEW USER
+       user:
+         name: web_user
+         uid: 1040
+         group: developers
 
+    
 
-#### Ansible Idempotency= repeat the operation have the same result, tasks are Idempotent 
