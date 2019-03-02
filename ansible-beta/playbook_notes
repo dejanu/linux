@@ -5,7 +5,10 @@ Playbook = Single YAML file that describe the work-flow
 Play = set of taks to be run on hosts
 Task = action to be performed on host (execute a command,a module, run a script, install a package, restart the server) aka Modue
 
-#list modules ansible-doc -l
+#list modules: $ ansible-doc -l
+#module usage: $ ansible web1 -m ping -i another_location/inventory.txt
+#command usage: $ ansible web1 -a "cat /etc/hostname"
+
 
 Modules groups:  
 
