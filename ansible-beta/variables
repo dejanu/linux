@@ -1,0 +1,26 @@
+# Vars can be defined:
+
+1) In playbook
+
+- 
+  name: Add DNS server to resolv.conf
+  hosts: all
+  vars:
+    dns_server: 10.1.250.10
+  tasks:
+    - name: play that uses var
+      lineinffile: /etc/resolv.conf
+      line: 'nameserver {{ dns_server }}'
+      
+ 2) In inventory hosts file
+ 
+ 3) In a separe file for variables:
+ 
+ # Sample variable file - web.yml
+ 
+ http_port: 8081
+ snmp_port: 161-162
+ 
+ 
+ 
+
