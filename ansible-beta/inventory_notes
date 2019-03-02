@@ -28,6 +28,3 @@ db1
 web_server
 db_server
 
-#cmd usage: ansible <hosts> -a command  -i <location_inventoryfile>
-#ansible web1 -m ping -i another_location/inventory.txt
-#ansible web1 -a "cat /etc/hostname"
