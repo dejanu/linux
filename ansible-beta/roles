@@ -1,0 +1,17 @@
+# ROLES structure (share and reuse ansible tasks)
+
+#create role 
+$ ansible galaxy init webserver_role
+
+
+/roles
+   |___/webserver_role
+          |____/files
+          |____/templates
+          |____/tasks (yml files with lists of tasks)
+          |____/handlers
+          |____/vars (var files with variable declarations)
+          |____/defaults
+          |____/meta
+          
+   
