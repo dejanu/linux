@@ -1,0 +1,37 @@
+### Start service only if the host meets requirements ###
+
+#Sample inventory
+
+[all_servers]
+
+web1 ansible_host=web1.company.com ansible_connection=ssh ansible_ssh_pass=SomeP@ass
+db ansible_host=172.16.0.1 ansible_connection=ssh ansible_ssh=SomeOtherPass
+
+
+#Playbook: Check if host is db server and if yes restarted
+
+-
+  name: Start Mysql Service 
+  hosts: all_servers 
+  tasks:
+    - service:
+        name: mysql
+        state: started
+      when: ansible_host == "172.16.0.1"
+      
+#Playbook: Check if service is down and if yes send mail
+
+-
+  name: Check status of service and send mail
+  host: localhost
+  tasks:
+    - command: service httpd status
+      #return the tasks output as var command_output
+      register: command_output
+      
+    - mail:
+        to: Admins <system.admins@company.com>
+            subject: Service Alert
+            body: 'Service {{ ansible_hostname }} is down'
+        # Search in returned string of 'service httpd status'
+        when: command_output.stdout.find('down') !=-1
