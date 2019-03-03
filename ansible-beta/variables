@@ -12,7 +12,20 @@
       lineinffile: /etc/resolv.conf
       line: 'nameserver {{ dns_server }}'
       
- 2) In inventory hosts file
+ 2) In inventory hosts file:
+ 
+ #Sample inventory
+ 
+ database1 ansible_host=db.company.com
+ 
+ #Sample Playbook
+ 
+ -
+   name: Start service
+   hosts: all_servers
+   tasks:
+     - service: name=mysql state=started
+       when: ansible_host=="db.company.com"
  
  3) In a separe file for variables:
  
