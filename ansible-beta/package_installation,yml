@@ -15,16 +15,25 @@
   ################################################################################################
   
   # Playbook install packages
-  -
-    name: install packages
-    hosts: all_servers
-    vars:
-      - packages:
-          - httpd
-          - ksh
-          - mongodb
-    tasks:
-       -
-         yum: name='{{item}}' state=present
-         with_items: '{{packages}}'
-    
+
+-
+  name: Deploy a web application
+  hosts: db_and_web_server
+  tasks:
+    - name: Install dependencies
+      apt: name={{ item }} state=present
+      with_items:
+       - python
+       - python-setuptools
+       - python-dev
+       - build-essential
+       - python-pip
+       - python-mysqldb
+       
+    - name: Install MySQL database
+      apt:
+        name: '{{ item }}'
+        state: present
+      with_items:
+        - mysql-server
+        - mysql-client
