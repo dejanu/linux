@@ -5,6 +5,7 @@
 - 
   name: Add DNS server to resolv.conf
   hosts: all
+  ## HERE ARE THE VARS
   vars:
     dns_server: 10.1.250.10
   tasks:
