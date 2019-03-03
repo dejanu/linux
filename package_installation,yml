@@ -1,0 +1,14 @@
+# Playbook install packages
+-
+  name: Install Packages
+  hosts: localhost
+  tasks:
+    #package: name=httpd state=present
+    package:
+      name: '{{item}}'
+      state: present
+      with_items:
+        - httpd
+        - ksh
+        - mongodb
+    
