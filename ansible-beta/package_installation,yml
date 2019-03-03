@@ -11,4 +11,20 @@
         - httpd
         - ksh
         - mongodb
+        
+  ################################################################################################
+  
+  # Playbook install packages
+  -
+    name: install packages
+    hosts: all_servers
+    vars:
+      - packages:
+          - httpd
+          - ksh
+          - mongodb
+    tasks:
+       -
+         yum: name='{{item}}' state=present
+         with_items: '{{packages}}'
     
