@@ -192,9 +192,6 @@ aplay
 %History activation
 set +x 
 
-%Redirect STDIN to file
-cat > inputfile.txt
-echo 'write_to_file1 >> inputfile.txt
 
 %Change hostname name
 vim /etc/hostname
@@ -205,3 +202,7 @@ cd -
 
 %Execute last command (with sudo)
 sudo !!
+
+
+%Quick awk to get the first collumn
+ps aux | awk '{print $1}`
