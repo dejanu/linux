@@ -210,3 +210,13 @@ sudo !!
 
 %Quick awk to get the first collumn
 ps aux | awk '{print $1}`
+
+%Display file or file system status
+stat file
+stat dir
+
+%Show who is logged on and what they are doing
+w
+
+
+
