@@ -80,10 +80,14 @@ cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs
 # --------------------Search--------------------------------------------------------------------------------
 
 find / -type f file_name %%%%Search everywhere
-grep -irl "string" /etc/*  %%%search in files
+find . -type f -size 1033c
+find /home -name *.jpg	
 find /home/alex -iname "*.ini"  
 find /home/alex -type d -iname "dir_name"
 find . -type f -name file_name
+
+grep -irl "string" /etc/*  %%%search in files
+
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
