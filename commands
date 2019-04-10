@@ -44,15 +44,23 @@ A match found in the /etc/hosts file will be used before any DNS entry
 vim /etc/hosts and add ip and domain name
 vim /etc/resolv.conf
 
-Well, the order of name resolution is actually defined in /etc/nsswitch.conf, which usually has this entry:
+
+
+/etc/resolv.conf: Lists nameservers that are used by your host for DNS resolution. 
+                If you are using DHCP, this file is automatically populated with DNS record issued by DHCP server.
+/etc/hosts/: It is just a static lookup method for resolution.
+/etc/nsswitch.conf: It defined order of resolution. 
+Who should it consult first for resolution, a DNS or a host file? For example, if the file has following configuration hosts: 
+files dns then /etc/hosts 
+file will be checked first for resolution, if domain is still un-resolvable, DNS will then be consulted.
+
+So the order of name resolution is actually defined in /etc/nsswitch.conf, which usually has this entry:
 
 hosts:          files dns
 which means "try files (/etc/hosts); and if it fails, try DNS."
 
 https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-etcresolv-conf-in-linux/
 
-# DNS resolution II - netconfig, NetworkManager, resolvconf, rdnssd, and systemd-resolved try to control the Linux system DNS resolution configuration file
-vim /etc/resolf.conf
 
 # IPTables is a rule based firewall and it is pre-installed on most of Linux operating system
 # IP tables main files are at
