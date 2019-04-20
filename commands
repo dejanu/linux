@@ -95,8 +95,8 @@ find /home/alex -type d -iname "dir_name"
 find . -type f -name file_name
 
 
-%%%search in files
-grep -irl "string" /etc/* 2> /dev/null
+%%%search in files Recursive case insensitive and list files
+grep -iRl "string" /etc/* 2> /dev/null
 
 
 #-----------------------FileSize----------------------------------------------------------------------------
