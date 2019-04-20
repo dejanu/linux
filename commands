@@ -101,8 +101,10 @@ grep -iRl "string" /etc/* 2> /dev/null
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
-
- du -sh  /dir_path/file_name  %%% disk usage for a certain file or directory
+Disk usage per file and directory:
+ du -sh  /dir_path/file_name
+ 
+ Disk usage per Filesystem:
  df -ah   %% disk free, available and used space
 
 #------------------------Service and procs----------------------------------------------------------
