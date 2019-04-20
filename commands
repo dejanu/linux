@@ -94,7 +94,9 @@ find /home/alex -iname "*.ini"
 find /home/alex -type d -iname "dir_name"
 find . -type f -name file_name
 
-grep -irl "string" /etc/*  %%%search in files
+
+%%%search in files
+grep -irl "string" /etc/* 2> /dev/null
 
 
 #-----------------------FileSize----------------------------------------------------------------------------
