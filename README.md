@@ -17,7 +17,12 @@ $ jobs
 ```
 To bring a process to foreground run `$ fg %2`  
 
+& - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell.
+  - to create a job just append the control operator
 
+Ctrl + Z - sends SIGSTOP signal to the process and suspends it.
+
+--------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
 If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.  
@@ -26,21 +31,29 @@ If somehow init daemon could not start, no process will be started and the syste
 
  **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
 
+- systemd manages units (resources that system knows to operate/manage on)
+- systemd categorize units based on the type of resource they describe ( .service, .socket, .device)  
+
+e.g. : etc/systemd/system/docker.service = which describes how to manage docker service  
+
+```bash
+[Unit]
+Description=Docker Application Container Engine
+Documentation=https://docs.docker.com
+After=network.target docker.socket
+Requires=docker.socket
+
+```
+[systemdunits](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
+
 ```bash
 sudo systemctl enable service_name #start at boot time
 systemctl status/start/stop/restat docker/httpd/mysql
 systemctl list-units --type service --all
 systemctl daemon-reload  #reload systemd manager configuration
 ```   
- https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units  
- lsof = https://javarevisited.blogspot.com/2015/11/how-to-find-pid-of-process-listening-on-a-port-unix-netstat-lsof-command-examples.html?fbclid=IwAR20ib7x1f_j4OsamcuBgIM-Y06PdUgOLtDYjMFJttqm0ZOlnNHPtr-fAOc
- 
-FYI:
 
-& - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell.
-  - to create a job just append the control operator
-
-Ctrl + Z - sends SIGSTOP signal to the process and suspends it.
+ ------------------------------------------------------------------------------
 
 
 Creating processes :
