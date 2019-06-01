@@ -1,0 +1,10 @@
+-
+  name: Play1
+  hosts: targets
+  tasks:
+    - name: Display resolv.conf contents
+      command: cat resolv.conf chdir=/etc
+    - name: create a file on remote machine
+      file:
+        dest: /tmp/myfile
+        state: '{{file_state}}'
