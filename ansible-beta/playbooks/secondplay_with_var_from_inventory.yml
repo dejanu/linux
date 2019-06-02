@@ -1,0 +1,17 @@
+---
+- hosts: target1
+  tasks:
+  - name: create a file via ssh connection
+    file:
+      dest: '{{target_file}}' 
+      state: touch
+
+
+- hosts: localhost
+  connection: local
+
+  tasks:
+  - name: create a file via direct local connection
+    file:
+      dest: /tmp/direct-created
+      state: touch
