@@ -56,7 +56,7 @@ systemctl daemon-reload  #reload systemd manager configuration
  ------------------------------------------------------------------------------
 
 
-Creating processes :
+Processes are created through different system calls, most popular are fork() and exec()
 
 1) System() Function 
 2) fork() or exec() Function
