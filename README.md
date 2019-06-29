@@ -1,4 +1,4 @@
-#Processes  
+#Processes aka tasks
 
 "In a basic form Linux processes can be vizualized as a running instance of a program"  
 "Processes can talk to other processes using Inter process communication methods (dbus) and can share data using techniques like shared memory"
@@ -7,8 +7,10 @@
 				     - to bring a process to foreground just run  ```bash fg &1```
 
 	
-* Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input, to list the background proccess run :`$ jobs`  
+* Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input.
 
+
+Display all running jobs
 ```shell
 $ jobs
 [1] Running sleep 500 & (wd: ~)
@@ -22,7 +24,7 @@ To bring a process to foreground run `$ fg %2`
 
 Ctrl + Z - sends SIGSTOP signal to the process and suspends it.
 
---------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
 If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.  
