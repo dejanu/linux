@@ -27,7 +27,7 @@ Ctrl + Z - sends SIGSTOP signal to the process and suspends it.
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
 If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.  
 
-**Systemd** -  is an init system and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
+**Systemd** -  is an INIT SYSTEM (other init systems: SysV, Upstart) and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
 
  **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
 
