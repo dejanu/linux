@@ -17,5 +17,8 @@ $ lsof -u $(whoami)
 lsof -i TCP:22
 
 #view process PPID PID GID similar output like $ pstree
-ps ejf
+ps ejf  
+
+#view threads
+ps -fL PID
 
