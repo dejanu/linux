@@ -227,8 +227,12 @@ ps aux | awk '{print $1}`
 stat file
 stat dir
 
-%Show who is logged on and what they are doing
+%Show WHO is logged 
 w
+
+%quick diff
+vimdiff file1 file2
+diff -y file1 file2
 
 
 
