@@ -235,4 +235,8 @@ vimdiff file1 file2
 diff -y file1 file2
 
 
+%show ret code for last command
+echo $?
+
+
 
