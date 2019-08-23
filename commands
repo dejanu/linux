@@ -238,5 +238,12 @@ diff -y file1 file2
 %show ret code for last command
 echo $?
 
+% verify file type
+file file_name
+
+% view ascii from binary file
+strings file_name
+
+
 
 
