@@ -20,3 +20,18 @@ nslookup domain_name.com = returns the ip associated with a domain (dig +short d
 nmap -sS -O gateway.ip/24 = get all hosts from LAN (loopback and gateway will appear)
 nmap -sP gateway.ip/24 =  get all hosts from LAN (loopback and gateway will appear) ( https://security.stackexchange.com/questions/36198/how-to-find-live-hosts-on-my-network )
 
+
+** DNS - hierachical system of caching servers
+A match found in /etc/hosts (file for static lookup) will be used before any DNS entry, and the /etc/resolf.conf (populated with 
+DNS records issued by DHCP server)
+
+# query DNS to find the IP of a certaing host
+
+$ nslookup python.org
+$ host -a python.org
+
+** PORT - 16 bit number, each IP on a device has 65,535 possible ports
+A port is an endpoint attache to an IP address, and ports are claimed by a process running on the host
+
+# view list of services and their assgined ports
+$ cat /etc/services
