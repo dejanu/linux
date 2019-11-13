@@ -89,8 +89,8 @@ Processes are created through different system calls, most popular are **fork()*
   kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
  
 -----------------------------------------------------------------------------------------------------------------------------
-`bash $ps -e` = display running daemons
-`bash $ps -a` = display all processes that run on terminals
+`bash $ps -e` = display running daemons   
+`bash $ps -a` = display all processes that run on terminals   
 `bash $ps -x` = display all processes that do not run on terminals
 
 -----------------------------------------------------------------------------------------------------------------------------
