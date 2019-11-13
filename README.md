@@ -1,7 +1,7 @@
 #Processes aka tasks
 
 - In a basic form Linux processes can be vizualized as a running instance of a program  
-- Processes can talk to other processes using Inter process communication methods (dbus) and can share data using techniques like shared memory   
+- Processes can talk to other processes using Inter process communication methods (dbus, sockets) and can share data using techniques like shared memory   
 - Every process is started by a parent, except init process which is started by the linux kernel and has PID of 1  
 
 
@@ -69,7 +69,7 @@ Processes are created through different system calls, most popular are **fork()*
   Fork: system call to Clone current process (the parent and the child are identical procceses). The cloned process has new PID, 
   Exec: Replace current program with a with a new process 
   
-  We opened bash process and when we execute ls coomand, behind fork() is called to clone the bash process and then exec() is called to
+  We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
   replace the bash process with the new ls process
   ```shell
   $ls -l
@@ -88,7 +88,10 @@ Processes are created through different system calls, most popular are **fork()*
  
   kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
  
-
+-----------------------------------------------------------------------------------------------------------------------------
+`bash $ps -e` = display running daemons
+`bash $ps -a` = display all processes that run on terminals
+`bash $ps -x` = display all processes that do not run on terminals
 
 -----------------------------------------------------------------------------------------------------------------------------
 Library modules "a way" for programs to share code.
