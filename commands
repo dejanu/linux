@@ -245,6 +245,12 @@ file file_name
 % view ascii from binary file
 strings file_name
 
+%update bash_profile from cli
+cat << EOF >> ~/.bash_profile
+# Add Visual Studio Code (code)
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+EOF
+
 
 
 
