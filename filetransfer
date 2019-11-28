@@ -1,0 +1,14 @@
+### Secure Copy -rp recurse and preserve modification times
+
+
+REMOTE to LOCAL
+$ scp your_username@remotehost.edu:foobar.txt /some/local/directory
+
+LOCAL to REMOTE
+$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
+
+# to local station
+scp -i ~/.ssh/id_rsa root@hostname.net:/tmp/SPECjvm2008-bare.7z /tmp
+
+#from local station to hostname.net:/tmp
+scp -i ~/.ssh/id_rsa SPECjvm2008-bare.7z root@hostname.net:/tmp
