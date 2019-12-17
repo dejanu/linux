@@ -188,7 +188,8 @@ cut -c2-3 file.txt //range 2-3th collumns
 diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
 
-
+#count no of occurrences of str1 and str2 my_file
+for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 
 #change color-------------------------------------------------------------------------------
 echo -e "\e[1;32m text color change \e[0m"
