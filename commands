@@ -1,4 +1,29 @@
-#---------------------------------Profiles & Shell--------------------------------------------------
+#---------------------------------System & Kernel--------------------------------------------------
+
+# System/kernel release information
+$ uname -a
+$ uname -r
+$ cat /proc/version
+
+# Redhat version
+$ cat /etc/redhat-release
+
+# How long system has been running
+$ uptime
+$ last reboot
+
+# View patch/updates for RHEL 
+$ sx cat /var/log/yum.log | less
+
+# View who is online
+$ w
+$ who
+
+# Execute "df -h", showing periodic updates
+$ watch df -h
+
+
+#---------------------------------Profiles & Shell-------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
 # Display all the SHELL/ENVIRONMENT  VARIABLES, run:
@@ -26,7 +51,7 @@ ifconfig  ##interface config of the network interfaces on the system eth0 is for
 ifconfig eth0 up   ## bring up or down an interface
 ip address show
 
-echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse   
+echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
 netstat -tulpn %%% list all ports for TCP and UDP connections
 
@@ -59,8 +84,8 @@ https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-
 
 
 # IPTables is a rule based firewall and it is pre-installed on most of Linux operating system
-# IP tables main files are at
-etc/init.d/iptables – init script to start|stop|restart and save rulesets.
+# IP tables main files are at etc/init.d/iptables – init script to start|stop|restart and save rulesets.
+
 /etc/sysconfig/iptables – where Rulesets are saved.
 /sbin/iptables – binary
 
@@ -83,7 +108,7 @@ cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs
 
 # --------------------Search--------------------------------------------------------------------------------
 
-find / -type f file_name %%%%Search everywhere
+find / -type f file_name 
 find . -type f -size 1033c
 find /home -name *.jpg	
 find /home/alex -iname "*.ini"  
@@ -91,21 +116,21 @@ find /home/alex -type d -iname "dir_name"
 find . -type f -name file_name
 
 
-%%%search in files Recursive case insensitive and list files
+# Search in files Recursive case insensitive and list files
 grep -iRl "string" /etc/* 2> /dev/null
 
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
-Disk usage per file and directory:
- du -sh  /dir_path/file_name
- du -h --max-depth=1 /dir_path
+# Disk usage per file and directory:
+ $ du -sh  /dir_path/file_name
+ $ du -h --max-depth=1 /dir_path
 
- Disk usage per Filesystem:
- df -ah   %% disk free, available and used space
+# Disk usage per Filesystem:
+ $ df -ah   %% disk free, available and used space
 
 #------------------------Service and procs----------------------------------------------------------
-systemctl status docker %%% verify service status on older distro is service docker status
+systemctl status docker %%% verify service status on older distro is $service docker status
 
 
 ps aux | grep -i apt   %%%  lock /var/lib/dpkg/lock
@@ -221,9 +246,12 @@ sudo !!
 %Quick awk to get the first collumn
 ps aux | awk '{print $1}`
 
-%Display file or file system status
+% Display file or file system status
 stat file
 stat dir
+
+% Verify file type
+file file_name
 
 %Show WHO is logged 
 w
@@ -236,20 +264,19 @@ diff -y file1 file2
 %show ret code for last command
 echo $?
 
-% verify file type
-file file_name
+
 
 % view ascii from binary file
 strings file_name
 
-%update bash_profile from cli
-cat << EOF >> ~/.bash_profile
+% Update bash_profile from cli
+
+$ cat << EOF >> ~/.bash_profile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
 
-# view path updates for RHEL 
-$ sx cat /var/log/yum.log | less
+
 
 
 
