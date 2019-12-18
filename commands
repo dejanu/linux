@@ -1,25 +1,21 @@
 #---------------------------------Profiles & Shell--------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
-0)Display all the SHELL VARIABLES, run:
-set
+# Display all the SHELL/ENVIRONMENT  VARIABLES, run:
+$ set
+$ env
 
-00)Display all the ENVIRONMENT VARIABLES, run:
-env
+# Verify which shell your're running:
+$ echo $SHELL
 
-1)Verify which shell your're running:
-echo $SHELL
+# Verify env var PATH, which describes the location of different bins
+$ echo $PATH
 
-2)Verify env var PATH, which describes the location of different progs
-echo $PATH
+## PATH is set by the shell every time it launches
 
-PATH is set by the shell every time it launches
+$ export PATH=$PATH:/place/with/the/file
 
-3)Add a new program to path (efemere)
-
-export PATH=$PATH:/place/with/the/file
-
-4)Add export PATH=$PATH:/place/with/the/file line in the ~/.bash_profile, ~/.bashrc, or ~/.profile
+## Add export PATH=$PATH:/place/with/the/file line in the ~/.bash_profile, ~/.bashrc, or ~/.profile
 
 
 
@@ -251,6 +247,9 @@ cat << EOF >> ~/.bash_profile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
+
+# view path updates for RHEL 
+$ sx cat /var/log/yum.log | less
 
 
 
