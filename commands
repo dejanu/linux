@@ -53,7 +53,13 @@ ip address show
 
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
-netstat -tulpn %%% list all ports for TCP and UDP connections
+%%% list all ports for TCP and UDP connections
+netstat -tulpn 
+
+
+%%% list all socket on which an app listens
+
+tcpid=$(ps aauxfww  | grep tcserver32 | grep -v grep  |  awk '{print $2}') ; lsof -nP -p $tcpid | grep LISTEN
 
 #change hostname
 vim /etc/hostname 
@@ -150,7 +156,7 @@ lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd) fd 
 ln file hardlink_file  
 ln -s file softlink_file
 
------------------------FIlE-101----------------------
+#-----------------------FIlE-101------------------------------------------------------------------
 
 ./script.sh |& tee output_file  %print to STDOUT and redirect to file in the same time
 
@@ -205,14 +211,14 @@ tr -s '\n' ' ' < file.txt %%%%  translate all newlines into spaces and make the 
 cut -c2 file.txt //return the chars from each line o  second column 
 cut -c2-3 file.txt //range 2-3th collumns 
 
-#view differences between two files------------------------------------------------------------------
+#view differences between two files
 diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
 
 #count no of occurrences of str1 and str2 my_file
 for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 
-#change color-------------------------------------------------------------------------------
+#change color
 echo -e "\e[1;32m text color change \e[0m"
 
 
