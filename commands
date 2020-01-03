@@ -250,8 +250,12 @@ aplay
 
 #---------------------------------Tricks--------------------------------------------------
 
-%History activation
-set +x 
+% verify history activation aka $set +x
+$ set -o | grep history
+$ cat << EOF >> ~/.bash_profile
+set -o history
+EOF
+
 
 
 %Change hostname name
@@ -292,7 +296,6 @@ echo $?
 strings file_name
 
 % Update bash_profile from cli
-
 $ cat << EOF >> ~/.bash_profile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
