@@ -26,6 +26,7 @@ To bring a process to foreground run `$ fg %2`
 
 
 Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it
+Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt Signal.
 
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
