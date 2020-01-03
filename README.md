@@ -1,7 +1,7 @@
 # Processes aka tasks
 
 - In a basic form Linux processes can be vizualized as a running instance of a program  
-- Processes can talk to other processes using Inter process communication methods (dbus, sockets) and can share data using techniques like shared memory   
+- Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
 - Every process is started by a parent, except init process which is started by the linux kernel and has PID of 1  
 
 
@@ -26,8 +26,21 @@ To bring a process to foreground run `$ fg %2`
 
 
 Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it .  
-Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt Signal.
+Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt signal.
 
+The `kill` command allows you to send a signal to any application.  Usage `$ kill -TERM PID` . 
+
+```bash
+kill -l
+ 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL
+ 5) SIGTRAP	 6) SIGABRT	 7) SIGEMT	 8) SIGFPE
+ 9) SIGKILL	10) SIGBUS	11) SIGSEGV	12) SIGSYS
+13) SIGPIPE	14) SIGALRM	15) SIGTERM	16) SIGURG
+17) SIGSTOP	18) SIGTSTP	19) SIGCONT	20) SIGCHLD
+21) SIGTTIN	22) SIGTTOU	23) SIGIO	24) SIGXCPU
+25) SIGXFSZ	26) SIGVTALRM	27) SIGPROF	28) SIGWINCH
+29) SIGINFO	30) SIGUSR1	31) SIGUSR2
+```
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
 
