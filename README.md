@@ -25,7 +25,7 @@ To bring a process to foreground run `$ fg %2`
 `&` - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell, to create a **job** ( command or a task that is up and running but hasn't yet finished) just append the **control operator** . 
 
 
-Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it
+Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it .  
 Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt Signal.
 
 -----------------------------------------------------------------------------------------------------
