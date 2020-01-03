@@ -7,7 +7,7 @@
 
 
 * Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
-				     - to bring a process to foreground just run  `fg &1`
+				     - to bring a process to foreground just run  `fg %1`
 
 	
 * Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input.
