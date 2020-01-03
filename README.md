@@ -1,4 +1,4 @@
-#Processes aka tasks
+# Processes aka tasks
 
 - In a basic form Linux processes can be vizualized as a running instance of a program  
 - Processes can talk to other processes using Inter process communication methods (dbus, sockets) and can share data using techniques like shared memory   
@@ -7,7 +7,7 @@
 
 
 * Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
-				     - to bring a process to foreground just run  ```bash fg &1```
+				     - to bring a process to foreground just run  `fg &1`
 
 	
 * Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input.
