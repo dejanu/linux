@@ -26,8 +26,10 @@ To bring a process to foreground run `$ fg %2`
 
 
 Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it .  
-Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt signal.
+Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt signal.  
 
+
+Signals are a fundamental way to control linux processes .  
 The `kill` command allows you to send a signal to any application.  Usage `$ kill -TERM PID` . 
 
 ```bash
@@ -44,8 +46,16 @@ kill -l
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
 
-**init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.
-If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“.  
+**init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.` /sbin/init`
+If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“. 
+
+``bash
+ ps -l 1
+  UID   PID  PPID        F CPU PRI NI       SZ    RSS WCHAN     S             ADDR TTY           TIME CMD
+    0     1     0     4004   0  37  0  4374844  13372 -      Ss                  0 ??         9:23.82 /sbin/launchd
+    
+
+```
 
 **Systemd** -  is an INIT SYSTEM (other init systems: SysV, Upstart) and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
 
@@ -98,9 +108,7 @@ Processes are created through different system calls, most popular are **fork()*
   If you run ls, your shell process will start up another process to run the ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.w ith exec ls, you actually replace your shell program in the current process with the ls program so that, when it finishes, there's no shell waiting for it.  
   
   
- * The fundamental way of controlling processes in Linux is by sending signals to them, to list all signals:
- 
-  kill -l (9 SIGKILL 2 SIGINIT 1 SIGHUP)
+
  
 -----------------------------------------------------------------------------------------------------------------------------
 `bash $ps -e` = display running daemons   
