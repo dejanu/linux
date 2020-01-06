@@ -43,6 +43,25 @@ kill -l
 25) SIGXFSZ	26) SIGVTALRM	27) SIGPROF	28) SIGWINCH
 29) SIGINFO	30) SIGUSR1	31) SIGUSR2
 ```
+
+```bash
+# trap ctrl-c aka SIGINT and call ctrl_c() function
+
+trap ctrl_c 2
+
+function ctrl_c() {
+        echo "** Trapped CTRL-C"
+}
+
+
+# trap crtl-z aka SIGTSTP and call ctrl_c() function
+
+trap ctrl_z 20
+
+function ctrl_z(){
+        echo "**Trapped CTRL-Z"
+}
+```
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
 
