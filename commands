@@ -302,6 +302,12 @@ $ cat << EOF >> ~/.bash_profile
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
 
+% Running multiple commands e.g for ssh && vs ;
+% The “&&” operator executes the second command only if the first command was successful.
+% The “;” operator executes the second command even if the first command was successful or fail.
+$ ssh sk@192.168.225.22 "uname -r && lsb_release -a"
+$ ssh sk@192.168.225.22 "uname -r ; lsb_release -a"
+
 
 
 
