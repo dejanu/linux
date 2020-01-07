@@ -290,7 +290,8 @@ diff -y file1 file2
 %show ret code for last command
 echo $?
 
-
+% get hostname FQDN
+hostname -A
 
 % view ascii from binary file
 strings file_name
