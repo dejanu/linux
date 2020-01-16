@@ -135,6 +135,19 @@ Processes are created through different system calls, most popular are **fork()*
 `bash $ps -x` = display all processes that do not run on terminals
 
 -----------------------------------------------------------------------------------------------------------------------------
+
+**pid** and **lock** files:
+
+- pid files are written by some programs to record their process ID while they are **starting**. (Apache HTTPD may write its main process number to a pid file) 
+- daemons needs the pid of the scripts that are currently running in the background to send them so called signals. Daemons uses the `TERM` signal to tell the script to exit when you issue a stop command.
+- the usual location of pid files is `/var/run/`
+- usage for pid files `cat filename.pid | xargs kill`
+
+
+ 
+
+
+
 Library modules "a way" for programs to share code.
 
 >> man hier % view the file system hierachy 
