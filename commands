@@ -5,6 +5,13 @@ $ uname -a
 $ uname -r
 $ cat /proc/version
 
+$ /usr/bin/lscpu
+$ cat /proc/cpuinfo
+
+# total  amount  of  free  and used physical and swap memory in the system
+$ free -m
+
+
 # Redhat version
 $ cat /etc/redhat-release
 
