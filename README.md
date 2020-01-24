@@ -68,12 +68,11 @@ function ctrl_z(){
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.` /sbin/init`
 If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“. 
 
-``bash
+```bash
+
  ps -l 1
   UID   PID  PPID        F CPU PRI NI       SZ    RSS WCHAN     S             ADDR TTY           TIME CMD
     0     1     0     4004   0  37  0  4374844  13372 -      Ss                  0 ??         9:23.82 /sbin/launchd
-    
-
 ```
 
 **Systemd** -  is an INIT SYSTEM (other init systems: SysV, Upstart) and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
