@@ -145,7 +145,19 @@ Processes are created through different system calls, most popular are **fork()*
 
  
 
+------------------------------------------------------------------------------------------------------------------------------
+**Load** vs **CPU utilization/usage**
 
+- Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average , formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
+
+- Load how many actively running (not sleeping) processes are using the CPU
+- for load use `$uptime` or `$top` + `l` or `$sar` or `$vmstat 1 10` 
+
+
+- CPU usage/utilization the ratio (usually expressed as a percentage)of time that the CPU is BUSY DOING STUFF. This measure only makes sense if you know over which period the percentage is being calculated
+
+
+----------------------------------------------------------------------------------------------------------------------------
 
 Library modules "a way" for programs to share code.
 
