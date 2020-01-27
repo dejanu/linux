@@ -294,8 +294,17 @@ vimdiff file1 file2
 diff -y file1 file2
 
 
-%show ret code for last command
-echo $?
+% echo  the PID of the current process.
+echo $$ 
+
+% echo the return code of the last executed command. 
+echo $? 
+
+% echo  the number of arguments in $*
+echo $# 
+
+% echo the list of arguments passed to the current process
+echo $* 
 
 % get hostname FQDN
 hostname -A
