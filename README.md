@@ -101,6 +101,9 @@ systemctl list-units --type service --all
 systemctl daemon-reload  #reload systemd manager configuration
 ```   
 
+
+- `systemctl` is the main utility to control daemons/services in `systemd` , while the `service` command is the traditional utility in `SysVinit` world . 
+
 -----------------------------------------------------------------------------------------------------------------------------
 
 
