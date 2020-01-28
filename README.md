@@ -150,7 +150,8 @@ Processes are created through different system calls, most popular are **fork()*
 
 - Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average , formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
 
-- Load how many actively running (not sleeping) processes are using the CPU
+- Load how many actively running (not sleeping) processes are using the CPU should be direct proportional with `$lscpu | gerp CPU(s)'
+
 - for load use `$uptime` or `$top` + `l` or `$sar` or `$vmstat 1 10` 
 
 
