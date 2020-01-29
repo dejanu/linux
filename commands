@@ -66,10 +66,11 @@ iwconfig  ## configure a wireless network interface , used to display wifi stati
 ifconfig  ## interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
 
-# get IP of machine
+# get IP/interface
 
 $ ip addr  (with no arguments default to ip address show)
 $ hostname -i
+$ hostname -I
 
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
