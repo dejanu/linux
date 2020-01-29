@@ -1,21 +1,27 @@
 #---------------------------------System & Kernel--------------------------------------------------
 
 # System/kernel release information
+
 $ uname -a
 $ uname -r
 $ cat /proc/version
+
+# Display information about CPU arhitecture
 
 $ /usr/bin/lscpu
 $ cat /proc/cpuinfo
 
 # total  amount  of  free  and used physical and swap memory in the system
+
 $ free -m
 
 
 # Redhat version
+
 $ cat /etc/redhat-release
 
 # How long system has been running
+
 $ uptime
 $ last reboot
 
@@ -33,14 +39,17 @@ $ watch df -h
 #---------------------------------Profiles & Shell-------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
-# Display all the SHELL/ENVIRONMENT  VARIABLES, run:
+# Display all the SHELL/ENVIRONMENT  variables
+
 $ set
 $ env
 
 # Verify which shell your're running:
+
 $ echo $SHELL
 
 # Verify env var PATH, which describes the location of different bins
+
 $ echo $PATH
 
 ## PATH is set by the shell every time it launches
@@ -53,10 +62,14 @@ $ export PATH=$PATH:/place/with/the/file
 
 #---------------------------------Networking--------------------------------------------------
 
-iwconfig #configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
-ifconfig  ##interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
+iwconfig  ## configure a wireless network interface , used to display wifi statistics from /proc/net/wireless
+ifconfig  ## interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
-ip address show
+
+# get IP of machine
+
+$ ip addr  (with no arguments default to ip address show)
+$ hostname -i
 
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
