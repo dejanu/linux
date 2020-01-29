@@ -72,6 +72,20 @@ $ ip addr  (with no arguments default to ip address show)
 $ hostname -i
 $ hostname -I
 
+
+# dig — DNS lookup utility.
+# nslookup — Query a name server for information about a remote host.
+# ping — Send ICMP ECHO_REQUEST packets to network hosts.
+
+
+# DNS and reverse DNS lookups (converting domain names to IP addresses and vice versa)
+$ host <ip>
+
+# Get default gateway
+$ ip route list
+
+
+
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
 %%% list all ports for TCP and UDP connections
