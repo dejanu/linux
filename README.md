@@ -138,6 +138,13 @@ Processes are created through different system calls, most popular are **fork()*
 
 -----------------------------------------------------------------------------------------------------------------------------
 
+**List files opened by a proccess**:
+
+ `lsof -p PID` equivalent more or less with `ls -l /proc/PID/fd` . 
+
+`lsof` will also give you memory mapped `.so`-files - which technically isn't the same as a file handle the application has control over. `/proc/<pid>/fd` is the measuring point for open file descriptors
+ 
+
 **pid** and **lock** files:
 
 - pid files are written by some programs to record their process ID while they are **starting**. (Apache HTTPD may write its main process number to a pid file) 
