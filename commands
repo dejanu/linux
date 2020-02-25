@@ -66,9 +66,14 @@ iwconfig  ## configure a wireless network interface , used to display wifi stati
 ifconfig  ## interface config of the network interfaces on the system eth0 is for NIC connected to the network, lo the loopback, wlan0 or unifi for wireless
 ifconfig eth0 up   ## bring up or down an interface
 
-# get IP/interface
+# get default interface
+$ route | grep '^default' | grep -o '[^ ]*$'
 
-$ ip addr  (with no arguments default to ip address show)
+# Get default gateway (deprecated route n)
+$ ip route list
+
+# get IP/interface
+$ ip addr  (with no arguments default to #ip address show)
 $ hostname -i
 $ hostname -I
 
@@ -81,8 +86,7 @@ $ hostname -I
 # DNS and reverse DNS lookups (converting domain names to IP addresses and vice versa)
 $ host <ip>
 
-# Get default gateway
-$ ip route list
+
 
 
 
@@ -291,7 +295,8 @@ $ cat << EOF >> ~/.bash_profile
 set -o history
 EOF
 
-
+% check SHELL
+ps -p $(echo $$)
 
 %Change hostname name
 vim /etc/hostname
