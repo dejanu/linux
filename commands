@@ -213,21 +213,22 @@ lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd) fd 
 
 #-----------------------FIlE-101------------------------------------------------------------------
 
-./script.sh |& tee output_file  %print to STDOUT and redirect to file in the same time
+# Print to STDOUT and redirect to file in the same time
+./script.sh |& tee output_file  
 
 # Count lines,chars:
->> wc -n
->> wv -l
+wc -n
+wv -l
 
-#STDIN to file
->> cat > file
+# Redirect STDIN to file
+cat > file
 
 # View first 5 lines from a file , or paginate the result in terminal
->> head -n5 file_name
->> cat file_name | more
+head -n5 file_name
+cat file_name | more
 
 # Search in file content
->> grep -i -E "first|second|third" file.txt #search in fie.txt using grouping for "first" or "second" or "third" words
+grep -i -E "first|second|third" file.txt #search in fie.txt using grouping for "first" or "second" or "third" words
 
 egrep -o '^[^.]+' %%%%% grep until a desired character , in this example is the .
 grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
@@ -235,8 +236,6 @@ grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
 ls -l | grep YOOO //returns all desired files which have YOO in their name
 grep -ni 'word' ./path_of_file/file.txt  //searches inside files
 grep -A10 -B10    %%%%%%grep after and before 10 lines
-
-
 
 
 sed -i 's/word1/word2/g' ./path_of_file  %%%%%% replaces word1 with word2
@@ -275,6 +274,7 @@ for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 
 #change color
 echo -e "\e[1;32m text color change \e[0m"
+
 
 
 #sound------------------------------------------------------------------------------------
