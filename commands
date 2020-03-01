@@ -359,6 +359,24 @@ $ ssh sk@192.168.225.22 "uname -r ; lsb_release -a"
 
 
 
+% Pass STDIN as argument to bin which expects a file e.g: strings file.txt
+
+strings - file.txt 
+
+
+while read -r line; do echo $line | strings  /dev/stdin; done < data.txt
+
+
+% You can use the "fake" filename /dev/stdin which represents the standard input. E.g cook command needs a file normally
+bu using the following construct we can make cook to read from STDIN
+
+So execute this: $echo "$the_recipe" | cook /dev/stdin
+The echo command and the pipe sends the contents of the specified variable to the standard input of the next command cook, 
+and that opens the standard input (as a separate file descriptor) and reads that.
+
+
+
+
 
 
 
