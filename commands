@@ -286,6 +286,19 @@ pactl stat  /view sinc status
 arecord -d 10 /tmp/sound_test.wav   //record for 10sec sound to tmp directory
 aplay 
 
+#---------------------------------Openssl--------------------------------------------------
+
+# OpenSSL's s_client command can be used to analyze client-server communication, 
+# including whether a port is open and if that port is capable of accepting an SSL/TLS connection. 
+# It is a useful tool for investigating SSL/TLS certificate-based plugins, 
+# and for confirming that a line of secure communications is available. 
+
+  timeout 2 openssl s_client -connect HOST:PORT ; if [ $? -eq 24 ] ; then echo "Timeout" ; fi
+  timeout 2 openssl s_client -connect HOST:PORT ;  if [ $? -eq 24 ] ; then echo "Timeout" ; fi
+ 
+
+  openssl s_client -connect <URL or IP>:<port>
+
 
 #---------------------------------Tricks--------------------------------------------------
 
