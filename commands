@@ -191,19 +191,28 @@ grep -iRl "string" /etc/* 2> /dev/null
 # Disk usage per Filesystem:
  $ df -ah   %% disk free, available and used space
 
-#------------------------Service and procs----------------------------------------------------------
-systemctl status docker %%% verify service status on older distro is $service docker status
+#------------------------Services and procs----------------------------------------------------------
 
 
-ps aux | grep -i apt   %%%  lock /var/lib/dpkg/lock
-lsof  %%% View files opened by a process  $(ls -l /proc/`pidof proccess`/fd) fd = file descriptor
- 
+## fuser = is more useful in identifying process id opening a particular file.
+## lsof  = is useful to find out all file(s) opened by particular process. (List Open Files)
+
+# List files opened by a process
+
+$ lsof -p PID    same as $less -l /proc/<PID>/fd , fd = file descriptor
+
+# List process opening the file you specified
+
+$ fuser FILE 
+$ lsof FILE
+
+# Display all processes usign the file and the user id
+$ fuser -uvm FILE
+
+
+# View process opened by user
+ $ lsof -u USER
    
-# 1. Stop the web services on web server nodes - service httpd stop
-# 2. Shutdown the database services on db server nodes - service mysql stop
-# 3. Restart all servers (web and db) at once - /sbin/shutdown -r
-# 4. Start the database services on db server nodes - service mysql start
-# 5. Start the web services on web server nodes - service httpd start
 
 
 
