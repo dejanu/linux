@@ -113,9 +113,9 @@ Processes are created through different **system calls** (routine call designate
 2) fork() or exec() Function:
 
 
-  Fork: system call to Clone current process (the parent and the child are identical procceses). The cloned process has new PID,  
+  Fork: system call to CLONE/DUPLICATE the current/calling process (the parent and the child are identical procceses). The cloned process has new PID,  
   
-   Exec: Replace current program with a with a new process 
+   Exec: Replaces current program with a with a new process 
   
   We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
   replace the bash process with the new ls process
