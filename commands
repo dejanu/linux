@@ -397,6 +397,16 @@ The echo command and the pipe sends the contents of the specified variable to th
 and that opens the standard input (as a separate file descriptor) and reads that.
 
 
+------------------------------Volume mounted with NOEXEC
+Permission denied even though -rwxrwxrwx. => Volume mounted with NOEXEC flag. Verify
+$ df -hP 
+/dev/mapper/systemvg-homelv     2.0G  2.0G   74M  97% /home
+
+$ mount | grep /dev/mapper/systemvg-homelv
+/dev/mapper/systemvg-homelv on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,noquota)
+
+
+
 
 
 
