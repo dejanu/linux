@@ -107,12 +107,15 @@ systemctl daemon-reload  #reload systemd manager configuration
 -----------------------------------------------------------------------------------------------------------------------------
 
 
-Processes are created through different system calls, most popular are **fork()** and **exec()**:
+Processes are created through different **system calls** (routine call designated to transition from USER space to KERNEL space), most popular are **fork()** and **exec()**:
 
 1) System() Function 
-2) fork() or exec() Function
-  Fork: system call to Clone current process (the parent and the child are identical procceses). The cloned process has new PID, 
-  Exec: Replace current program with a with a new process 
+2) fork() or exec() Function:
+
+
+  Fork: system call to Clone current process (the parent and the child are identical procceses). The cloned process has new PID,  
+  
+   Exec: Replace current program with a with a new process 
   
   We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
   replace the bash process with the new ls process
