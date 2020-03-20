@@ -305,8 +305,9 @@ aplay
   timeout 2 openssl s_client -connect HOST:PORT ; if [ $? -eq 24 ] ; then echo "Timeout" ; fi
   timeout 2 openssl s_client -connect HOST:PORT ;  if [ $? -eq 24 ] ; then echo "Timeout" ; fi
  
-
+## Verify if port is open
   openssl s_client -connect <URL or IP>:<port>
+  head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
 
 
 #---------------------------------Tricks--------------------------------------------------
