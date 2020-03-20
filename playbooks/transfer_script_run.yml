@@ -1,0 +1,13 @@
+## Modules: script
+## Transfer and run script
+
+
+-
+  name: Transfer and run script
+  hosts: jenkins_user
+  tasks:
+    - name: Run python script
+      script: 
+        cmd: /tmp/test.py
+
+

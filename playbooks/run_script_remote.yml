@@ -1,0 +1,33 @@
+## Modules: command, copy, debug
+## Copy script test.py and check print to stdout the output of the script
+
+-
+  name: Copy script run it and check output
+  hosts: all
+  tasks:
+    #- copy: src = "test.py" dest = "~/test.py"
+    - copy:
+        src: test.py
+        dest: /tmp/test.py
+        owner: userdialogue
+        group: userdialogue
+        mode: '0755'
+
+    - command: cat test.py chdir=/tmp
+      register: command_output
+    
+    - name: Print to console script content
+      debug:
+        msg: "{{command_output}}"
+    
+    - name: Run python script
+      command: python /tmp/test.py
+      register: script_output
+
+    - name: Print to console script output
+      debug:
+        msg: "{{script_output}}"
+
+  
+
+

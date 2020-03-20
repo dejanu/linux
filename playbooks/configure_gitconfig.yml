@@ -1,0 +1,26 @@
+## Configure git using .gitconfig
+
+- 
+  name: Ensure gitconfiguration
+  hosts: all
+  tasks:
+    - name: check if gitconfig is present
+      command: git config --global --list
+      ingnore_errors: yes
+      register: git_config_before # register var and capture module output
+
+    - name: show git config output
+      debug: var=git_config_before
+    
+    - name: copy gitconfig to target_machine
+      copy: src=.gitconfig dest=~/.gitconfig
+
+    - name: recheck gitconfig
+      command: git config --global --list
+      ingnore_errors: yes
+      register: git_config_after
+    
+    - name: show git config output
+      debug: var=git_config_after.stdout_lines
+
+    

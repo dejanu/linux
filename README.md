@@ -1,180 +1,157 @@
-# Processes aka tasks
+### 101
 
-- In a basic form Linux processes can be vizualized as a running instance of a program  
-- Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
-- Every process is started by a parent, except init process which is started by the linux kernel and has PID of 1  
-
-
-
-* Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
-				     - to bring a process to foreground just run  `fg %1`
-
-	
-* Background ( non-interactive/automatic processes) - they are not connected to the terminal , and do not expect any user input.
+* Agentless (uses as transport layer Open SSH)
+* Configuration (`/etc/ansible/ansible.cfg`) check: `$ansible-config list`
+* Ansible inventory commands: `$ansible-inventory --list` or `$ansible-inventory --graph`
 
 
-Display all running jobs
-```shell
-$ jobs
-[1] Running sleep 500 & (wd: ~)
-[2]- Running sleep 600 & (wd: ~)
-[3]+ Running ./Fritzing &
+### Ad-hoc commands
+
+* Can be used to reboot servers, copy files, manage packages and users etc: `ansible <HOST_GROUP> -m <MODULE> -a "ARGUMENTS"`
+
+Create an inventory/host file:
 ```
-To bring a process to foreground run `$ fg %2`  
+### host
+[web] 
+controller ansible_host=hostname ansible_connection=ssh ansible_user=user_name ansible_ssh_pass=user_password
 
-`&` - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell, to create a **job** ( command or a task that is up and running but hasn't yet finished and it's managed by the shell) just append the **control operator** . 
+[targets]
+target1 ansible_host=192.168.0.59 ansible_user=user_name ansible_ssh_pass=user_password
 
+#variables
+[web:vars]
+all_file = /tmp/direct_file
 
-Ctrl + Z - suspends proceess running in foregroud by sending SIGSTOP signal to the process and SUSPENDS it .  
-Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt signal.  
-
-
-Signals are a fundamental way to control linux processes .  
-The `kill` command allows you to send a signal to any application.  Usage `$ kill -TERM PID` . 
-
-```bash
-kill -l
- 1) SIGHUP	 2) SIGINT	 3) SIGQUIT	 4) SIGILL
- 5) SIGTRAP	 6) SIGABRT	 7) SIGEMT	 8) SIGFPE
- 9) SIGKILL	10) SIGBUS	11) SIGSEGV	12) SIGSYS
-13) SIGPIPE	14) SIGALRM	15) SIGTERM	16) SIGURG
-17) SIGSTOP	18) SIGTSTP	19) SIGCONT	20) SIGCHLD
-21) SIGTTIN	22) SIGTTOU	23) SIGIO	24) SIGXCPU
-25) SIGXFSZ	26) SIGVTALRM	27) SIGPROF	28) SIGWINCH
-29) SIGINFO	30) SIGUSR1	31) SIGUSR2
+[targets:vars]
+target_file = /tmp/target_file
 ```
 
-```bash
-# trap ctrl-c aka SIGINT and call ctrl_c() function
-
-trap ctrl_c 2
-
-function ctrl_c() {
-        echo "** Trapped CTRL-C"
-}
+* Ping `target1` machine using `ping` module, -v for verbose : `ansible target1 -v -m ping -i ~/host `
+* Execute ad-hoc command using `command` module, -a for arguments: `ansible target1 -m command -a "who" -i ~/host` 
+* Copy  file `.gitconfig` using `copy` module: `ansible target1 -m copy -a "src=/home/user/alex/.gitconfig dest=/tmp/.gitconfig" -i ~/host`
+* Check the package manager on target machine using `setup` module: `ansible target_machine -m setup -a "filter=ansible_pkg_mgr" -i test_inventory `
 
 
-# trap crtl-z aka SIGTSTP and call ctrl_c() function
+* **flags** : for dry-run `--check` without making any changes e.g: `ansible target1 -m copy -a "src=test_file dest=/bin/test_file" --check --diff -i ~/host`, and in order to see the changes used `--diff` flag.
 
-trap ctrl_z 20
 
-function ctrl_z(){
-        echo "**Trapped CTRL-Z"
-}
+### Ansible playbook
+
+1. Playbook = Single YAML file that describe the work-flow
+2. Play = set of taks to be run on hosts
+3. Task = action to be performed on host (execute a command, a module, run a script, install a package, restart the server) aka module
+
+* Copy file to target machine using a simple playbook: `ansible-playbook -i ~/host dej.yml`
+
+e.g of playbook dej.yml
+```yml
+# dej.yml
+- name: Transfer file
+  hosts: jenkins_machine
+  tasks:
+     - name: Transfer the script
+       copy:
+         src: test.py
+         dest: /opt/data/jenkins/build
+         owner: jenkins
+         group: jenkins
+         mode: '0660'
+~                      
 ```
------------------------------------------------------------------------------------------------------
-**Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
 
-**init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.` /sbin/init`
-If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“. 
+* Create file on target using file module within a playbook:`ansible playbook -i ~/host play_name.yml -e file_state=touch`  and passed the `{{file_state}}` variable from command line 
 
+**play_name.yml**
 ```bash
+-
+  name: Play1
+  hosts: all
+  tasks:
+    - name: Display resolv.conf contents
+      command: cat resolv.conf chdir=/etc
+    - name: Create a file on remote machine
+      file:
+        dest: /tmp/myfile
+        state: '{{file_state}}'
+      tags:
+        - create-file
+```
+* Select play from playbook using tags:`ansible playbook -i hosts play_name.yml --tags create-file -e file_state=touch`  
+! Also we can use `--skip-tags` flag     
 
- ps -l 1
-  UID   PID  PPID        F CPU PRI NI       SZ    RSS WCHAN     S             ADDR TTY           TIME CMD
-    0     1     0     4004   0  37  0  4374844  13372 -      Ss                  0 ??         9:23.82 /sbin/launchd
+* Playbook which uses variables from inventory to delete file from target:
+**play_name.yml**
+```bash
+---
+- hosts: target1
+  tasks:
+  - name: create a file via ssh
+    file:
+      dest: '{{target_file}}'
+      state: absent
 ```
 
-**Systemd** -  is an INIT SYSTEM (other init systems: SysV init or Upstart) and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
+***
 
- **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
+### Test/verify/lint playbooks
 
-- systemd manages units (resources that system knows to operate/manage on)
-- systemd categorize units based on the type of resource they describe ( .service, .socket, .device)  
+1) Dry Run using check module: `ansible-playbook foo.yml --check` or just syntax check it `ansible-module foo.yml --syntax-check`
 
-e.g. : etc/systemd/system/docker.service = which describes how to manage docker service  
+2) Linter: ansible molecule to test your ansible roles: `pip install molecule`  
 
-```bash
-[Unit]
-Description=Docker Application Container Engine
-Documentation=https://docs.docker.com
-After=network.target docker.socket
-Requires=docker.socket
+3) List playbook tags: `ansible-playbook --list-tags playbook.yml`
+***
 
+### Run Root
+
+* Simplest way to run tasks as root is using the flag `-K` or`--ask-become-pass` e.g.: `ansible-playbook -i hosts install_jenkins.yml --ask-become-pass`  
+
+* Configure the remote user that ansible uses, mainly this means `visudo` of `/etc/sudoers`, and add 
 ```
-[systemdunits](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
+# Allow osboxes_user to run any commands anywhere
+ osboxes_user ALL=(ALL:ALL) ALL
 
-```bash
-sudo systemctl enable service_name #start at boot time
-systemctl status/start/stop/restat docker/httpd/mysql
-systemctl list-units --type service --all
-systemctl daemon-reload  #reload systemd manager configuration
-```   
-
-
-- `systemctl` is the main utility to control daemons/services in `systemd` , while the `service` command is the traditional utility in `SysVinit` world . 
-
------------------------------------------------------------------------------------------------------------------------------
+#Same thing without a password
+%wheel ALL=(ALL) NOPASSWD: ALL
+```
+Also add the user to wheel group `$ usermod -aG wheel USERNAME`
 
 
-Processes are created through different system calls, most popular are **fork()** and **exec()**:
-
-1) System() Function 
-2) fork() or exec() Function
-  Fork: system call to Clone current process (the parent and the child are identical procceses). The cloned process has new PID, 
-  Exec: Replace current program with a with a new process 
-  
-  We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
-  replace the bash process with the new ls process
-  ```shell
-  $ls -l
-  ```
-  vs  
-  
-  ```shell
-  $exec ls -l
-  ```
-  process completed and the terminal will close.   
-  
-  If you run ls, your shell process will start up another process to run the ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.w ith exec ls, you actually replace your shell program in the current process with the ls program so that, when it finishes, there's no shell waiting for it.  
-  
-  
-
- 
------------------------------------------------------------------------------------------------------------------------------
-`bash $ps -e` = display running daemons   
-`bash $ps -a` = display all processes that run on terminals   
-`bash $ps -x` = display all processes that do not run on terminals
-
------------------------------------------------------------------------------------------------------------------------------
-
-**List files opened by a proccess**:
-
- `lsof -p PID` equivalent more or less with `ls -l /proc/PID/fd` . 
-
-`lsof` will also give you memory mapped `.so`-files - which technically isn't the same as a file handle the application has control over. `/proc/<pid>/fd` is the measuring point for open file descriptors
- 
-
-**pid** and **lock** files:
-
-- pid files are written by some programs to record their process ID while they are **starting**. (Apache HTTPD may write its main process number to a pid file) 
-- daemons needs the pid of the scripts that are currently running in the background to send them so called signals. Daemons uses the `TERM` signal to tell the script to exit when you issue a stop command.
-- the usual location of pid files is `/var/run/`
-- usage for pid files `cat filename.pid | xargs kill`
+### Cheat sheet
 
 
- 
+* To Set Up SSH Command: `sudo apt-get install openssh-server`
+* To Copy the SSH Key on the Hosts `ssh-copy-id hostname`
+* To Add Ansible repository `sudo apt-add-repository ppa:ansible/ansible`
+* To Run the update command `sudo apt-get update`
+* To Install Ansible package `sudo apt-get install ansible`
+* To set up SSH agent
+```
+$ ssh-agent bash
+$ ssh-add ~/.ssh/id_rsa
+```
 
-------------------------------------------------------------------------------------------------------------------------------
-**Load** vs **CPU utilization/usage**
+* To use SSH with a password instead of keys `ansible europe -a "/sbin/reboot" -f 20`
+* To run /usr/bin/ansible from a user account `ansible europe -a "/usr/bin/foo" -u username`
+* To run commands through privilege escalation and not through user account `ansible europe -a "/usr/bin/foo" -u username --become [--ask-become-pass]`
+* To become a user, other than root by using `--become-user`:
+* `$ ansible europe -a "/usr/bin/foo" -u username --become --become-user otheruser [--ask-become-pass]`
+* To Transfer a file directly to many servers: `ansible europe -m copy -a "src=/etc/hosts dest=/tmp/hosts"`
+* To change the ownership and permissions on files 
+```
+ansible webservers -m file -a "dest=/srv/foo/a.txt mode=600"
 
-- Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average , formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
+ansible webservers -m file -a "dest=/srv/foo/b.txt mode=600 owner=example group=example"
+```
+* To create directories `ansible webservers -m file -a "dest=/path/to/c mode=755 owner=example group=example state=directory"`
+* To delete directories (recursively) and delete files  `ansible webservers -m file -a "dest=/path/to/c state=absent"`
+* To ensure that a package is installed, but doesn’t get updated: `ansible webservers -m apt -a "name=acme state=present"`
+* To ensure that a package is installed to a specific version: `ansible webservers -m apt -a "name=acme-1.5 state=present"`
+* To ensure that a package is not installed: `ansible webservers -m apt -a "name=acme state=absent"`
 
-- Load how many actively running (not sleeping) processes are using the CPU should be direct proportional with `$lscpu | gerp CPU(s)`
+* To ensure a service is started on all web servers: `ansible webservers -m service -a "name=httpd state=started"`
 
-- for load use `$uptime` or `$top` + `l` or `$sar` or `$vmstat 1 10` 
+* To restart a service on all web servers: `ansible webservers -m service -a "name=httpd state=restarted"`
 
+* To ensure a service is stopped: `ansible webservers -m service -a "name=httpd state=stopped`
 
-- CPU usage/utilization the ratio (usually expressed as a percentage)of time that the CPU is BUSY DOING STUFF. This measure only makes sense if you know over which period the percentage is being calculated
-
-
-----------------------------------------------------------------------------------------------------------------------------
-
-Library modules "a way" for programs to share code.
-
->> man hier % view the file system hierachy 
-
-.so = dynamically linked shared objects libraries (aka .dll from windows)
-.a = static libraries
-
->> ldd /bin/ls  %view the dependencies modules for the particular command

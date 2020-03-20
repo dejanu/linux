@@ -1,0 +1,15 @@
+## Modules: command, debug
+## Display content of resolv.conf file 
+
+-
+  name: Display DNS server configuration
+  hosts: jenkins_user
+  tasks:
+    - name: Display resolv.conf contents
+      command: cat resolv.conf chdir=/etc
+      register: command_output
+
+    - name: Print to console
+      #debug: msg = "{{command_output.stdout}}""
+      debug:
+        msg : "{{command_output}}"

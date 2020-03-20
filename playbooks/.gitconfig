@@ -1,0 +1,5 @@
+[user]
+	email = alexandru-ionut.dejanu@ing.com
+	name = Dejanu
+[http]
+	sslVerify = false
