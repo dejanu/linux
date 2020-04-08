@@ -181,3 +181,5 @@ Library modules "a way" for programs to share code.
 .a = static libraries
 
 >> ldd /bin/ls  %view the dependencies modules for the particular command
+
+executing a file `. ./config.sh`  does not make any changes in the current shell, if intended, whereas the sourced file `source config.sh` makes the changes in the current shell itself.
