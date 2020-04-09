@@ -4,10 +4,13 @@
 
 ## e.g:
 
-# Web Servers define alias and connection type
+# Web Servers define alias and connection type ssh with password
 web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
 web2 ansible_host=server2.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
 web3 ansible_host=server3.company.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=Password123!
+
+# ssh private key connection , user pub key should be in authorized_keys on slave
+web1 ansible_host=server1.company.com ansible_connection=ssh ansible_user=user ansible_ssh_private_key=/home/user/.ssh/id.rsa
 
 # Database Servers define alias and connection type
 db1 ansible_host=server4.company.com ansible_connection=winrm ansible_user=administrator ansible_password=Password123!
