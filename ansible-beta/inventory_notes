@@ -26,7 +26,7 @@ web3
 [db_servers]
 db1
 
-#group of groups
+#group of groups named all_servers
 [all_servers:children]
 web_server
 db_server
