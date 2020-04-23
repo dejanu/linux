@@ -173,12 +173,12 @@ Processes are created through different **system calls** (routine call designate
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-Library modules "a way" for programs to share code.
+Library/modules "a way" for programs to share code.
 
 >> man hier % view the file system hierachy 
 
-.so = dynamically linked shared objects libraries (aka .dll from windows)
-.a = static libraries
+.so = shared libraries/objects  (aka dynamically linked .dll from windows) (code is inserted at **run time**)
+.a = static libraries (code is inserted at **compile time**)
 
 >> ldd /bin/ls  %view the dependencies modules for the particular command
 
