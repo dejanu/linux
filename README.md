@@ -30,7 +30,7 @@ Ctrl + C - terminate the process by sending SIGINT signal aka Intrerrupt signal.
 
 
 Signals are a fundamental way to control linux processes .  
-The `kill` command allows you to send a signal to any application.  Usage `$ kill -TERM PID` . 
+The `kill` command allows you to send a signal to any application.  Usage `$ kill -9 PID` . 
 
 ```bash
 kill -l
