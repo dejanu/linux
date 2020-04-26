@@ -229,12 +229,14 @@ $ fuser -uvm FILE
 wc -n
 wv -l
 
+# Copy the folder with all of his content (a: preserve attributes r:recursive)
+cp -avr /var/lib/rpm /tmp/backups
 
 # View first 5 lines from a file , or paginate the result in terminal
 head -n5 file_name
 cat file_name | more
 
-# Search in file content using grouping
+# Grep in file content using grouping
 grep -i -E "first|second|third" file.txt
 
 # Grep until a desired character , in this example is the dot .
