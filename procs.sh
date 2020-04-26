@@ -25,3 +25,13 @@ ps ejf
 #view threads
 ps -fL PID
 
+# display running daemons 
+ps -e   
+
+# display all processes that run on terminals 
+ps -a  
+
+# display all processes that do not run on terminals
+ps -x 
+
+
