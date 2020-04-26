@@ -177,7 +177,8 @@ Library/modules "a way" for programs to share code.
 
 >> man hier % view the file system hierachy 
 
-.so = shared libraries/objects  (aka dynamically linked .dll from windows) (code is inserted at **run time**)
+.so = shared libraries/objects  (aka dynamically linked .dll from windows) (code is inserted at **run time**). 
+
 .a = static libraries (code is inserted at **compile time**)
 
 >> ldd /bin/ls  %view the dependencies modules for the particular command
