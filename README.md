@@ -131,14 +131,7 @@ Processes are created through different **system calls** (routine call designate
   
   If you run ls, your shell process will start up another process to run the ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.w ith exec ls, you actually replace your shell program in the current process with the ls program so that, when it finishes, there's no shell waiting for it.  
   
-  
-
  
------------------------------------------------------------------------------------------------------------------------------
-`bash $ps -e` = display running daemons   
-`bash $ps -a` = display all processes that run on terminals   
-`bash $ps -x` = display all processes that do not run on terminals
-
 -----------------------------------------------------------------------------------------------------------------------------
 
 **List files opened by a proccess**:
