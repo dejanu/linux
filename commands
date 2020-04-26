@@ -229,23 +229,31 @@ $ fuser -uvm FILE
 wc -n
 wv -l
 
-# Redirect STDIN to file
-cat > file
 
 # View first 5 lines from a file , or paginate the result in terminal
 head -n5 file_name
 cat file_name | more
 
-# Search in file content
-grep -i -E "first|second|third" file.txt #search in fie.txt using grouping for "first" or "second" or "third" words
+# Search in file content using grouping
+grep -i -E "first|second|third" file.txt
 
-egrep -o '^[^.]+' %%%%% grep until a desired character , in this example is the .
-grep -o -E '[0-9]+'  %%%%%%grep only from a numbercat
+# Grep until a desired character , in this example is the dot .
+egrep -o '^[^.]+' 
 
-ls -l | grep YOOO //returns all desired files which have YOO in their name
-grep -ni 'word' ./path_of_file/file.txt  //searches inside files
-grep -A10 -B10    %%%%%%grep after and before 10 lines
+# Grep only from a numbercat
+grep -o -E '[0-9]+'  grep only from a numbercat
 
+# Grep after and before 10 lines
+grep -A10 -B10  
+
+# Grep RECURSIVE in all files, list file names in which grep found the desired thing
+grep -lR "word" .
+
+# Grep RECURSILVE only in XML files, list file names in which grep found the desired thing
+grep -lR "word" . --include "*.xml"
+
+# Grep in all xml files
+grep -l "word" *.xml
 
 sed -i 's/word1/word2/g' ./path_of_file  %%%%%% replaces word1 with word2
 sed '1~2d'   ./filepath  %%%print without the first two lines
