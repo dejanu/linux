@@ -158,11 +158,12 @@ Processes are created through different **system calls** (routine call designate
 
 - Load how many actively running (not sleeping) processes are using the CPU should be direct proportional with `$lscpu | gerp CPU(s)`
 
-- for load use `$uptime` or `$top` + `l` or `$sar` or `$vmstat 1 10` 
+- for load use `$uptime` or `$top` + `l` or `$sar` or `$vmstat 1 10` (detailed view of memory stats)
 
 
 - CPU usage/utilization the ratio (usually expressed as a percentage)of time that the CPU is BUSY DOING STUFF. This measure only makes sense if you know over which period the percentage is being calculated
 
+- summary of memory usage: `$ free -m` or `$ cat /proc/meminfo` to see swap space used/available , total usable RAM
 
 ----------------------------------------------------------------------------------------------------------------------------
 
