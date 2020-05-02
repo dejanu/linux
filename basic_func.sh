@@ -42,5 +42,6 @@ echo Al doilea paramentru pozitional este $2
 echo Numele scriptului este $0
 
 echo "Scriptul a rulat cu $# paramentrii"
-echo Acestia sint $@
+echo Acestia sunt $@
+echo $1 first argument 
 
