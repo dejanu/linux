@@ -155,3 +155,9 @@ ansible webservers -m file -a "dest=/srv/foo/b.txt mode=600 owner=example group=
 
 * To ensure a service is stopped: `ansible webservers -m service -a "name=httpd state=stopped`
 
+
+##Command vs Shell
+
+- With the **command** module the command will be executed without being proceeded through a shell. As a consequence some variables like $HOME are not available. And also stream operations like `<, >, | and & `will NOT work.
+- The **shell** module runs a command through a shell, by default /bin/sh. This can be changed with the option executable. Piping and redirection are here therefor available.
+
