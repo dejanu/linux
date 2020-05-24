@@ -7,9 +7,6 @@
 # list processes that are using a certain file
 lsof file_name
 
-# list process IDs of all processes that have one or more files open, works on dir also $ fuser .
-fuser /home/tecmint
-
 #list all files open by a process
 lsof -p PID
 
@@ -19,11 +16,21 @@ $ lsof -u $(whoami)
 # list procs of specific port
 lsof -i TCP:22
 
+#####################################################################################################################
+# list process IDs of all processes that have one or more files open, works on dir also $fuser .
+fuser /home/tecmint
+
+
+#####################################################################################################################
+
 # view process PPID PID GID similar output like $ pstree
 ps ejf  
 
-#view threads
+# view threads or check $cat /proc/PID/status
 ps -fL PID
+
+# count threads or check $cat /proc/PID/status
+ps -o thcount PID
 
 # display running daemons 
 ps -e   
