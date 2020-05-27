@@ -22,8 +22,9 @@ fuser /home/tecmint
 
 
 #####################################################################################################################
-
+# check which app based on PID
 ls -l /proc | grep PID
+ps --pid=PID
 
 # view process PPID PID GID similar output like $ pstree
 ps ejf  
