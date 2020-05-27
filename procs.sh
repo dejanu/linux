@@ -23,6 +23,8 @@ fuser /home/tecmint
 
 #####################################################################################################################
 
+ls -l /proc | grep PID
+
 # view process PPID PID GID similar output like $ pstree
 ps ejf  
 
