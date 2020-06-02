@@ -152,7 +152,7 @@ Processes are created through different **system calls** (routine call designate
  
 
 ------------------------------------------------------------------------------------------------------------------------------
-**Load** vs **CPU utilization/usage**
+**Load Avg** vs **System Load - CPU utilization/usage**
 
 - Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average , formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
 
@@ -165,6 +165,12 @@ Processes are created through different **system calls** (routine call designate
 
 - summary of memory usage: `$ free -m` or `$ cat /proc/meminfo` to see swap space used/available , total usable RAM
 
+- check no of CPU's (a single CPU can carry a single task at a time -> multi-processor vs multi-core): 
+```bash
+$ nproc
+$ lscpu
+$ cat /proc/cpuinfo
+```
 ----------------------------------------------------------------------------------------------------------------------------
 
 Library/modules "a way" for programs to share code.
