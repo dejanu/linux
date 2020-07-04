@@ -187,6 +187,7 @@ grep -iRl "string" /etc/* 2> /dev/null
 # Disk usage per file and directory:
  $ du -sh  /dir_path/file_name
  $ du -h --max-depth=1 /dir_path
+ $ du -shxc /dir_path #show total human readable x don't go to other filesystems
 
 # Disk usage per Filesystem:
  $ df -ah   %% disk free, available and used space
