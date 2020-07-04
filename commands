@@ -188,6 +188,9 @@ grep -iRl "string" /etc/* 2> /dev/null
  $ du -sh  /dir_path/file_name
  $ du -h --max-depth=1 /dir_path
  $ du -shxc /dir_path #show total human readable x don't go to other filesystems
+ 
+# Calculate size of each of the system top-level dirs
+$ du --max-depth=1 -hx /
 
 # Disk usage per Filesystem:
  $ df -ah   %% disk free, available and used space
