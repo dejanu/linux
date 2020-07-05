@@ -63,7 +63,8 @@ function ctrl_z(){
 }
 ```
 -----------------------------------------------------------------------------------------------------
-**Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process.  
+**Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process (e.g. sshd which is started by the init process when it executes the sshd init script).
+
 
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.` /sbin/init`
 If somehow init daemon could not start, no process will be started and the system will reach a stage called “Kernel Panic“. 
@@ -109,12 +110,12 @@ systemctl daemon-reload  #reload systemd manager configuration
 
 Processes are created through different **system calls** (routine call designated to transition from USER space to KERNEL space), most popular are **fork()** and **exec()**:
 
-1) System() Function 
+1) system() Function 
 2) fork() or exec() Function:
 
 
-  Fork: system call to CLONE/DUPLICATE the current/calling process (the parent and the child are identical procceses). The cloned process has new PID,  
-  
+   Fork: system call to CLONE/DUPLICATE the current/calling process (the parent and the child are identical procceses). The cloned process has new PID, fork() takes no args and returns the PID of the child proccess.
+   
    Exec: Replaces current program with a with a new process 
   
   We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
