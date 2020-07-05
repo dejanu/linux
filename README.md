@@ -179,9 +179,10 @@ Library/modules "a way" for programs to share code.
 >> man hier % view the file system hierachy 
 
 .so = shared libraries/objects  (aka dynamically linked .dll from windows) (code is inserted at **run time**). 
+Check which shared libraries an executable requires (view the dependencies modules for the particular command): `$ ldd /bin/ls`.  
+The linker will first search any directories specified in the environment variable `LD_LIBRARY_PATH`,
 
 .a = static libraries (code is inserted at **compile time**)
 
->> ldd /bin/ls  %view the dependencies modules for the particular command
 
 executing a file `. ./config.sh`  does not make any changes in the current shell, if intended, whereas the sourced file `source config.sh` makes the changes in the current shell itself.
