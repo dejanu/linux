@@ -110,8 +110,8 @@ systemctl daemon-reload  #reload systemd manager configuration
 
 Processes are created through different **system calls** (routine call designated to transition from USER space to KERNEL space), most popular are **fork()** and **exec()**:
 
-1) system() Function 
-2) fork() or exec() Function:
+1) system()  
+2) fork() - original parent process keeps running while the child process starts or exec() original parent process terminates and child parent inherits the process ID of the parent :
 
 
    Fork: system call to CLONE/DUPLICATE the current/calling process (the parent and the child are identical procceses). The cloned process has new PID, fork() takes no args and returns the PID of the child proccess.
@@ -130,8 +130,10 @@ Processes are created through different **system calls** (routine call designate
   ```
   process completed and the terminal will close.   
   
-  If you run ls, your shell process will start up another process to run the ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.w ith exec ls, you actually replace your shell program in the current process with the ls program so that, when it finishes, there's no shell waiting for it.  
-  
+ * If you run `ls`, your shell process will start up another process to run the `ls` program, then it will wait for it to finish. When it finishes, control is returned to the shell. with `exec ls`, you actually replace your shell program in the current process with the ls program so that, when it finishes, there's no shell waiting for it.  
+ 
+ * When the user types a command in the shell a new process is created (using **fork** from the user's login shell then the command is loaded onto child process space via **exec** system call)
+
  
 -----------------------------------------------------------------------------------------------------------------------------
 
