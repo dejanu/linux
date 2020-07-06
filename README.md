@@ -29,7 +29,8 @@ Ctrl + Z - suspends/stops the running process sending SIGSTOP signal to the proc
 Ctrl + C - terminate/intrerrupts the running process by sending SIGINT  signal.  
 
 
-Signals are a fundamental way to control linux processes .  
+Signals are a fundamental way to control linux processes . 
+A process cannot send a signal to another process it must ask the kernel to send the signal via a sys-call .  
 The `kill` command allows you to send a signal to any application.  Usage `$ kill -9 PID` ( of signal number is not given SIGTERM -15 is the default one): 
 
 ```bash
@@ -43,6 +44,8 @@ kill -l
 25) SIGXFSZ	26) SIGVTALRM	27) SIGPROF	28) SIGWINCH
 29) SIGINFO	30) SIGUSR1	31) SIGUSR2
 ```
+SIGINT ("weakest Ctrl+C") < SIGTERM (15 allows aplication to exit cleanley) < SIHUP (automatically sent to applications running in terminal when user disconnects from that terminal) < SIGQUIT (3 create core dump). 
+
 
 ```bash
 # trap ctrl-c aka SIGINT and call ctrl_c() function
@@ -61,7 +64,11 @@ trap ctrl_z 20
 function ctrl_z(){
         echo "**Trapped CTRL-Z"
 }
-```
+``` 
+
+Using `&` causes the program to run in the background, so you'll get a new shell prompt instead of blocking until the program ends. `nohup` and `disown` are largely unrelated; they suppress `SIGHUP` (hangup) signals so the program isn't automatically killed when the controlling terminal is closed.   
+`nohup` does this when the job first begins. If you don't nohup a job when it begins, you can use `disown` to modify a running job; with no arguments it modifies the current job, which is he one that was just backgrounded.
+
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process (e.g. sshd which is started by the init process when it executes the sshd init script).
 
