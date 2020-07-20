@@ -161,8 +161,13 @@ $ ls -li | egrep "hard|soft"
 6682153 lrwxr-xr-x  1 us81jt  staff      9 Jan  3 13:37 soft -> hard_soft
 
 # Hard link vs Soft link creation
-$ ln file hardlink_file  
+$ ln file hardlink_file
+
+# ln -s <SOURCE/DESTINATION> <LINK_NAME>
 $ ln -s file softlink_file
+
+# Update simlink -force -no-derefernce
+$ ln -sfn new_file softlink_name
 
 # Hard link has the same INODE number as the original file; cannot traverse file system boundaries
 # Soft link has a different INODE number from the original file; can traverse file system boundaries
