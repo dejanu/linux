@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Check that the somefile.conf exists
+      stat:
+        path: "{{ item }}"
+      with_items:
+        - '/Users/dej/Exam'
+        - '/Users/dej/go'
+      register: st
+
+    - name: Print message if file exits
+      debug:
+        msg: "file is there"
+      with_items: "{{ st.results }}"
+      when: item.stat.exists
