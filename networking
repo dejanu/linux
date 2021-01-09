@@ -20,16 +20,32 @@ nslookup domain_name.com = returns the ip associated with a domain (dig +short d
 nmap -sS -O gateway.ip/24 = get all hosts from LAN (loopback and gateway will appear)
 nmap -sP gateway.ip/24 =  get all hosts from LAN (loopback and gateway will appear) ( https://security.stackexchange.com/questions/36198/how-to-find-live-hosts-on-my-network )
 
+# get FQDN 
+$ hostname -A
+$ hostnamectl
 
-** DNS - hierachical system of caching servers
-A match found in /etc/hosts (file for static lookup) will be used before any DNS entry, and the /etc/resolf.conf (populated with 
-DNS records issued by DHCP server)
+# get IP/interface
+$ ip addr  (with no arguments default to #ip address show)
+$ hostname -i
+$ hostname -I
 
-# query DNS to find the IP of a certaing host
+## DNS - hierachical system of caching servers
+#  /etc/hosts (file for method for resolution for static lookup) will be used before any DNS entry
+#  /etc/resolf.conf (populated with DNS records issued by DHCP server) specifies the nameservers for resolver lookups,where it will actually use the DNS protocol for resolving the hostnames
 
+# dig — DNS lookup utility, interogates DNS name servers from /etc/resolf.conf
+$ dig @nameserver FQDN +trace
+
+# nslookup — Query a name server for information about a remote host.
+
+# DNS lookup (query DNS to find the IP of a certaing host) , chain for DNS lookup: local -> resolver -> root server -> Top Level Domain server -> Name Server
 $ nslookup python.org
 $ host -a python.org
 
+# reverse DNS lookups (converting IP addresses to Domain Names)
+$ host <ip>
+
+-----------------------
 ** PORT - 16 bit number, each IP on a device has 65,535 possible ports
 A port is an endpoint attache to an IP address, and ports are claimed by a process running on the host
 
