@@ -2,8 +2,10 @@
 #### SPLUNK SERVER ####
 
 # install splunk server
-wget -O splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/Dow...​
-apt install ./splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb
+# wget -O splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb 'https://www.splunk.com/bin/splunk/Dow...​
+# apt install ./splunk-7.1.0-2e75b3406c5b-linux-2.6-amd64.deb
+
+tar xvzf splunkforwarder-<…>-Linux-x86_64.tgz -C /opt
 cd /opt/splunk/bin/
 ./splunk start --accept-license
 ./splunk enable boot-start
