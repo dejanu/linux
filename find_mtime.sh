@@ -20,3 +20,6 @@ find . -type d -mtime -24
 find . -type d -mtime -60
 
 
+# create an archive with files older than 7 days and rm them if && aka $? -eq 0
+find /path/to/folder/ -maxdepth 1 -type f -mtime +7 -print0 | tar -czf "/path/to/folder/$(date '+%Y-%m-%d').tar.gz" --null -T - && find /path/to/folder/ -maxdepth 1 -type f -mtime +7 -exec rm {} \; || echo "NOK"
+
