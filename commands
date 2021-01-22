@@ -1,27 +1,22 @@
 #---------------------------------System & Kernel--------------------------------------------------
 
 # System/kernel release information
-
 $ uname -a
 $ uname -r
 $ cat /proc/version
 
 # Display information about CPU arhitecture
-
 $ /usr/bin/lscpu
 $ cat /proc/cpuinfo
 
 # total  amount  of  free  and used physical and swap memory in the system
-
 $ free -m
 
 
 # Redhat version
-
 $ cat /etc/redhat-release
 
 # How long system has been running
-
 $ uptime
 $ last reboot
 
@@ -45,15 +40,12 @@ $ set
 $ env
 
 # Verify which shell your're running:
-
 $ echo $SHELL
 
 # Verify env var PATH, which describes the location of different bins
-
 $ echo $PATH
 
 ## PATH is set by the shell every time it launches
-
 $ export PATH=$PATH:/place/with/the/file
 
 ## Add export PATH=$PATH:/place/with/the/file line in the ~/.bash_profile, ~/.bashrc, or ~/.profile
@@ -415,6 +407,33 @@ bu using the following construct we can make cook to read from STDIN
 So execute this: $echo "$the_recipe" | cook /dev/stdin
 The echo command and the pipe sends the contents of the specified variable to the standard input of the next command cook, 
 and that opens the standard input (as a separate file descriptor) and reads that.
+
+
+
+# create tree alias with function call
+alias tree='function tree(){ find ${1:-.} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"; unset -f tree;}; tree'
+
+ 
+
+# on liner for defining and calling a function with parameters : $alp <pass_ARG>
+alias alp='f(){ /path/to/bin  --flag1 -u 'name' --flag2_passed_as_ARG $1; unset -f f; }; f'
+
+ 
+
+ 
+
+# smtp mailx client
+
+mailx -s "test" -S from=stmp.com alex@d.com
+
+echo "Email from me"|mailx -s "Warn Expiry " -S from=$(hostname -A) alex@.dcom
+EOT
+.
+
+ 
+
+# create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
+find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz"  -type f -mtime +7 -print0 | tar -czf /path/to/dir/ /$(date '+%Y-%m-%d').tar.gz" --null -T - && find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz" -type f -mtime +7 -print0 | xargs -0 rm  || echo "NOK"
 
 
 ------------------------------Volume mounted with NOEXEC
