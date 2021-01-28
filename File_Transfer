@@ -1,14 +1,17 @@
 ### Secure Copy -rp recurse and preserve modification times
 
 
-REMOTE to LOCAL
-$ scp your_username@remotehost.edu:foobar.txt /some/local/directory
+# Pull REMOTE to LOCAL
+$ scp user1@remotehost.edu:foobar.txt /some/local/directory
 
-LOCAL to REMOTE
-$ scp foobar.txt your_username@remotehost.edu:/some/remote/directory
+# Push LOCAL to REMOTE
+$ scp foobar.txt user1@remotehost.edu:/some/remote/directory
 
-# to local station
+# using private key
 scp -i ~/.ssh/id_rsa root@hostname.net:/tmp/SPECjvm2008-bare.7z /tmp
 
-#from local station to hostname.net:/tmp
-scp -i ~/.ssh/id_rsa SPECjvm2008-bare.7z root@hostname.net:/tmp
+# between remote machines
+scp user1@host1.com:/files/file.txt user2@host2.com:/files
+
+# multiple files
+scp user@host1.com:/dir/{file1,file2,file3} /some/local/dir
