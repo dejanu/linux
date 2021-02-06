@@ -360,6 +360,9 @@ w
 vimdiff file1 file2
 diff -y file1 file2
 
+% get the current shell ($0 is the name of the running process)
+echo $0
+
 
 % echo  the PID of the current process.
 echo $$ 
