@@ -159,7 +159,16 @@ Processes are created through different **system calls** (routine call designate
 - usage for pid files `cat filename.pid | xargs kill`
 
 
+* Every process has a file descriptor associated with it, a process can open all sort of files like /dev files , UNIX Sockets, Network sockets, Library files /lib /lib64 
  
+```shell
+lsof -p <PID>
+lsof -a -p <PID>
+```
+or
+```shell
+ cd /proc/<PID>/fd
+```
 
 ------------------------------------------------------------------------------------------------------------------------------
 **Load Avg** vs **System Load - CPU utilization/usage**
