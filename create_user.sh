@@ -9,8 +9,8 @@ groups cs10fh
 id cs10fh
 
 ## ------delete user-------
-$sudo userdel -r dej
-$sudo pkill -9 -u cs10fh
+$sudo userdel -r john
+$sudo pkill -9 -u john
 
 ## ---create user----------
 
@@ -36,3 +36,7 @@ $ adduser
 
 # add user to groups
 $ usermod -aG sudo,docker,vboxsf .. us81jt
+
+# create user without interactive shell
+$ sudo useradd john -s /sbin/nologin
+
