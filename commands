@@ -228,14 +228,12 @@ $ fuser -uvm FILE
 
 # Count lines,chars:
 wc -n
-wv -l
+wc -c
 
 # Copy the folder with all of his content (a: preserve attributes r:recursive)
 cp -avr /var/lib/rpm /tmp/backups
 
-# View first 5 lines from a file , or paginate the result in terminal
-head -n5 file_name
-cat file_name | more
+
 
 # Grep in file content using grouping
 grep -i -E "first|second|third" file.txt
@@ -289,22 +287,22 @@ cut -c2-3 file.txt //range 2-3th collumns
 diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
 
-#count no of occurrences of str1 and str2 my_file
-for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 
 #change color
 echo -e "\e[1;32m text color change \e[0m"
 
 
+#---------------------------------Reading from files--------------------------------------------------
 
-#sound------------------------------------------------------------------------------------
-cat /proc/asound/cards  //view sound cards
-aplay -l     //view sound cards
-pactl set-sin-mute 0 1  //mute sink
-pactl -- set-sink-volume 0 100%  //change volume sink
-pactl stat  /view sinc status
-arecord -d 10 /tmp/sound_test.wav   //record for 10sec sound to tmp directory
-aplay 
+#read file line by line and run cmd for each line
+while IFS= read -r line; do cp $line /tmp; done < file_to_read
+
+# read reads from stdin the < redirects stdin from a file (which contains FQDN hostnames)
+# to use ssh we need to pass to read another file descriptor e.g 10
+while read -u10 line; do ssh -qo StrictHostKeyChecking=no $line "hostname -A"; done 10< file_to_read
+
+#count no of occurrences of str1 and str2 my_file
+for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 
 #---------------------------------Openssl--------------------------------------------------
 
