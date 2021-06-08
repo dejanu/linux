@@ -141,6 +141,7 @@ Processes are created through different **system calls** (routine call designate
  
  * When the user types a command in the shell a new process is created (using **fork** from the user's login shell then the command is loaded onto child process space via **exec** system call)
 
+* Whenever we run any command in a Bash shell, a **subshell** is created by default, and a new child process is spawned (forked) to execute the command. When using **exec**, however, the command following exec replaces the current shell. This means no subshell is created and the current process is replaced with this new command
  
 -----------------------------------------------------------------------------------------------------------------------------
 
