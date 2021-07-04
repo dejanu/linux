@@ -5,6 +5,9 @@ $ uname -a
 $ uname -r
 $ cat /proc/version
 
+# change the command prompt
+export PS1="linux_machine> "
+
 # Display information about CPU arhitecture
 $ /usr/bin/lscpu
 $ cat /proc/cpuinfo
