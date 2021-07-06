@@ -227,6 +227,7 @@ $ fuser -uvm FILE
 #-----------------------FIlE-101------------------------------------------------------------------
 
 # Print to STDOUT and redirect to file in the same time
+# tee cmd read from STDIN and write simultaneously to both STDOUT and one or more files
 ./script.sh |& tee output_file  
 
 # Count lines,chars:
