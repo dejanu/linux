@@ -72,6 +72,11 @@ $ ip addr  (with no arguments default to #ip address show)
 $ hostname -i
 $ hostname -I
 
+# grabb your local, NAT'd IP address
+ifconfig  
+
+# grabb the public IP provided to you by your ISP.
+curl ifconfig.me
 
 # dig — DNS lookup utility.
 # nslookup — Query a name server for information about a remote host.
