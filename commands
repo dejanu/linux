@@ -307,7 +307,7 @@ echo -e "\e[1;32m text color change \e[0m"
 while IFS= read -r line; do cp $line /tmp; done < file_to_read
 
 # read file line by line - each line is a FQDN - and run curl FQDN/metrics endpoint and COLOR OUTPUT
-while IFS= read -r line; do echo -e "\033[1;4;32;41m$s exposed metrics are: \e[0m";curl -s http://$s:8000/metrics|awk '{print $1}' | sort | uniq -u;done<tenants  
+while IFS= read -r s; do echo -e "\033[1;4;32;41m$s exposed metrics are: \e[0m";curl -s http://$s:8000/metrics|awk '{print $1}' | sort | uniq -u;done<file_to_read   
 
 # read reads from stdin the < redirects stdin from a file (which contains FQDN hostnames)
 # to use ssh we need to pass to read another file descriptor e.g 10
