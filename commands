@@ -323,21 +323,33 @@ for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
 # It is a useful tool for investigating SSL/TLS certificate-based plugins, 
 # and for confirming that a line of secure communications is available. 
 
-  timeout 2 openssl s_client -connect HOST:PORT ; if [ $? -eq 24 ] ; then echo "Timeout" ; fi
-  timeout 2 openssl s_client -connect HOST:PORT ;  if [ $? -eq 24 ] ; then echo "Timeout" ; fi
- 
-## Verify if port is open
-  openssl s_client -connect <URL or IP>:<port>
-  head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
+timeout 2 openssl s_client -connect HOST:PORT ; if [ $? -eq 24 ] ; then echo "Timeout" ; fi
+timeout 2 openssl s_client -connect HOST:PORT ;  if [ $? -eq 24 ] ; then echo "Timeout" ; fi
 
-## check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
+## Verify SSL connection SSL connection and print the SSL certificate
+openssl s_client -connect <URL or IP>:<port>
+head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
+  
+  
+## A TCP/IP network connection may be either blocked, dropped, open, or filtered leadin to Layer4 connection problem, info: "Connection refused" - timeout
+## Connection refused has 2 cases: no process is listening on IP:PORT or the port is blocked by Firewall
+
+
+## CLIENT SIDE: check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
  nc -z -v 192.168.10.12 22
  
-## check UDP port connetivity: nc -z -v -u [hostname/IP address] [port number]
+## CLIENT SIDE: check UDP port connetivity: nc -z -v -u [hostname/IP address] [port number]
 nc -z -v -u 192.168.10.12 123
 
-# check all open ports
+# CLIENT SIDE: check all open ports
 nmap <IP>
+
+# SERVER SIDE: -t TCP -u UDP sockets
+netstat -tulpn | grep LISTEN
+sudo lsof -i -P -n | grep LISTEN
+sudo ss -tulpn | grep LISTEN
+sudo lsof -i:22 ## see a specific port such as 22 ##
+sudo nmap -sTU -O IP-address-Here
 
 #---------------------------------Tricks--------------------------------------------------
 
