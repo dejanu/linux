@@ -330,6 +330,14 @@ for i in "str1'" "str2'"; do echo $i; grep $i my_file | wc -l; done
   openssl s_client -connect <URL or IP>:<port>
   head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
 
+## check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
+ nc -z -v 192.168.10.12 22
+ 
+## check UDP port connetivity: nc -z -v -u [hostname/IP address] [port number]
+nc -z -v -u 192.168.10.12 123
+
+# check all open ports
+nmap <IP>
 
 #---------------------------------Tricks--------------------------------------------------
 
