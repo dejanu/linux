@@ -145,8 +145,13 @@ https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-
 >> mount /dev/sdaX /media/usb_created_dir %% mount volume or  mount /dev/sdaX /mnt/usb_created_dir
 >> umount /dev/sdaX /media/usr_created_dir
 
-mount | grep "^/dev/sda"  // attach the filesystem found on some device
-ls /dev/sd*  //view attached filessytems
+//view attached filessytems and their type 
+df -hT | grep sda
+ls /dev/sd*  
+
+#list block devices TYPE(disk, partition) and mountpoints
+lsblk -l
+
 cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
 
 
