@@ -87,9 +87,6 @@ curl ifconfig.me
 $ host <ip>
 
 
-
-
-
 echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
 %%% list all ports for TCP and UDP connections
@@ -483,6 +480,10 @@ $ df -hP
 
 $ mount | grep /dev/mapper/systemvg-homelv
 /dev/mapper/systemvg-homelv on /home type xfs (rw,nosuid,nodev,noexec,relatime,seclabel,attr2,inode64,noquota)
+
+
+# for with awk AWK and IF
+for i in $(oc get nodes | awk 'FNR>1 {print $2}');do if [[ $i != 'Ready' ]];then echo $i;fi;done
 
 
 
