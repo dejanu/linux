@@ -329,8 +329,8 @@ timeout 2 openssl s_client -connect HOST:PORT ;  if [ $? -eq 24 ] ; then echo "T
 
 ## Verify/Debug SSL connection SSL connection and print the SSL certificate
 
-openssl s_client -connect <URL or IP>:<port> showcerts
-openssl s_client -connect <URL or IP>:<port> -proxy p<URL or IP>:<port>
+openssl s_client -connect <URL or IP>:<port> -showcerts
+openssl s_client -connect <URL or IP>:<port> -proxy <URL or IP>:<port>
 openssl s_client -connect <URL or IP>:<port> -prexit
 
 head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
