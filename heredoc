@@ -1,0 +1,26 @@
+# Heredoc heredocs
+
+# Variable expansion is the default behavior inside of here-docs
+
+tee file_name.ini > /dev/null <<EOF
+customer=some_customer
+environment=prod_group
+jks_filename=my_jks_file.jks
+jks_pass=xyz
+pfx_filename=${SOME_VAR}
+pfx_pass=abc
+command=replace
+EOF
+
+
+# Without vars expansion
+
+cat > file_name.ini <<- "EOF"
+customer=some_customer
+environment=prod_group
+jks_filename=my_jks_file.jks
+jks_pass=xyz
+pfx_filename=yeep
+pfx_pass=abc
+command=replace
+EOF
