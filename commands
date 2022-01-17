@@ -15,7 +15,6 @@ $ cat /proc/cpuinfo
 # total  amount  of  free  and used physical and swap memory in the system
 $ free -m
 
-
 # Redhat version
 $ cat /etc/redhat-release
 
@@ -38,7 +37,6 @@ $ watch df -h
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
 # Display all the SHELL/ENVIRONMENT  variables
-
 $ set
 $ env
 
@@ -72,10 +70,10 @@ $ ip addr  (with no arguments default to #ip address show)
 $ hostname -i
 $ hostname -I
 
-# grabb your local, NAT'd IP address
+# grab your local, NAT'd IP address
 ifconfig  
 
-# grabb the public IP provided to you by your ISP.
+# grab the public IP provided to you by your ISP.
 curl ifconfig.me
 
 # dig — DNS lookup utility.
@@ -85,16 +83,12 @@ curl ifconfig.me
 
 # DNS and reverse DNS lookups (converting domain names to IP addresses and vice versa)
 $ host <ip>
+$ echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
 
-
-echo 0 >/proc/sys/net/ipv4/icmp_echo_ignore_all  ### 0: renable ping reponse 1: disable ping reponse 0  
-
-%%% list all ports for TCP and UDP connections
+# List all ports for TCP and UDP connections
 netstat -tulpn 
 
-
-%%% list all socket on which an app listens
-
+# List all socket on which an app listens
 tcpid=$(ps aauxfww  | grep tcserver32 | grep -v grep  |  awk '{print $2}') ; lsof -nP -p $tcpid | grep LISTEN
 
 #change hostname
@@ -102,7 +96,7 @@ vim /etc/hostname
 vim /etc/hosts
 
 # DNS resolution(errors like ssh can not resolve hostname or could not resolve DNS ) - 
-A match found in the /etc/hosts file will be used before any DNS entry
+# A match found in the /etc/hosts file will be used before any DNS entry
 
 vim /etc/hosts and add ip and domain name
 vim /etc/resolv.conf
@@ -136,26 +130,26 @@ https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-
 # In order to automatically mount file at boot modify the os filesystem table  /etc/fstab. 
 # In general you should mount to /mnt directory
 
->> mount -v %% view mount points
->> findmnt
+$ mount -v %% view mount points
+$ findmnt
 
->> mount /dev/sdaX /media/usb_created_dir %% mount volume or  mount /dev/sdaX /mnt/usb_created_dir
->> umount /dev/sdaX /media/usr_created_dir
+$ mount /dev/sdaX /media/usb_created_dir %% mount volume or  mount /dev/sdaX /mnt/usb_created_dir
+$ umount /dev/sdaX /media/usr_created_dir
 
-//view attached filessytems and their type 
-df -hT | grep sda
-ls /dev/sd*  
+# view attached filessytems and their type 
+$ df -hT | grep sda
+$ ls /dev/sd*  
 
-#list block devices TYPE(disk, partition) and mountpoints
-lsblk -l
+# List block devices TYPE(disk, partition) and mountpoints
+$ lsblk -l
 
-cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
+$ cat /sys/bus/usb/devices/*/product | grep STICK_NAME //view inserted USBs  
 
 
 # In linux and macOS each file/directory is represented by a INODE (data structure that stores all the information about the file exept his
 name and actual data)
 
-# display the INODE number
+# display the INODE inode number
 $ ls -li | egrep "hard|soft"
 
 6682093 -rw-r--r--  2 us81jt  staff     99 Jan  3 13:36 hard
@@ -220,17 +214,9 @@ $ lsof FILE
 # Display all processes usign the file and the user id
 $ fuser -uvm FILE
 
-
 # View process opened by user
- $ lsof -u USER
+$ lsof -u USER
    
-
-
-
-
-
-
-
 #-----------------------FIlE-101------------------------------------------------------------------
 
 # Print to STDOUT and redirect to file in the same time
@@ -376,7 +362,6 @@ cd -
 %Execute last command (with sudo)
 sudo !!
 
-
 %Quick awk to get the first collumn
 ps aux | awk '{print $1}`
 
@@ -396,7 +381,6 @@ diff -y file1 file2
 
 % get the current shell ($0 is the name of the running process)
 echo $0
-
 
 % echo  the PID of the current process.
 echo $$ 
@@ -429,12 +413,8 @@ $ ssh sk@192.168.225.22 "uname -r && lsb_release -a"
 $ ssh sk@192.168.225.22 "uname -r ; lsb_release -a"
 
 
-
 % Pass STDIN as argument to bin which expects a file e.g: strings file.txt
-
 strings - file.txt 
-
-
 while read -r line; do echo $line | strings  /dev/stdin; done < data.txt
 
 
@@ -450,26 +430,17 @@ and that opens the standard input (as a separate file descriptor) and reads that
 # create tree alias with function call
 alias tree='function tree(){ find ${1:-.} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"; unset -f tree;}; tree'
 
- 
-
-# on liner for defining and calling a function with parameters : $alp <pass_ARG>
+ # on liner for defining and calling a function with parameters : $alp <pass_ARG>
 alias alp='f(){ /path/to/bin  --flag1 -u 'name' --flag2_passed_as_ARG $1; unset -f f; }; f'
 
- 
-
- 
-
-# smtp mailx client
-
+ # smtp mailx client
 mailx -s "test" -S from=stmp.com alex@d.com
 
 echo "Email from me"|mailx -s "Warn Expiry " -S from=$(hostname -A) alex@.dcom
 EOT
 .
 
- 
-
-# create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
+ # create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
 find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz"  -type f -mtime +7 -print0 | tar -czf /path/to/dir/ /$(date '+%Y-%m-%d').tar.gz" --null -T - && find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz" -type f -mtime +7 -print0 | xargs -0 rm  || echo "NOK"
 
 
@@ -485,6 +456,19 @@ $ mount | grep /dev/mapper/systemvg-homelv
 # for with awk AWK and IF
 for i in $(oc get nodes | awk 'FNR>1 {print $2}');do if [[ $i != 'Ready' ]];then echo $i;fi;done
 
+
+# systemd-journald uses completely different method of storing event messages from syslog protocol aka journalctl - Query the systemd journal
+# journal as written by systemd-journald.service: systemctl status systemd-journald.service : drwxrwxr-x 11 root syslog 4.0K Jan 17 06:25 /var/log
+
+# check configuration
+journalctl -u systemd-journald -o json-pretty
+
+# check archived and active journals take up size in the file system.
+journalctl --disk-usage
+
+# clean logs
+sudo journalctl --rotate # if rotate is not recognized --since today
+sudo journalctl --vacuum-time=1s
 
 
 
