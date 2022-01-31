@@ -292,6 +292,11 @@ echo -e "\e[1;32m text color change \e[0m"
 # find files from a certain location and print only the file names (print all wars files)
 find /etc/warfiles -type f -name "*.war" -printf "%f\n"
 
+# get the filename and the extension
+A=test.sh
+file_name=${A%.*}
+file_extension=${A#*.}
+
 #---------------------------------Reading from files--------------------------------------------------
 
 #read file line by line and run cmd for each line
