@@ -40,6 +40,10 @@ https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-
 $ set
 $ env
 
+# check if the env var exist or it is set otherwise give it a default value
+$ aka parameter_expression ${parameter:-word}
+test=${test:-"default_value"}
+
 # Verify which shell your're running:
 $ echo $SHELL
 
