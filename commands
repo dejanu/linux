@@ -459,7 +459,7 @@ $ mount | grep /dev/mapper/systemvg-homelv
 # for with awk AWK and IF
 for i in $(oc get nodes | awk 'FNR>1 {print $2}');do if [[ $i != 'Ready' ]];then echo $i;fi;done
 
-
+#------------------------Logging cleanup---------------------------------------------------------
 # systemd-journald uses completely different method of storing event messages from syslog protocol aka journalctl - Query the systemd journal
 # journal as written by systemd-journald.service: systemctl status systemd-journald.service : drwxrwxr-x 11 root syslog 4.0K Jan 17 06:25 /var/log
 
@@ -473,8 +473,15 @@ journalctl --disk-usage
 sudo journalctl --rotate # if rotate is not recognized --since today
 sudo journalctl --vacuum-time=1s
 
+# remove the content of a file.log without deleting it
+: > file.log
+cat /dev/null > file.log
 
+# clear file to 0 bytes
+truncate -s 0 file.log
 
+# clear file to 100 bytes
+truncate -s 100 file.log
 
 
 
