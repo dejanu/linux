@@ -477,10 +477,10 @@ sudo journalctl --vacuum-time=1s
 : > file.log
 cat /dev/null > file.log
 
-# clear file to 0 bytes
+# shrink or extend the size of a file to the specified size file, e.g. shrink file.log to 0 bytes
 truncate -s 0 file.log
 
-# clear file to 100 bytes
+# chrink or extend the size of a file to the specified size file, e.g. shrink file.log to 100 bytes
 truncate -s 100 file.log
 
 
