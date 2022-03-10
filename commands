@@ -218,9 +218,22 @@ $ lsof -u USER
    
 #-----------------------FIlE-101------------------------------------------------------------------
 
-# Print to STDOUT and redirect to file in the same time
-# tee cmd read from STDIN and write simultaneously to both STDOUT and one or more files
-./script.sh |& tee output_file  
+### Secure Copy -rp recurse and preserve modification times
+
+# Pull REMOTE to LOCAL
+$ scp user1@remotehost.edu:foobar.txt /some/local/directory
+
+# Push LOCAL to REMOTE
+$ scp foobar.txt user1@remotehost.edu:/some/remote/directory
+
+# using private key
+scp -i ~/.ssh/id_rsa root@hostname.net:/tmp/SPECjvm2008-bare.7z /tmp
+
+# between remote machines
+scp user1@host1.com:/files/file.txt user2@host2.com:/files
+
+# multiple files
+scp user@host1.com:/dir/{file1,file2,file3} /some/local/dir
 
 # Count lines,chars:
 wc -n
@@ -228,7 +241,6 @@ wc -c
 
 # Copy the folder with all of his content (a: preserve attributes r:recursive)
 cp -avr /var/lib/rpm /tmp/backups
-
 
 # Grep in file content using grouping
 grep -i -E "first|second|third" file.txt
@@ -261,16 +273,12 @@ echo "$inf"
 cat test.txt
 sed -i "s/hello/$inf/g" /home/cg/root/test.txt    %%%%%% give sed a variable as a parameter
 
-
-
 tr 'E' 'e'         %%%%%%%    replaces E with e
 tr -d 'e'           %%%%%    delete "e" character
 tr -d [:digit:]     %%%%  delete all digits
 tr -cd [:digit:]    %%%%% delete all chars except digits
 tr -cd [:print:]     %%%% remove all non printable characters
 tr -s '\n' ' ' < file.txt %%%%  translate all newlines into spaces and make the result as a single line.
-
-
 
 
 # Select only the entries in a particular column, search util a desired delimiter " " and returning only the 9th field
@@ -281,7 +289,6 @@ cut -c2-3 file.txt //range 2-3th collumns
 #view differences between two files
 diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
-
 
 #change color
 echo -e "\e[1;32m text color change \e[0m"
@@ -349,6 +356,10 @@ sudo lsof -i:22 ## see a specific port such as 22 ##
 sudo nmap -sTU -O IP-address-Here
 
 #---------------------------------Tricks--------------------------------------------------
+
+# Print to STDOUT and redirect to file in the same time
+# tee cmd read from STDIN and write simultaneously to both STDOUT and one or more files
+./script.sh |& tee output_file  
 
 # file descriptors and redirection
 0: std input
