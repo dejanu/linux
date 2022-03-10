@@ -98,12 +98,16 @@ vim /etc/resolv.conf
 
 
 
-/etc/resolv.conf: Lists nameservers that are used by your host for DNS resolution. 
-                If you are using DHCP, this file is automatically populated with DNS record issued by DHCP server.
-/etc/hosts/: It is just a static lookup method for resolution.
-/etc/nsswitch.conf: It defined order of resolution. 
-Who should it consult first for resolution, a DNS or a host file? For example, if the file has following configuration hosts: 
-files dns then /etc/hosts 
+/etc/resolv.conf: 
+Lists nameservers that are used by your host for DNS resolution. 
+If you are using DHCP, this file is automatically populated with DNS record issued by DHCP server.
+
+/etc/hosts/: 
+It is just a static lookup method for resolution.
+
+/etc/nsswitch.conf: 
+It defined order of resolution.Who should it consult first for resolution, a DNS or a host file? 
+For example, if the file has following configuration hosts: files dns then /etc/hosts 
 file will be checked first for resolution, if domain is still un-resolvable, DNS will then be consulted.
 
 So the order of name resolution is actually defined in /etc/nsswitch.conf, which usually has this entry:
@@ -346,64 +350,73 @@ sudo nmap -sTU -O IP-address-Here
 
 #---------------------------------Tricks--------------------------------------------------
 
-% verify history activation aka $set +x
+# file descriptors and redirection
+0: std input
+1: std output
+2: std error
+
+# redirect 1 to /dev/null then 2  is redirected to 1 which is now to /dev/null
+./binary > /dev/null 2>&1
+./binary &>/dev/null
+
+# verify history activation aka $set +x
 $ set -o | grep history
 $ cat << EOF >> ~/.bash_profile
 set -o history
 EOF
 
-% check SHELL
+# check SHELL
 ps -p $(echo $$)
 
-%Change hostname name
+# change hostname name
 vim /etc/hostname
 vim /etc/hosts
 
-%Change back to last dir
+# Change back to last dir
 cd -
 
-%Execute last command (with sudo)
+# Execute last command (with sudo)
 sudo !!
 
-%Quick awk to get the first collumn
+# Quick awk to get the first collumn
 ps aux | awk '{print $1}`
 
-% Display file or file system status
+# Display file or file system status
 stat file
 stat dir
 
-% Verify file type
+# Verify file type
 file file_name
 
-%Show WHO is logged 
+# Show WHO is logged 
 w
 
-%quick diff
+# quick diff
 vimdiff file1 file2
 diff -y file1 file2
 
-% get the current shell ($0 is the name of the running process)
+# get the current shell ($0 is the name of the running process)
 echo $0
 
-% echo  the PID of the current process.
+# echo  the PID of the current process.
 echo $$ 
 
-% echo the return code of the last executed command. 
+# echo the return code of the last executed command. 
 echo $? 
 
-% echo  the number of arguments in $*
+# echo  the number of arguments in $*
 echo $# 
 
-% echo the list of arguments passed to the current process
+# echo the list of arguments passed to the current process
 echo $* 
 
-% get hostname FQDN
+# get hostname FQDN
 hostname -A
 
-% view ascii from binary file
+# view ascii from binary file
 strings file_name
 
-% Update bash_profile from cli
+# Update bash_profile from cli
 $ cat << EOF >> ~/.bash_profile
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -429,21 +442,20 @@ The echo command and the pipe sends the contents of the specified variable to th
 and that opens the standard input (as a separate file descriptor) and reads that.
 
 
-
 # create tree alias with function call
 alias tree='function tree(){ find ${1:-.} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"; unset -f tree;}; tree'
 
- # on liner for defining and calling a function with parameters : $alp <pass_ARG>
+# on liner for defining and calling a function with parameters : $alp <pass_ARG>
 alias alp='f(){ /path/to/bin  --flag1 -u 'name' --flag2_passed_as_ARG $1; unset -f f; }; f'
 
- # smtp mailx client
+# smtp mailx client
 mailx -s "test" -S from=stmp.com alex@d.com
 
 echo "Email from me"|mailx -s "Warn Expiry " -S from=$(hostname -A) alex@.dcom
 EOT
 .
 
- # create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
+# create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
 find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz"  -type f -mtime +7 -print0 | tar -czf /path/to/dir/ /$(date '+%Y-%m-%d').tar.gz" --null -T - && find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz" -type f -mtime +7 -print0 | xargs -0 rm  || echo "NOK"
 
 
@@ -482,7 +494,4 @@ truncate -s 0 file.log
 
 # chrink or extend the size of a file to the specified size file, e.g. shrink file.log to 100 bytes
 truncate -s 100 file.log
-
-
-
 
