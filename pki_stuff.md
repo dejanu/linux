@@ -26,8 +26,11 @@ head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then e
 
 * CLIENT SIDE: check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
  ```bash
- nc -z -v 192.168.10.12 22
- ```
+nc -z -v 192.168.10.12 22
+
+# set timeout for CONNECTS
+nc -zvw 2 192.168.10.12 <PORT>
+```
 * CLIENT SIDE: check UDP port connetivity: nc -z -v -u [hostname/IP address] [port number]
 ```bash
 nc -z -v -u 192.168.10.12 123
