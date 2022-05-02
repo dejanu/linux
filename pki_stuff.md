@@ -76,3 +76,9 @@ openssl s_client -msg -debug -state -connect google.com:443
 ```bash
 nslookup -type=any google.com
 ```
+---
+
+* Check expired certs:
+```bash
+openssl x509 -in fullchain.cer -noout -text
+```
