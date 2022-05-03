@@ -87,9 +87,14 @@ nslookup -type=any google.com
 ```
 ---
 
-* Check expired certs:
+* Display content of certs:
 ```bash
 openssl x509 -in fullchain.cer -noout -text
-openssl s_client -connect <hostname>:<PORT> -showcerts |  openssl x509 -noout  -dates
+openssl x509 -in fullchain.cer -noout -date
 
+openssl x509 -in acs.cdroutertest.com.pem -text
+openssl x509 -in MYCERT.der -inform der -text
+
+openssl s_client -connect <hostname>:<PORT> -showcerts |  openssl x509 -noout  -dates
+openssl s_client -showcerts -servername myserver.com -connect myserver.com:443 </dev/null
 ```
