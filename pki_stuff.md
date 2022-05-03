@@ -33,15 +33,17 @@ head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then e
     # the port is blocked by Firewall
 ```
 
-* CLIENT SIDE: check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
+* CLIENT SIDE:
  ```bash
+# check TCP port connectivity: nc -z -v [hostname/IP address] [port number]
 nc -z -v 192.168.10.12 22
 
 # set timeout for CONNECTS
 nc -zvw 2 192.168.10.12 <PORT>
 ```
-* CLIENT SIDE: check UDP port connetivity: nc -z -v -u [hostname/IP address] [port number]
+* CLIENT SIDE: 
 ```bash
+# check UDP port connectivity: nc -z -v -u [hostname/IP address] [port number]
 nc -z -v -u 192.168.10.12 123
 ```
 * CLIENT SIDE: check all open ports
