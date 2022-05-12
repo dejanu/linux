@@ -1,12 +1,11 @@
 
 * Extensions:
 ```bash
-PEM (.pem): Base64 encoded form of DER certificate. Certificate and private key are stored in different files.
-DER (.der): Binary form of PEM certificate used on Java platform. Certificate and private key are stored in different files.
-PEM (.pem): Base64 encoded form of DER certificate. Certificate and private key are stored in different files.
-CER (.cer): Binary form. Contains certificate owner information and public and private keys.
-PKCS7 (.p7b): ASCII code. Contains the certificate but not the private key.
-PKCS12 (.pfx or .p12): Binary form used on Windows platforms. Stores the private key with the public key.
+**CER (.cer)** or **CRT (.crt)**: certificate could be PEM or DER encoded, contains certificate owner information and public and private keys.
+**PEM (.pem)**: Base64 encoded form of DER certificate. Certificate and private key are stored in different files.
+**DER (.der)**: Binary form of PEM certificate used on Java platform. Certificate and private key are stored in different files.
+**PKCS7 (.p7b)**: ASCII code. Contains the certificate but not the private key.
+**PKCS12 (.pfx or .p12)**: Binary form used on Windows platforms. Contains certificate(s) private and public key. (it's password protected)
 ```
 
 * OpenSSL's s_client command can be used to analyze client-server communication,  including whether a port is open and if that port is capable of accepting an SSL/TLS connection. 
