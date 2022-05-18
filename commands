@@ -462,6 +462,8 @@ EOT
 # create archive with timestamp for files older than 7 days ( find with ARGS faster than find with EXEC)
 find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz"  -type f -mtime +7 -print0 | tar -czf /path/to/dir/ /$(date '+%Y-%m-%d').tar.gz" --null -T - && find /path/to/dir/ -maxdepth 1 ! -name "*.tar.gz" -type f -mtime +7 -print0 | xargs -0 rm  || echo "NOK"
 
+# nohup to run a program or script async and capturing the output and you can log out also ;)
+nohup ./important_script.sh > output.txt &
 
 ------------------------------Volume mounted with NOEXEC
 Permission denied even though -rwxrwxrwx. => Volume mounted with NOEXEC flag. Verify
