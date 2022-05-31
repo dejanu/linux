@@ -91,7 +91,7 @@ nslookup -type=any google.com
 * Display content of certs:
 ```bash
 openssl x509 -in fullchain.cer -noout -text
-openssl x509 -in fullchain.cer -noout -date
+openssl x509 -in fullchain.cer -noout -dates
 
 openssl x509 -in acs.cdroutertest.com.pem -text
 openssl x509 -in MYCERT.der -inform der -text
