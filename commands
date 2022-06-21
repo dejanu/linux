@@ -290,9 +290,10 @@ cut -c2-3 file.txt //range 2-3th collumns
 diff file1 file2
 diff -s file1.txt file2.txt %%%outputs files are identical if they are
 
-#change color
-echo -e "\e[1;32m text color change \e[0m"
-
+# COLOR stuff 
+echo -e "\e[1;31m RED \e[0m"
+echo -e "\e[1;32m GREEN \e[0m"  # <-- [0 means not bold
+echo -e "\e[1;33m YELLOW \e[0m " # <-- [1 means bold
 
 # prints colored text
 print_style () {
