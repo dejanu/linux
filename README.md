@@ -20,6 +20,7 @@ ls -l /proc/$$/fd
 # where type can be d(directory) c(character special file), b(block special file), l(symbolic ink), p(named pipe), s(socket), f(normal file)
 find -type <d/c/b/l/p/s/f>
 ```
+---
 # Pipelines allow composition
 
 - anything that can read or write can be composed. For any process we have three standard file things: what it can read (stdin) and the where it can write (stdout and stderr)
@@ -27,6 +28,7 @@ find -type <d/c/b/l/p/s/f>
 # The shell is the gateway to Everything 
 - we have sh (Bourne shell) , chs (C shell), bash (Bourne-again shell), ksh (Korn shell) and last but not least zsh  
 
+---
 # Everything running is a process
 
 ## Processes aka tasks
@@ -34,8 +36,6 @@ find -type <d/c/b/l/p/s/f>
 - In a basic form Linux processes can be vizualized as a running instance of a program  
 - Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
 - Every process is started by a parent, except init process which is started by the linux kernel and has PID of 1  
-
-
 
 * Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
 				     - to bring a process to foreground just run  `fg %1`
