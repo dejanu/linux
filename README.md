@@ -1,8 +1,35 @@
-# Everything is a file
+# Everything is a file design
 
-- Files are files, devices are files, processes are files
+- Files are files, devices drivers are files, directories, system configuration, kernel parameters, and... even processes are all represented as files on the filesystem. 
+- Everything, whether a plain-text file (for example,` /etc/hosts`), a block or character special device driver (for example, `/dev/sda`), or kernel state and configuration (for example, `/proc/cpuinfo`) is represented as a file.
 
-# Processes aka tasks
+
+```bash
+# let's check how my shell was started, using the PID of the current process, and levreaging everithing is a file design
+ls -l /proc/$$/cmdline
+
+# let's check the file descriptors of it
+ls -l /proc/$$/fd
+```
+---
+# Each command does one thing well
+
+- finding things is very easy:
+
+```bash
+# where type can be d(directory) c(character special file), b(block special file), l(symbolic ink), p(named pipe), s(socket), f(normal file)
+find -type <d/c/b/l/p/s/f>
+```
+# Pipelines allow composition
+
+- anything that can read or write can be composed. For any process we have three standard file things: what it can read (stdin) and the where it can write (stdout and stderr)
+
+# The shell is the gateway to Everything 
+- we have sh (Bourne shell) , chs (C shell), bash (Bourne-again shell), ksh (Korn shell) and last but not least zsh  
+
+# Everything running is a process
+
+## Processes aka tasks
 
 - In a basic form Linux processes can be vizualized as a running instance of a program  
 - Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
@@ -26,7 +53,7 @@ $ jobs
 ```
 To bring a process to foreground run `$ fg %2`  
 
-`&` - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell, to create a **job** ( command or a task that is up and running but hasn't yet finished and it's managed by the shell) just append the **control operator** . 
+`&` - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell, to create a **job** (command or a task that is up and running but hasn't yet finished and it's managed by the shell) just append the **control operator** . 
 
 
 Ctrl + Z - suspends/stops the running process sending SIGSTOP signal to the process and SUSPENDS it .  
