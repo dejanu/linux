@@ -3,7 +3,6 @@
 - Files are files, devices drivers are files, directories, system configuration, kernel parameters, and... even processes are all represented as files on the filesystem. 
 - Everything, whether a plain-text file (for example,` /etc/hosts`), a block or character special device driver (for example, `/dev/sda`), or kernel state and configuration (for example, `/proc/cpuinfo`) is represented as a file.
 
-
 ```bash
 # let's check how my shell was started, using the PID of the current process, and levreaging everithing is a file design
 ls -l /proc/$$/cmdline
