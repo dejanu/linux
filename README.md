@@ -1,3 +1,7 @@
+# Everything is a file
+
+- Files are files, devices are files, processes are files
+
 # Processes aka tasks
 
 - In a basic form Linux processes can be vizualized as a running instance of a program  
