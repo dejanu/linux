@@ -58,12 +58,10 @@ To bring a process to foreground run `$ fg %2`
 
 `&` - control operator ( e.g: vim & or .\script.sh & ) the shell executes the command in the backround shell, to create a **job** (command or a task that is up and running but hasn't yet finished and it's managed by the shell) just append the **control operator** . 
 
-
 Ctrl + Z - suspends/stops the running process sending SIGSTOP signal to the process and SUSPENDS it .  
 Ctrl + C - terminate/intrerrupts the running process by sending SIGINT  signal.  
 
-
-Signals are a fundamental way to control linux processes . 
+Signals are a fundamental way to control linux processes. 
 A process cannot send a signal to another process it must ask the kernel to send the signal via a sys-call .  
 The `kill` command allows you to send a signal to any application.  Usage `$ kill -9 PID` ( of signal number is not given SIGTERM -15 is the default one): 
 
