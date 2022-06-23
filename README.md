@@ -19,6 +19,8 @@ ls -l /proc/$$/fd
 # where type can be d(directory) c(character special file), b(block special file), l(symbolic ink), p(named pipe), s(socket), f(normal file)
 find -type <d/c/b/l/p/s/f>
 ```
+- measuring things is very easy, disk usage `du` and at the file-system level `df`
+ 
 ---
 # Pipelines allow composition
 
