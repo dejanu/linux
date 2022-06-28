@@ -36,10 +36,17 @@ find -type <d/c/b/l/p/s/f>
 
 ## Processes aka tasks
 
-- In a basic form Linux processes can be vizualized as a running instance of a program  
+- In a basic form, Linux processes can be visualised as a running instance of a program  
 - Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
-- Every process is started by a parent, except init process which is started by the linux kernel and has PID of 1  
+- Every process is started by a parent, except **init** process which is started by the Linux kernel and has PID of 1, check:
+```bash
 
+# check the process with PID 1
+ps -p 1
+
+# it can be systemd or Upstart, or if it is init it might be a simlink to Upstart or systemd otherwhise is certain that you have SysV init
+ls -l /sbin/init 
+```
 * Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
 				     - to bring a process to foreground just run  `fg %1`
 
