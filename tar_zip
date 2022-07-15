@@ -1,4 +1,5 @@
 # tar - only archives the files and their metadata in one file (bundle)
+# tar - auto-detects compression type and extracts the archive
 
 # .tar == uncompressed archive file
 # .zip == (usually) compressed archive file
@@ -14,6 +15,8 @@ tar -czvf archive.tar.gz /home/ubuntu/Downloads /usr/local/stuff /home/ubuntu/Do
 # create a .tar archive and the compress it with  bzip2 compression : -j (bzip2  slower, but it compresses a bit more)
 tar -cjvf archive.tar.bz2 stuff
 
+# simply extract
+tar -xf archive.tar.bz2
 
 # extract archive in current directory or in /tmp dir using -C switch
 tar -xzvf archive.tar.gz
