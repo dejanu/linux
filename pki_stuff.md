@@ -8,6 +8,8 @@
 - **PKCS12 (.pfx or .p12)**: Binary form used on Windows platforms. Contains certificate(s) private and public key. (it's password protected)
 
 --------------------------------------------------------------------------------------------------
+Flow: generate private key and certificate signing request (CSR) -> the CSR needs to be approved and signed by a signer, and the digital signature on the new certificate is provided by the Certificate Authority (CA) -> get the certificate CER and CRT extensions are nearly synonymous, certificates may be encoded as binary DER or as ASCII PEM.
+--------------------------------------------------------------------------------------------------
 * OpenSSL's s_client command can be used to analyze client-server communication,  including whether a port is open and if that port is capable of accepting an SSL/TLS connection. 
 
 * Investigating SSL/TLS certificate-based connections and tests connectivity to an HTTPS service.
