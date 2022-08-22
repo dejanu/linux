@@ -502,3 +502,10 @@ truncate -s 0 file.log
 # chrink or extend the size of a file to the specified size file, e.g. shrink file.log to 100 bytes
 truncate -s 100 file.log
 
+# crontab example
+@reboot sleep 30 && docker start $(docker ps -aq) 1>$(date +/pack/log/docker-reboot-policy-%Y%m%dT%H%M%S) 2>&1
+
+# m h  dom mon dow   command / each day at 9AM
+0 9 * * * /usr/local/bin/kubectl delete po -l app.kubernetes.io/instance=fluent-bit -n logging >/home/dej/crontab.log 2>&1
+
+
