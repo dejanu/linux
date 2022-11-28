@@ -38,3 +38,19 @@ zipsplit -n 1048576 archive.zip
 
 #create foo files with size 20 mega  from the contents of bar dir
 zip -s 20m -r foo bar 
+
+----------------------------------------------------ToShareWithOthers------------------------
+
+# download with curl or wget
+curl -OL https://file.tar.gz
+
+# always check the content
+tar -tvf file.tar
+
+# extract the tarball
+ tar -C /usr/local -xvf file.tar.gz
+ 
+ # append or prepend $PATH
+ export PATH=$PATH:/usr/local/<YOUR_TOOL>
+ 
+
