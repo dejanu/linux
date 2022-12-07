@@ -35,7 +35,7 @@ openssl s_client -connect <URL or IP>:<port> -prexit
 
 head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
 ```
-* A TCP/IP network connection may be either blocked, dropped, open, or filtered leadin to Layer4 connection problem, info: "Connection refused" - timeout:
+* A TCP/IP network connection may be either blocked, dropped, open, or filtered leading to Layer4 connection problems, info: "Connection refused" - timeout:
 
 ```bash
 # Connection refused has 2 cases: 
