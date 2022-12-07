@@ -1,5 +1,10 @@
+### SSL/TLS connection:
 
-* Extensions:
+- TLS (Transport Layer Security) is an improved version of SSL (in 1995 SSL 2.0 made by NETSCAPE)
+- Transition was done when from SSL3.0 we jumped to TLS1.0 
+- Test your app server in terms of TLS configuration, Cipher Suites and how to get an A+ Grade on https://www.ssllabs.com/
+
+### Extensions:
 
 - **CER (.cer)** or **CRT (.crt)**: certificate could be PEM or DER encoded, contains certificate owner information and public and private keys.
 - **PEM (.pem)**: Base64 encoded form of DER certificate. Certificate and private key are stored in different files.
@@ -9,7 +14,9 @@
 
 --------------------------------------------------------------------------------------------------
 ```bash
-Flow: generate private key and certificate signing request (CSR) -> the CSR needs to be approved and signed by a signer, and the digital signature on the new certificate is provided by the Certificate Authority (CA) -> get the certificate CER and CRT extensions are nearly synonymous, certificates may be encoded as binary DER or as ASCII PEM.
+Flow: generate private key and certificate signing request (CSR) -> the CSR needs to be approved and signed by a signer, and the digital signature on the new
+certificate is provided by the Certificate Authority (CA) -> get the certificate CER and CRT extensions are nearly synonymous, certificates may be encoded as binary 
+DER or as ASCII PEM.
 ```
 --------------------------------------------------------------------------------------------------
 * OpenSSL's s_client command can be used to analyze client-server communication,  including whether a port is open and if that port is capable of accepting an SSL/TLS connection. 
