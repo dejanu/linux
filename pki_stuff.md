@@ -3,6 +3,7 @@
 - TLS (Transport Layer Security) is an improved version of SSL (in 1995 SSL 2.0 made by NETSCAPE)
 - Transition was done when from SSL3.0 we jumped to TLS1.0 
 - Test your app server in terms of TLS configuration, Cipher Suites and how to get an A+ Grade on https://www.ssllabs.com/
+- Check WIKI for SSL: https://github.com/dejanu/linux/wiki/SSL
 
 ### Extensions:
 
