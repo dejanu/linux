@@ -245,3 +245,18 @@ The linker will first search any directories specified in the environment variab
 
 
 executing a file `. ./config.sh`  does not make any changes in the current shell, if intended, whereas the sourced file `source config.sh` makes the changes in the current shell itself.
+
+----------------------------------------------------------------------------------------------------------------------------
+*TTY* - terminal session connected to standard input
+- `pts` Pseudo terminals e.g SSH
+```bash
+# check users
+w
+
+# check current tty
+tty
+
+# kill tty
+pkill -9 -t pts/<NO>
+```
+
