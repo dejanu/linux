@@ -73,10 +73,13 @@ sudo nmap -sTU -O IP-address-Here
 * Check which TLS version is supported by the server
 ```bash
 
-# f you get the certificate chain and the handshake you know the system in question supports TLS
+# if you get the certificate chain and the handshake you know the system in question supports TLS
 openssl s_client -connect google.com:443 -tls1_2
 openssl s_client -connect google.com:443 -tls1_1
 openssl s_client -connect google.com:443 -tls1
+
+TLS stuff:
+openssl s_client -msg -debug -state -connect dr.dk:443
 
 ```
 
