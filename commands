@@ -13,13 +13,16 @@ $ /usr/bin/lscpu
 $ cat /proc/cpuinfo
 
 # get the number of CPU or cores
-  grep processor /proc/cpuinfo | wc -l
+ grep processor /proc/cpuinfo | wc -l
 
 # total  amount  of  free  and used physical and swap memory in the system
 $ free -m
 
 # Redhat version
 $ cat /etc/redhat-release
+
+# Ubunty version
+lsb_release -a
 
 # How long system has been running
 $ uptime
