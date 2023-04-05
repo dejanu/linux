@@ -34,6 +34,11 @@ openssl s_client -connect <URL or IP>:<port> -showcerts
 openssl s_client -connect <URL or IP>:<port> -proxy <URL or IP>:<port>
 openssl s_client -connect <URL or IP>:<port> -prexit
 
+# check TLS/SSL certificate expiration date
+DOM="your-www-domain-name-here"
+PORT="443"
+echo | openssl s_client -servername "$DOM" -connect "$DOM:$PORT" | openssl x509 -noout -dates
+
 head -n1 < /dev/tcp/<IP>/<PORT> 2>/dev/null >/dev/null; if [ $? -eq 0 ] ; then echo works ; else echo nowork ; fi
 ```
 * A TCP/IP network connection may be either blocked, dropped, open, or filtered leading to Layer4 connection problems, info: "Connection refused" - timeout:
