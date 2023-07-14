@@ -5,10 +5,17 @@ $ uname -a
 $ uname -r
 $ cat /proc/version
 
+# primary architecture of the machine:  M1 == ARM based vs. INTEL/AMD = x86
+# Debian and derivatives
+dpkg --print-architecture
+
+# RPM based systems
+rpm --eval '%{_arch}'
+
 # change the command prompt
 export PS1="linux_machine> "
 
-# Display information about CPU arhitecture
+# Display information about CPU architecture
 $ /usr/bin/lscpu
 $ cat /proc/cpuinfo
 
@@ -37,7 +44,6 @@ $ who
 
 # Execute "df -h", showing periodic updates
 $ watch df -h
-
 
 #---------------------------------Profiles & Shell-------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
