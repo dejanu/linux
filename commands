@@ -9,7 +9,7 @@ $ cat /proc/version
 # Debian and derivatives
 dpkg --print-architecture
 
-# RPM based systems
+# RPM-based systems
 rpm --eval '%{_arch}'
 
 # change the command prompt
@@ -44,6 +44,25 @@ $ who
 
 # Execute "df -h", showing periodic updates
 $ watch df -h
+
+#---------------------------------Quick Clean-------------------------------------------------
+# remove dangling images
+docker image prune -a
+
+# clean up these old kernels is to use 'autoremove' /var/cache/apt/archives
+sudo apt-get autoremove --purge
+sudo apt-get autoclean
+
+# CentOS/RHEL
+sudo yum clean all
+sudo dnf clean all
+# clean what is cached in / var / cache / apt
+sudo apt-get -s clean
+
+# if /var/log/journal is big
+journalctl --vacuum-time=10d
+
+systemctl restart syslog.service
 
 #---------------------------------Profiles & Shell-------------------------------------------------
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
