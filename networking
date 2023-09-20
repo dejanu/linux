@@ -36,7 +36,7 @@ $ hostname -I
 
 ## DNS - hierachical system of caching servers
 #  /etc/hosts (file for method for resolution for static lookup) will be used before any DNS entry
-#  /etc/resolf.conf (populated with DNS records issued by DHCP server) specifies the nameservers for resolver lookups,where it will actually use the DNS protocol for resolving the hostnames
+#  /etc/resolv.conf (populated with DNS records issued by DHCP server) specifies the nameservers for resolver lookups,where it will actually use the DNS protocol for resolving the hostnames
 
 # DNS and reverse DNS lookups (converting domain names to IP addresses and vice versa)
 $ host <ip>
@@ -49,8 +49,17 @@ $ host -a python.org
 
 
 -----------------------------------------------------------------------------------------------------------
-** PORT - 16 bit number, each IP on a device has 65,535 possible ports
-A port is an endpoint attache to an IP address, and ports are claimed by a process running on the host
+## PORT - 16 bit number, each IP on a device has 65,535 possible ports
+## A port is an endpoint attache to an IP address, and ports are claimed by a process running on the host
+
+ port 443 # to secure HTTPS traffic e.g sync with Azure AD
+ port 445 # file share
+ port 3389 # for Remote Desktop 
+ port 587 # to send outbound email by using authenticated SMTP relay
+ port 25 # is used by mail traffic
+ port 80 # is used for unsecured traffic, e.g download CRL (cert revocation list) to verify SSL certs
+ port 5671 # is used to send health information to Azure AD
+port 22 # default SSH port
 
 # view list of services and their assgined ports
 $ cat /etc/services
