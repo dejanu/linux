@@ -106,8 +106,20 @@ function ctrl_z(){
 ``` 
 
 Using `&` causes the program to run in the background, so you'll get a new shell prompt instead of blocking until the program ends. `nohup` and `disown` are largely unrelated; they suppress `SIGHUP` (hangup) signals so the program isn't automatically killed when the controlling terminal is closed.   
-`nohup` does this when the job first begins. If you don't nohup a job when it begins, you can use `disown` to modify a running job; with no arguments it modifies the current job, which is he one that was just backgrounded.
 
+`nohup` - run a command immune to hangups 
+`disown` - remove a job from the table of active jobs for the current shell. It is useful when you want to end a background process without killing it
+
+`nohup` do this when the job first begins. If you don't nohup a job when it begins, you can use `disown` to modify a running job; with no arguments it modifies the current job, which is he one that was just backgrounded.
+```bash
+nohup sleep 100 &
+jobs
+# will return
+# [1]+  Running                 nohup sleep 100 &
+disown %1
+jobs
+# the job will not be in the table of active jobs
+```
 -----------------------------------------------------------------------------------------------------
 **Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process (e.g. sshd which is started by the init process when it executes the sshd init script).
 
