@@ -34,6 +34,9 @@ openssl s_client -connect <URL or IP>:<port> -showcerts
 openssl s_client -connect <URL or IP>:<port> -proxy <URL or IP>:<port>
 openssl s_client -connect <URL or IP>:<port> -prexit
 
+* Set TLS SNI [Server Name Indication](https://www.openssl.org/docs/man1.0.2/man1/s_client.html)
+openssl s_client -servername server.test.com  -connect server.test.com:443
+
 # check TLS/SSL certificate expiration date
 DOM="your-www-domain-name-here"
 PORT="443"
@@ -83,14 +86,11 @@ openssl s_client -connect google.com:443 -tls1_2
 openssl s_client -connect google.com:443 -tls1_1
 openssl s_client -connect google.com:443 -tls1
 
-TLS stuff:
+# TLS stuff:
 openssl s_client -msg -debug -state -connect dr.dk:443
-
 ```
 
-* Check TLS chiper strength
-
-    - https://jumpnowtek.com/security/Using-nmap-to-check-certs-and-supported-algos.html
+* Check TLS chiper [strength](https://jumpnowtek.com/security/Using-nmap-to-check-certs-and-supported-algos.html)
 
 ```bash
 # The grade is based on the cryptographic strength A is good
@@ -115,6 +115,11 @@ openssl x509 -in fullchain.cer -noout -dates
 
 openssl x509 -in acs.cdroutertest.com.pem -text
 openssl x509 -in MYCERT.der -inform der -text
+
+# The storeutl command can be used to display the contents (after decryption as the case may be) fetched from the given URIs.
+openssl storeutl -noout -text ca.crt
+# check expiration date
+openssl storeutl -noout -text ca.crt | grep -i "Not After :"
 
 openssl s_client -connect <hostname>:<PORT> -showcerts |  openssl x509 -noout  -dates
 openssl s_client -showcerts -servername myserver.com -connect myserver.com:443 </dev/null
