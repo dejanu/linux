@@ -123,4 +123,7 @@ openssl storeutl -noout -text ca.crt | grep -i "Not After :"
 
 openssl s_client -connect <hostname>:<PORT> -showcerts |  openssl x509 -noout  -dates
 openssl s_client -showcerts -servername myserver.com -connect myserver.com:443 </dev/null
+
+# openssl in scripts, command opens the connection to the server and waits for the input, making it not suitable for a noninteractive approach.
+echo | openssl s_client -connect 10.0.0.100:6443 2>/dev/null | openssl x509 -text
 ```
