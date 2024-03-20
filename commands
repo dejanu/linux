@@ -475,6 +475,8 @@ So execute this: $echo "$the_recipe" | cook /dev/stdin
 The echo command and the pipe sends the contents of the specified variable to the standard input of the next command cook, 
 and that opens the standard input (as a separate file descriptor) and reads that.
 
+# replacement for ls, shell expands * to list the files of the current directory
+echo .* *
 
 # create tree alias with function call
 alias tree='function tree(){ find ${1:-.} | sed -e "s/[^-][^\/]*\//  |/g" -e "s/|\([^ ]\)/|-\1/"; unset -f tree;}; tree'
