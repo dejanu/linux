@@ -265,7 +265,7 @@ scp user1@host1.com:/files/file.txt user2@host2.com:/files
 scp user@host1.com:/dir/{file1,file2,file3} /some/local/dir
 
 # Count lines,chars:
-wc -n
+wc -l
 wc -c
 
 # Copy the folder with all of his content (a: preserve attributes r:recursive)
@@ -361,6 +361,9 @@ find /etc/warfiles -type f -name "*.war" -printf "%f\n"
 A=test.sh
 file_name=${A%.*}
 file_extension=${A#*.}
+
+# create dir structure 
+mkdir -p provisioning/{datasources,notifiers,dashboards/backup}
 
 #---------------------------------Reading from files--------------------------------------------------
 
