@@ -213,16 +213,18 @@ grep -iRl "string" /etc/* 2> /dev/null
 
 #-----------------------FileSize----------------------------------------------------------------------------
 
-# Disk usage per file and directory:
- $ du -sh  /dir_path/file_name
- $ du -h --max-depth=1 /dir_path
- $ du -shxc /dir_path #show total human readable x don't go to other filesystems
- 
-# Calculate size of each of the system top-level dirs
-$ du --max-depth=1 -hx /
+# check the inode of a file i.e. /etc/passwd
+ls -i /etc/passwd
 
-# Disk usage per Filesystem:
- $ df -ah   %% disk free, available and used space
+# du: ESTIMATE file space disk USAGE Disk usage
+du -sh  /dir_path/file_name
+du -h --max-depth=1 /dir_path
+du -shxc /dir_path # show total human readable x don't go to other filesystems
+du --max-depth=1 -hx / # calculate size of each of the system top-level dirs
+
+# df: report Disk usage per FILESYSTEM. disk free, available and used space
+df -ah
+df -h /tmp # human readable output
 
 #------------------------Services and procs----------------------------------------------------------
 
@@ -472,7 +474,7 @@ while read -r line; do echo $line | strings  /dev/stdin; done < data.txt
 
 
 % You can use the "fake" filename /dev/stdin which represents the standard input. E.g cook command needs a file normally
-bu using the following construct we can make cook to read from STDIN
+by using the following construct we can make cook to read from STDIN
 
 So execute this: $echo "$the_recipe" | cook /dev/stdin
 The echo command and the pipe sends the contents of the specified variable to the standard input of the next command cook, 
