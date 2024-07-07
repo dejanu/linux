@@ -40,7 +40,7 @@ find -type <d/c/b/l/p/s/f>
 ## Processes aka tasks
 
 - In a basic form, Linux processes can be visualised as a running instance of a program  
-- Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals) and can share data using techniques like shared memory   
+- Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals, pipes) and can share data using techniques like shared memory   
 - Every process is started by a parent, except **init** process which is started by the Linux kernel and has PID of 1, check:
 ```bash
 
