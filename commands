@@ -71,12 +71,15 @@ https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-
 $ set
 $ env
 
-# check if the env var exist or it is set otherwise give it a default value
+# check if the env var exists or it is set otherwise give it a default value
 $ aka parameter_expression ${parameter:-word}
 test=${test:-"default_value"}
 
-# Verify which shell your're running:
-$ echo $SHELL
+# Verify which shell you're running, default shell for your user:
+echo $SHELL
+echo $0 #Shows the current shell.
+ps -p $$ # Displays the process information for the current shell session.
+lsof -p $$ # Lists open files for the process running your shell.
 
 # Verify env var PATH, which describes the location of different bins
 $ echo $PATH
