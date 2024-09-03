@@ -15,20 +15,30 @@ rpm --eval '%{_arch}'
 # change the command prompt
 export PS1="linux_machine> "
 
-# Display information about CPU architecture
-$ /usr/bin/lscpu
-$ cat /proc/cpuinfo
+## Check CPU
+# display information about CPU architecture
+lscpu # gathers the info from /proc/cpuinfo
 
 # get the number of CPU or cores
- grep processor /proc/cpuinfo | wc -l
+cat /proc/cpuinfo
 
+# CPU usage
+# process view with -i  hides all the idle processes
+top -i
+
+# sort by CPU usage
+ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu
+
+## Check memory
 # total  amount  of  free  and used physical and swap memory in the system
-$ free -m
+free -m
+# display amount of free and used memory in the system
+free -h --si
 
 # Redhat version
-$ cat /etc/redhat-release
+cat /etc/redhat-release
 
-# Ubunty version
+# Ubuntu version
 lsb_release -a
 
 # How long system has been running
