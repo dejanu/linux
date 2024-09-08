@@ -2,7 +2,7 @@
 
 - Files are files, devices drivers are files, directories, system configuration, kernel parameters, and... even processes are all represented as files on the filesystem. 
 - Main advantage of Everything is a file design, is that the same tools that can be used for files can also interact with other devices (network or pipes) or entities (processes)
-- Everything, whether a plain-text file (for example,` /etc/hosts`), a block or character special device driver (for example, `/dev/sda`), or kernel state and configuration (for example, `/proc/cpuinfo`) is represented as a file.
+- Everything, whether a plain-text file (e.g.,`/etc/hosts`), a block or character special device driver (for example, `/dev/sda`), or kernel state and configuration (for example, `/proc/cpuinfo`) is represented as a file.
 
 ```bash
 # let's check how my shell was started, using the PID of the current process, and leveraging everything is a file design
@@ -43,7 +43,6 @@ find -type <d/c/b/l/p/s/f>
 - Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals, pipes) and can share data using techniques like shared memory   
 - Every process is started by a parent, except **init** process which is started by the Linux kernel and has PID of 1, check:
 ```bash
-
 # check the process with PID 1
 ps -p 1
 
@@ -142,7 +141,7 @@ If somehow init daemon could not start, no process will be started and the syste
  **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
 
 - systemd manages units (resources that system knows to operate/manage on)
-- systemd categorize units based on the type of resource they describe ( .service, .socket, .device)  
+- systemd categorize units based on the type of resource they describe (.service, .socket, .device)  
 
 e.g. : etc/systemd/system/docker.service = which describes how to manage docker service  
 
@@ -157,8 +156,8 @@ Requires=docker.socket
 [systemdunits](https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and-unit-files)
 
 ```bash
-sudo systemctl enable service_name #start at boot time
-systemctl status/start/stop/restat docker/httpd/mysql
+sudo systemctl enable service_name # start at boot time
+systemctl status/start/stop/restart docker/httpd/mysql
 systemctl list-units --type service --all
 systemctl daemon-reload  #reload systemd manager configuration
 ```   
@@ -201,7 +200,7 @@ Processes are created through different **system calls** (routine call designate
 
 **List files opened by a proccess**:
 
- `lsof -p PID` equivalent more or less with `ls -l /proc/PID/fd` . 
+`lsof -p PID` equivalent more or less with `ls -l /proc/PID/fd` . 
 
 `lsof` will also give you memory mapped `.so`-files - which technically isn't the same as a file handle the application has control over. `/proc/<pid>/fd` is the measuring point for open file descriptors
  
@@ -222,7 +221,7 @@ lsof -a -p <PID>
 ```
 or
 ```shell
- cd /proc/<PID>/fd
+cd /proc/<PID>/fd
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------
