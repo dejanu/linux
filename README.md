@@ -174,10 +174,11 @@ Are used for Inter Process Communication and can be:
         - Local (`AF_UNIX or AF_LOCAL`): between processes on the same host (Docker,systemd,PostgreSQL)
         - Network-based (`AF_INET`): between processes across the network (webservers)
 
-**AF_UNIX** (domain) socket, instead of binding to an IP/pory, you bind to file. UNIX sockets are faster and more secure for local IPC.
+**AF_UNIX** (domain) socket, instead of binding to an IP:PORT, you bind to file. UNIX sockets are faster and more secure for local IPC.
+**AF_UNIX** (domain) socket are faster than TCP/IP for local IPC (no need for networking stack)
 
 ```bash
-## in different terminal session create a server and a clinet and use socket
+## in different terminal session create a server and a client and use socket
 ## over loopback network interface
 
 # the SERVER must bind(), listen() and accept()
