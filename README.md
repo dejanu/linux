@@ -167,6 +167,27 @@ systemctl daemon-reload  #reload systemd manager configuration
 
 -----------------------------------------------------------------------------------------------------------------------------
 
+**Socket** (endpoint for communication - bidirectional communication channel) can use clinet-server model (90% of time) or Peer-to-Peer
+
+Are used for Inter Process Communication and can be:
+
+        - Local (`AF_UNIX or AF_LOCAL`): between processes on the same host (Docker,systemd,PostgreSQL)
+        - Network-based (`AF_INET`): between processes across the network (webservers)
+
+**AF_UNIX** (domain) socket, instead of binding to an IP/pory, you bind to file. UNIX sockets are faster and more secure for local IPC.
+
+```bash
+## in different terminal session create a server and a clinet and use socket
+## over loopback network interface
+
+# the SERVER must bind(), listen() and accept()
+nc -l 12345
+
+# the CLIENT
+nc localhost 12345
+```
+
+-----------------------------------------------------------------------------------------------------------------------------
 
 Processes are created through different **system calls** (routine call designated to transition from USER space to KERNEL space), most popular are **fork()** and **exec()**:
 
