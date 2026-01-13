@@ -135,17 +135,13 @@ vim /etc/hostname
 vim /etc/hosts
 
 # DNS resolution(errors like ssh can not resolve hostname or could not resolve DNS ) - 
+
 # A match found in the /etc/hosts file will be used before any DNS entry
+#  /etc/hosts/:  It is just a static lookup method for resolution contains: 127.0.0.1	localhost
 
-vim /etc/hosts and add ip and domain name
-vim /etc/resolv.conf
-
-/etc/resolv.conf: 
-Lists nameservers that are used by your host for DNS resolution. 
-If you are using DHCP, this file is automatically populated with DNS record issued by DHCP server.
-
-/etc/hosts/: 
-It is just a static lookup method for resolution.
+# The search needs Lists the nameservers used by your host for DNS resolution. 
+# The search is sent to Recursive Resolver (/etc/resolv.conf contains  Recursive Resolvers: nameserver 100.100.1.1 )
+# /etc/resolv.conf is automatically populated with the DNS record issued by DHCP server.
 
 /etc/nsswitch.conf: 
 It defines the order of resolution. Who should it consult first for resolution, a DNS or a host file? 
@@ -160,7 +156,7 @@ which means "try files (/etc/hosts); and if it fails, try DNS."
 https://nambirajeshblog.wordpress.com/2016/12/12/difference-between-etchosts-vs-etcresolv-conf-in-linux/
 
 
-# IPTables is a rule based firewall and it is pre-installed on most of Linux operating system
+# IPTables is a rule-based firewall and it is pre-installed on most of Linux operating system
 # IP tables main files are at etc/init.d/iptables – init script to start|stop|restart and save rulesets.
 
 /etc/sysconfig/iptables – where Rulesets are saved.
