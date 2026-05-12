@@ -5,7 +5,7 @@
 - The main advantage of the Everything is a File design is that the same tools that can be used for files can also interact with other devices (network or pipes) or entities (processes)
 
 ```bash
-# let's check how my shell was started, using the PID of the current process, and leveraging everything is a file design
+# let's check how my shell was started, using the PID of the current process, and leveraging "everything is a file" design
 ls -l /proc/$$/cmdline
 
 # let's check the file descriptors of it
@@ -40,7 +40,7 @@ find -type <d/c/b/l/p/s/f>
 ## Processes aka tasks
 
 - In a basic form, Linux processes can be visualised as a running instance of a program  
-- Processes can talk to other processes using Inter process communication methods (dbus, sockets, signals, pipes) and can share data using techniques like shared memory   
+- Processes can talk to other processes using Inter-process communication methods (dbus, sockets, signals, pipes) and can share data using techniques like shared memory   
 - Every process is started by a parent, except **init** process which is started by the Linux kernel and has PID of 1, check:
 ```bash
 # check the process with PID 1
@@ -49,7 +49,7 @@ ps -p 1
 # it can be systemd or Upstart, or if it is init it might be a simlink to Upstart or systemd otherwhise is certain that you have SysV init
 ls -l /sbin/init 
 ```
-* Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the proccess
+* Foreground (interactive processes) - they are init and controlled through a terminal session aka the user has to start the process
 				     - to bring a process to foreground just run  `fg %1`
 
 	
@@ -123,7 +123,7 @@ jobs
 # the job will not be in the table of active jobs
 ```
 -----------------------------------------------------------------------------------------------------
-**Daemons** - backround processes that start at system startup. They can be controlled by the user via the __init__ process (e.g. sshd which is started by the init process when it executes the sshd init script).
+**Daemons** - background processes that start at system startup. They can be controlled by the user via the __init__ process (e.g. sshd which is started by the init process when it executes the sshd init script).
 
 
 **init** - has PID of 1 it's the parent of all processes on the system (when linux boots up) and it is started by the kernel itself.` /sbin/init`
@@ -138,10 +138,10 @@ If somehow init daemon could not start, no process will be started and the syste
 
 **Systemd** -  is an INIT SYSTEM (other init systems: SysV init or Upstart) and system manager it has become the default init system for many Linux distributions. A init replacement daemon designed to start process in parallel, implemented in a number of standard distribution – Fedora, OpenSuSE, Arch, RHEL, CentOS, etc.
 
- **systemd** gives us the `systemctl` management tool for controling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
+ **systemd** gives us the `systemctl` management tool for controlling the init system, which is mostly used to enable services to start at boot time. We can also start, stop, reload, restart and check status of services.
 
-- systemd manages units (resources that system knows to operate/manage on)
-- systemd categorize units based on the type of resource they describe (.service, .socket, .device)  
+- systemd manages units (resources that the system knows to operate/manage on)
+- systemd categorises units based on the type of resource they describe (.service, .socket, .device)  
 
 e.g. : etc/systemd/system/docker.service = which describes how to manage docker service  
 
@@ -167,18 +167,18 @@ systemctl daemon-reload  #reload systemd manager configuration
 
 -----------------------------------------------------------------------------------------------------------------------------
 
-**Socket** (endpoint for communication - bidirectional communication channel) can use clinet-server model (90% of time) or Peer-to-Peer
+**Socket** (endpoint for communication - bidirectional communication channel) can use client-server model (90% of time) or Peer-to-Peer
 
 Are used for Inter Process Communication and can be:
 
         - Local (`AF_UNIX or AF_LOCAL`): between processes on the same host (Docker,systemd,PostgreSQL)
         - Network-based (`AF_INET`): between processes across the network (webservers)
 
-**AF_UNIX** (domain) socket, instead of binding to an IP:PORT, you bind to file. UNIX sockets are faster and more secure for local IPC.
+**AF_UNIX** (domain) socket, instead of binding to an IP:PORT, you bind to a file. UNIX sockets are faster and more secure for local IPC.
 **AF_UNIX** (domain) socket are faster than TCP/IP for local IPC (no need for networking stack)
 
 ```bash
-## in different terminal session create a server and a client and use socket
+## in different terminal session, create a server and a client and use socket
 ## over loopback network interface
 
 # the SERVER must bind(), listen() and accept()
@@ -198,7 +198,7 @@ Processes are created through different **system calls** (routine call designate
 
    Fork: system call to CLONE/DUPLICATE the current/calling process (the parent and the child are identical procceses). The cloned process has new PID, fork() takes no args and returns the PID of the child proccess.
    
-   Exec: Replaces current program with a with a new process 
+   Exec: Replaces current program with a new process 
   
   We opened bash process and when we execute ls comand, behind fork() is called to clone the bash process and then exec() is called to
   replace the bash process with the new ls process
@@ -220,9 +220,9 @@ Processes are created through different **system calls** (routine call designate
  
 -----------------------------------------------------------------------------------------------------------------------------
 
-**List files opened by a proccess**:
+**List files opened by a process**:
 
-`lsof -p PID` equivalent more or less with `ls -l /proc/PID/fd` . 
+`lsof -p PID` is equivalent to `ls -l /proc/PID/fd` . 
 
 `lsof` will also give you memory mapped `.so`-files - which technically isn't the same as a file handle the application has control over. `/proc/<pid>/fd` is the measuring point for open file descriptors
  
@@ -235,21 +235,22 @@ Processes are created through different **system calls** (routine call designate
 - usage for pid files `cat filename.pid | xargs kill`
 
 
-* Every process has a file descriptor associated with it, a process can open all sort of files like /dev files , UNIX Sockets, Network sockets, Library files /lib /lib64 
+* Every process has a file descriptor associated with it. A process can open all sorts of files like /dev files, UNIX Sockets, Network sockets, Library files /lib /lib64 
  
 ```shell
 lsof -p <PID>
 lsof -a -p <PID>
-```
-or
-```shell
-cd /proc/<PID>/fd
+ls /proc/<PID>/fd
+
+# check files opened the process of the current shell $$=returns the PID of the current shell
+ls -l /proc/$$/fd
+lsof -p $$
 ```
 
 ------------------------------------------------------------------------------------------------------------------------------
 **Load Avg** vs **System Load - CPU utilization/usage**
 
-1) Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average , formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
+1) Load is simply a count of the number of processes USING or WAITING for the CPU at a single point in time . The load is taken from `/proc/loadavg` text file containing load average, formula `loadvg = tasks running + tasks waiting (for cores) + tasks blocked`. 
 
 - Load how many actively running (not sleeping) processes are using the CPU should be direct proportional with the no of CPU's (cores if multicore).
 
