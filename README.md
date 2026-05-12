@@ -1,8 +1,8 @@
 # Everything is a file design
 
-- Files are files, devices drivers are files, directories, system configuration, kernel parameters, and... even processes are all represented as files on the filesystem. 
-- Main advantage of Everything is a file design, is that the same tools that can be used for files can also interact with other devices (network or pipes) or entities (processes)
-- Everything, whether a plain-text file (e.g.,`/etc/hosts`), a block or character special device driver (for example, `/dev/sda`), or kernel state and configuration (for example, `/proc/cpuinfo`) is represented as a file.
+- From: files, to HW interfaces aka devices (`/dev/null`,`/dev/sda`), process (represented under `/proc` ) to sockets (IPC communication endpoint, either IP + port, or file path for Unix sockets) expose a file-like interface, the file descriptor abstraction  to read and write from/to that resource.
+- That abstraction is a file descriptor (an integer number returned by the kernel: 0 → stdin, 1 → stdout, 2 → stderr)
+- The main advantage of the Everything is a File design is that the same tools that can be used for files can also interact with other devices (network or pipes) or entities (processes)
 
 ```bash
 # let's check how my shell was started, using the PID of the current process, and leveraging everything is a file design
@@ -12,7 +12,7 @@ ls -l /proc/$$/cmdline
 ls -l /proc/$$/fd
 ```
 - Everything is a file...this includes deleted files that now live as chunks of memory that are in use by a process, soo sometimes `df will report bigger disk usage than du`
-- Each file is represented by a **inode** (data structure that stores all the information about the file e.g. permissions, file-type, owner; except its name and actual data). To check the inode of a file `ls -i /etc/passwd`
+- Each file is represented by an **inode** (data structure that stores all the information about the file e.g. permissions, file-type, owner; except its name and actual data). To check the inode of a file `ls -i /etc/passwd`
 ---
 # Each command does one thing very well
 
