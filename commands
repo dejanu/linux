@@ -1,9 +1,18 @@
 #---------------------------------System & Kernel--------------------------------------------------
 
+# How long system has been running
+uptime
+last reboot
+
 # System/kernel release information
-$ uname -a
-$ uname -r
-$ cat /proc/version
+uname -a
+uname -r
+cat /proc/version
+
+# Distribution specific info
+lsb_release -a
+cat /etc/os-release
+cat /etc/redhat-release
 
 # primary architecture of the machine:  M1 == ARM based vs. INTEL/AMD = x86
 # Debian and derivatives
@@ -35,22 +44,12 @@ free -m
 # display amount of free and used memory in the system
 free -h --si
 
-# Redhat version
-cat /etc/redhat-release
-
-# Ubuntu version
-lsb_release -a
-
-# How long system has been running
-$ uptime
-$ last reboot
-
 # View patch/updates for RHEL 
 $ sx cat /var/log/yum.log | less
 
 # View who is online
-$ w
-$ who
+w
+who
 
 # Execute "df -h", showing periodic updates
 $ watch df -h
@@ -78,8 +77,8 @@ systemctl restart syslog.service
 https://bencane.com/2013/09/16/understanding-a-little-more-about-etcprofile-and-etcbashrc/
 
 # Display all the SHELL/ENVIRONMENT  variables
-$ set
-$ env
+set
+env
 
 # check if the env var exists or it is set otherwise give it a default value
 $ aka parameter_expression ${parameter:-word}
@@ -95,7 +94,7 @@ lsof -p $$ # Lists open files for the process running your shell.
 $ echo $PATH
 
 ## PATH is set by the shell every time it launches
-$ export PATH=$PATH:/place/with/the/file
+export PATH=$PATH:/place/with/the/file
 
 ## Add export PATH=$PATH:/place/with/the/file line in the ~/.bash_profile, ~/.bashrc, or ~/.profile
 
@@ -108,15 +107,15 @@ ifconfig  ## interface config of the network interfaces on the system eth0 is fo
 ifconfig eth0 up   ## bring up or down an interface
 
 # get default interface
-$ route | grep '^default' | grep -o '[^ ]*$'
+route | grep '^default' | grep -o '[^ ]*$'
 
 # Get default gateway (deprecated route n)
-$ ip route list
+ip route list
 
 # get IP/interface
-$ ip addr  (with no arguments default to #ip address show)
-$ hostname -i
-$ hostname -I
+ip addr  (with no arguments default to #ip address show)
+hostname -i
+hostname -I
 
 # grab your local, NAT'd IP address
 ifconfig  
@@ -130,7 +129,7 @@ netstat -tulpn
 # List all socket on which an app listens
 tcpid=$(ps aauxfww  | grep tcserver32 | grep -v grep  |  awk '{print $2}') ; lsof -nP -p $tcpid | grep LISTEN
 
-#change hostname
+# change hostname
 vim /etc/hostname 
 vim /etc/hosts
 
