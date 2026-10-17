@@ -45,7 +45,7 @@ systemctl is-enabled apt-daily.timer apt-daily-upgrade.timer
 dpkg -l
 ```
 
-* `apt` vs `apt-get`: `apt` tool is now the default package management utility for Debian-based Linux distros, and it’s replacing both `apt-get` and `apt-cache` (`apt updatet == apt-get update`)
+* `apt` vs `apt-get`: `apt` tool is now the default package management utility for Debian-based Linux distros, and it’s replacing both `apt-get` and `apt-cache` (`apt update == apt-get update`)
 
 * Does `apt upgrade` stays Ubuntu-only, or also pulls vendor software ? `apt` pulls packages from repos defined in `/etc/apt/sources.list` and `/etc/apt/sources.list.d/*.list` (commonly known as jammy)
 
@@ -89,15 +89,11 @@ sudo needrestart -b -r l
 # upgrade all packages, including kernel (does not remove any packages)
 apt-get upgrade
 
-# Check what needs to be held to avoid kernel upgrade
+# check what needs to be held to avoid kernel upgrade
 apt-mark showmanual | grep linux
 
-# Upgrade only user-space pacakges: hold-kernel package:
+# upgrade only user-space packages: hold-kernel package:
 apt-mark hold linux-generic linux-image-generic linux-headers-generic linux-modules-generic
-
-# full upgrade (kernel + userspace packages)
-apt upgrade
-
 ```
 
 ---
