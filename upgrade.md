@@ -3,7 +3,7 @@
 
 * Firmware  (UEFI/BIOS) - initializes the HW and starts the bootloader (GRUB) which loads the kernel into memory. (`fwupdmgr`)
 
-* Bootloader (GRUB) - selectds and loads the kernel into memory, and introduces the kernel to the initramfs (initial RAM filesystem). `initramfs` helps the newly loaded kernel access/mount the real root filesystem during boot.
+* Bootloader (GRUB) - selects and loads the kernel into memory, and introduces the kernel to the initramfs (initial RAM filesystem). `initramfs` helps the newly loaded kernel access/mount the real root filesystem during boot.
 
 * Linux kernel -  initializes the devices and starts the init process (systemd) which then starts all the userspace services and daemons.
 
@@ -83,7 +83,7 @@ apt-get -s dist-upgrade | grep '^Remv'
 apt-get -y dist-upgrade
 
 # check what's still running old code in memory
-# check if any system services or daemons need to be restarted after package updates and library upgrade
+# check if any system services or daemons need to be restarted after package updates and library upgrades
 sudo needrestart -b -r l 
 
 # upgrade all packages, including kernel (does not remove any packages)
@@ -94,6 +94,9 @@ apt-mark showmanual | grep linux
 
 # upgrade only user-space packages: hold-kernel package:
 apt-mark hold linux-generic linux-image-generic linux-headers-generic linux-modules-generic
+
+# check the overall boot time: time spent in firmware, bootloader, kernel, and userspace.
+systemd-analyze
 ```
 
 ---
@@ -113,14 +116,12 @@ Activation = reboot, where GRUB loads the newest installed vmlinuz into memory, 
 ## Kernel upgrade
 
 
-```
+```bash
 # Ubuntu splits the kernel into several coordinated packages, all versioned together:
 linux-image-generic: the actual kernel binary (vmlinuz) + modules
 linux-headers-generic: headers needed to compile kernel modules
 linux-generic: a meta-package — just a dependency wrapper that pulls in the matching image + headers + firmware
-```
 
-```
 # check for kernel-specific packages
 apt list --upgradable | grep -E 'linux-image|linux-generic|linux-headers|linux-modules'
 
