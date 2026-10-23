@@ -111,7 +111,6 @@ So we can apply userspace OS patches on a live k3s node. It does not involve reb
 Kernel install = `apt update` + `apt upgrade`, which places the real kernel binary (vmlinuz-*) plus initramfs into `/boot`, alongside headers and a version-syncing meta-package. 
 Activation = reboot, where GRUB loads the newest installed vmlinuz into memory, handing off to the kernel and then to systemd.
 
-```
 
 ## Kernel upgrade
 
